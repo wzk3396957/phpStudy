@@ -1,0 +1,35 @@
+<div class="row">
+    <div class="col-lg-12">
+        <div class="ibox float-e-margins">
+            <div class="ibox-content">
+
+                
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th>广告或代理</th>
+                            <th>区域</th>
+                            <th>名字</th>
+                            <th>电话</th>
+                        </tr>
+                        </thead>
+                        
+                        <tbody>
+                       	        {volist name="list" id="vo"}
+                                    <tr>
+                                        <td>{$vo.agency}</td>
+                                        <td>{$vo.area}</td>
+                                        <td>{$vo.username}</td>
+                                        <td>{$vo.tel}</td>
+                                    </tr>
+                                {/volist}
+                        </tbody>
+                    </table>
+                    {$list->render()}
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

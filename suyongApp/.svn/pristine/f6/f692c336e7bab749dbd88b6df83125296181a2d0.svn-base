@@ -1,0 +1,41 @@
+$(document).ready(function () {
+     $("#add_detail").on('click',function () {
+           
+            var username = $("#username").val();
+            var password = $("#password").val();
+            var area = $("#area").val()?$("#area").val():$("select[name='area']").val();
+           
+            if(!username || !password || !area){
+                toastr.warning('请填写完整信息');
+            }else{
+                $.ajax({
+                    type: 'POST',
+                    url:'do_set',
+                    data: {
+                        username:username,
+                        password:password,
+                        area:area
+                    },
+                    dataType: 'json',
+                    success: function (data) {
+                        // console.log(data);
+                        if(data == '1'){
+                            
+                            toastr.success('设置成功！');
+                            window.setTimeout("window.location='https://msd.suyongw.com/Admin/showList'",1000);
+                        }else if(data == '2'){
+                            toastr.error('已设置该区域');
+                            return false;
+                        }else if(data == '3'){
+                            toastr.error('用户名已被占用');
+                            return false;
+                        }else{
+                            toastr.error('设置失败');
+                            return false;
+                        }
+                    }
+                });
+            }
+        });
+});
+

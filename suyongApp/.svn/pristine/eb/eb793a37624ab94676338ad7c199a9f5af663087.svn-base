@@ -1,0 +1,87 @@
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:77:"C:\inetpub\wwwroot\suyongPay\public/../application/wxpay\view\join\step4.html";i:1536906883;}*/ ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+    <title>填写店铺信息</title>
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="../css/bootstrap.min.css"> -->
+    <!-- <link rel="stylesheet" href="../css/edit.css"> -->
+	<link rel="stylesheet" href="/static/css/edit.css">
+    <script src="https://as.alipayobjects.com/g/component/fastclick/1.0.6/fastclick.js"></script>
+    <script>
+        if ('addEventListener' in document) {
+            document.addEventListener('DOMContentLoaded', function () {
+                FastClick.attach(document.body);
+            }, false);
+        }
+        if (!window.Promise) {
+            document.writeln('<script src="https://as.alipayobjects.com/g/component/es6-promise/3.2.2/es6-promise.min.js"' + '>' + '<' + '/' + 'script>');
+        }
+    </script>
+</head>
+<style>
+    .done-page{
+        text-align: center;
+    }
+    .done-page .icon {
+        margin: 70px auto 20px;
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        background: #10AEFF;
+        color: #fff;
+        font-size: 40px;
+        text-align: center;
+        line-height: 80px;
+    }
+    .done-page .title{
+        font-size: 18px;
+        color: #333;
+        margin-bottom: 10px;
+    }
+    .done-page .content{
+        margin: 0 auto 50px;
+        width: 80%;
+        color: #888;
+        font-size: 13px;
+    }
+</style>
+<body>
+<div class="container">
+
+    <div class="row">
+        <div class="col-xs-12" style="margin-top:20px;">
+            <div class="col-xs-12" style="background: white;padding: 20px;border-radius: 4px">
+
+                <div class="done-page">
+                    <div class="icon">!</div>
+                    <div class="title">资料已提交</div>
+                    <div class="content">
+                        速用审核团队会在10分钟内完成审核，审核结果会通过微信支付服务号进行通知
+                    </div>
+                    <button type="button" class="btn btn-success" style="margin-bottom:50px" id="iknow">我知道了</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+       window.onload = function(){
+           history.pushState(null, null, document.URL);
+           window.addEventListener('popstate', function () {
+               history.pushState(null, null, document.URL);
+           });
+       }
+       document.getElementById("iknow").onclick = function() {
+           window.location = '/wxpay/index/merchant.html'
+       }
+
+
+    </script>
+</div>
+</body>
+</html>

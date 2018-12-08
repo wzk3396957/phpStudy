@@ -1,0 +1,56 @@
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:78:"C:\inetpub\wwwroot\suyongPay\public/../application/home1\view\index\index.html";i:1535614051;}*/ ?>
+<div class="row">
+    <div class="col-lg-12">
+<div style="padding: 15px;background-color: white">
+    <fieldset class="layui-elem-field site-demo-button">
+        <h2>欢迎您  <?php echo \think\Session::get('username'); ?></h2>
+        <div class="layui-field-box">
+            <table class="table">
+
+                <tbody class=".table-striped">
+                <tr>
+                    <td>系统名称：</td>
+                    <td>微信公众号报名抽奖系统</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>系统版本：</td>
+                    <td>V1.1.0</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>系统框架：</td>
+                    <td>Thinkphp 5.0</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>UI框架：</td>
+                    <td>Bootstarp 3.1</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>开发者：</td>
+                    <td>速用用科技</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>公司：</td>
+                    <td>华众宇邦</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>管理员微信：</td>
+                    <td>hua17629044941</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>门店专属公众号链接：</td>
+                    <td><a href="#" id="qr_code">点击获取</a></td>
+                    <td></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </fieldset>        </div>
+    </div>
+</div>

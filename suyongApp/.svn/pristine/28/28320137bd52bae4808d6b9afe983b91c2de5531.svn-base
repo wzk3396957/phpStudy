@@ -1,0 +1,34 @@
+<?php
+
+namespace app\home\controller;
+
+use app\home\controller\Base;
+use think\Db;
+
+class Admin extends Base{
+
+	private $connect = 'mysql://root:suyongkeji@suyongw.cn:3306/send#utf8';
+
+	public function showList(){
+        $CONFIG = [
+            'path' => [
+                '首页',
+                '合伙人列表'
+            ]
+        ]; 
+        $this->assign('CONFIG', $CONFIG);
+        $list = Db::connect($this->connect)->table('admin')->where('id','neq',1)->paginate(10);
+        $this->assign('list',$list);
+        return $this->fetch();
+    }
+     // 删除
+    public function del(){
+        $id = input('id');
+        if (empty($id)) {
+            return 'request lost!';
+        }
+        $res = Db::connect($this->connect)->table('admin')->where('id',$id)->delete();
+        
+        return $res? '1' : '0';
+    }
+}

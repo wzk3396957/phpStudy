@@ -1,0 +1,50 @@
+<?php
+
+namespace app\home\controller;
+
+use app\home\controller\Base;
+use think\Db;
+
+class Consociation extends Base{
+
+	private $connect = 'mysql://root:suyongkeji@suyongw.cn:3306/send#utf8';
+
+    public function showList(){
+        $CONFIG = [
+            'path' => [
+                '首页',
+                '商务合作列表'
+            ]
+        ];
+        $this->assign('CONFIG', $CONFIG);
+        // if(Session::get('auth')=='1'){
+        //     $list = Db::connect($this->connect)->table('consociation')->where('state',1)->paginate(10);
+        // }else if(Session::get('auth')=='2'){
+        //     $list = Db::connect($this->connect)->table('consociation')->where('state',1)->where()->paginate(10);
+        // }
+        
+        $this->assign('list',$list);
+        return $this -> fetch();
+    }
+
+    public function checkList(){
+        $CONFIG = [
+            'path' => [
+                '首页',
+                '商务合作审核'
+            ]
+        ];
+        $this->assign('CONFIG', $CONFIG);
+        $list = Db::connect($this->connect)->table('consociation')->where('state',2)->paginate(8);
+        $this->assign('list',$list);
+        return $this -> fetch();
+    }
+    //审核
+    public function check(){
+        $id = input("post.id");
+        $state = input("post.state");
+        //dump($p);die;
+        $re = Db::connect($this->connect)->table('consociation')->where('id',$id)->update(['state'=>$state]);
+        return $re?'1':'0';
+    }
+}

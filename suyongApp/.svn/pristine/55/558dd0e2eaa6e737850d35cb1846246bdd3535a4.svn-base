@@ -1,0 +1,88 @@
+<?php
+
+namespace app\home\controller;
+
+use app\home\controller\Base;
+use think\Db;
+use think\Session;
+
+class Km extends Base{
+
+	private $connect = 'mysql://root:suyongkeji@suyongw.cn:3306/send#utf8';
+
+	public function setKm(){
+        $CONFIG = [
+            'path' => [
+                '首页',
+                '收费标准'
+            ]
+        ]; 
+        $this->assign('CONFIG', $CONFIG);
+        $this->get_admin_area();
+        return $this->fetch();
+    }
+
+    private function get_admin_area(){
+        $id = Session::get('id');
+        $str = Db::connect($this->connect)->table('admin')->where('id',$id)->value('area');
+        $area = explode(",",$str);
+        $this->assign('area', $area);
+    }
+    public function do_set(){
+        $data = input('post.');
+        $area = Db::connect($this->connect)->table('how_much_km')->where('area',$data['area'])->find();
+        if($area){
+            return '2';
+        }
+        $re = Db::connect($this->connect)->table('how_much_km')->insert($data);
+        return $re?'1':'0';
+    }
+
+    public function showList(){
+        $CONFIG = [
+            'path' => [
+                '首页',
+                '收费标准列表'
+            ]
+        ]; 
+        $this->assign('CONFIG', $CONFIG);
+        $state = $this->state();
+        $map = $this->auth();
+        $list = Db::connect($this->connect)->table('how_much_km')->where($state)->where($map)->select();
+        $this->assign('list', $list);
+        return $this->fetch();
+    }
+
+    public function state(){
+        if(Session::get('auth')=='2' ||Session::get('auth')=='3'){
+            $state['state'] = array('eq',1);
+        }else{
+            $state['state'] = array('eq',2);
+        }
+        return $state;
+    }
+    public function check(){
+        $id = input("post.id");
+        $state = input("post.state");
+        if($state=='1'){
+            $re = Db::connect($this->connect)->table('how_much_km')->where('id',$id)->update(['state'=>$state]);
+        }else{
+            $re = Db::connect($this->connect)->table('how_much_km')->where('id',$id)->delete();
+        }
+        return $re?'1':'0';
+    }
+    public function edit(){
+        $CONFIG = [
+            'path' => [
+                '首页',
+                '修改收费标准'
+            ]
+        ]; 
+        $this->assign('CONFIG', $CONFIG);
+        $id = input('post.id');
+        $data = Db::connect($this->connect)->table('how_much_km')->where('id',$id)->find();
+        $this->assign('data', $data);
+        $this->get_admin_area();
+        return $this->fetch();
+    }
+}

@@ -1,0 +1,1 @@
+php C:\inetpub\wwwroot\suyongApp\public\socket_register.php C:\inetpub\wwwroot\suyongApp\public\socket_gateway.php C:\inetpub\wwwroot\suyongApp\public\socket_bussiness.php

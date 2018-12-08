@@ -1,0 +1,32 @@
+$(document).ready(function () {
+     $("#add_detail").on('click',function () {
+           
+            var area = $("select[id='cmbProvince']").val()+'/'+$("select[id='cmbCity']").val()+'/'+$("select[id='cmbArea']").val();
+            var id = $("#id").val();
+           
+            if(!area){
+                toastr.warning('选择区域');
+            }else{
+                $.ajax({
+                    type: 'POST',
+                    url:'do_addArea',
+                    data: {
+                        area:area,
+                        id:id
+                    },
+                    dataType: 'json',
+                    success: function (data) {
+                        // console.log(data);
+                        if(data == '1'){
+                            
+                            toastr.success('添加成功！');
+                            window.setTimeout("window.location='https://msd.suyongw.com/Admin/showList'",1000);
+                        }else{
+                            toastr.success('添加失败');
+                            return false;
+                        }
+                    }
+                });
+            }
+        });
+});

@@ -1,0 +1,112 @@
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:81:"C:\inetpub\wwwroot\suyongPay\public/../application/wxpay\view\index\register.html";i:1536565526;}*/ ?>
+<!DOCTYPE html>
+<html>
+<head>
+	<title>合伙人注册</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0,viewport-fit=cover">
+	<link rel="stylesheet" type="text/css" href="/static/css/register.css">
+	<!-- <link rel="stylesheet" type="text/css" href="../../../../public/static/css/register.css"> -->
+	<script src="https://as.alipayobjects.com/g/component/fastclick/1.0.6/fastclick.js"></script>
+	<script>
+		if ('addEventListener' in document) {
+			document.addEventListener('DOMContentLoaded', function () {
+				FastClick.attach(document.body);
+			}, false);
+		}
+		if (!window.Promise) {
+			document.writeln('<script src="https://as.alipayobjects.com/g/component/es6-promise/3.2.2/es6-promise.min.js"' + '>' + '<' + '/' + 'script>');
+		}
+	</script>
+</head>
+<body>	
+	<form id='form'>
+		<div class="box">
+			<div class="bg bgimg">
+			</div>
+			<div class="register">
+				<div class="register-content">				
+					<div class="left">
+						<label>手机号</label>			
+					</div>					
+					<input type="tel" name="phone" maxlength="11" minlength="11" placeholder="请输入手机号码" id="phone">
+				</div>
+
+				<div class="register-content">
+					<div class="left">
+						<label>验证码</label>		
+					</div>
+					<input name="code" id="code" placeholder="请输入验证码">
+						<span id="getCode" onclick="settime()">获取验证码</span>
+					</div>		
+
+					<div class="register-content">
+						<div class="left">
+							<label>姓名</label>		
+						</div>
+						<input type="text" name="name" maxlength="8" placeholder="请输入真实姓名" id="name" >
+
+					</div>		
+
+					<div class="register-content">
+						<div class="left">
+							<label>密码</label>				
+						</div>				
+						<input type="password" name="password" placeholder="请输入密码" id="password" minlength="8">
+
+					</div>
+					<div class="register-content">
+						<div class="left">
+							<label>确认密码</label>				
+						</div>				
+						<input type="password" name="password" placeholder="请输入密码" minlength="8" id="password1" >
+					</div>
+					<div class="register-content">
+						<div class="left">
+							<label>银行卡</label>
+						</div>
+						<input type="number" name="bank_card" placeholder="请输入银行卡号" id="bank_card" maxlength="19">
+					</div>
+					<div class="register-content">
+						<div class="left">
+							<label>身份证</label>		
+						</div>
+						<input type="text" name="id_card" placeholder="请输入有效身份证号码" id="id_card" maxlength="18" >
+
+					</div>
+
+					<div class="register-content">
+						<div class="left">
+							性别
+						</div>
+						<div class="sex"> 
+							<input type="radio" name="sex" value="男" checked>男
+							<input type="radio" name="sex" value="女">女
+						</div>	
+					</div>
+					<div class="register-content">
+						<div class="left">
+							<label>邀请码</label>
+						</div>
+						<input type="text" name="you_code" placeholder="" id="you_code" readonly="readonly">
+
+					</div>
+				</div>
+			</div>
+		</form>
+				<div class="submit">提交<img src="/static/images/submit.png">
+				</div>
+
+		<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js">
+		</script>
+		<script type="text/javascript" src="/static/js/register.js">
+		</script> 
+		<script type="text/javascript" src="/static/js/formJq.js">
+		</script>
+
+<!-- <script type="text/javascript" src="../../../../public/static/js/formJq.js">
+</script>
+<script type="text/javascript" src="../../../../public/static/js/register.js">
+</script> -->
+
+</body>
+</html>

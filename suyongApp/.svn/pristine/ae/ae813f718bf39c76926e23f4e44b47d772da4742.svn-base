@@ -1,0 +1,37 @@
+<?php
+
+namespace app\home\controller;
+
+use app\home\controller\Base;
+use think\Db;
+
+class Commission extends Base{
+
+	private $connect = 'mysql://root:suyongkeji@suyongw.cn:3306/send#utf8';
+
+	public function year(){
+		$CONFIG = [
+            'path' => [
+                '首页',
+                '年费分成设置'
+            ]
+        ]; 
+        $this->assign('CONFIG', $CONFIG);
+        $data = Db::connect($this->connect)->table('year_commission')->find();
+        $this->assign('data', $data);
+        return $this->fetch();
+	}
+
+	public function order(){
+		$CONFIG = [
+            'path' => [
+                '首页',
+                '订单分成设置'
+            ]
+        ]; 
+        $this->assign('CONFIG', $CONFIG);
+        $data = Db::connect($this->connect)->table('order_commission')->find();
+        $this->assign('data', $data);
+        return $this->fetch();
+	}
+}

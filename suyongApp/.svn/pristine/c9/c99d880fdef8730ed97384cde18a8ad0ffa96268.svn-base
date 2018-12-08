@@ -1,0 +1,48 @@
+<div class="row">
+    <div class="col-lg-12">
+        <div class="ibox float-e-margins">
+            <div class="ibox-content">
+
+                
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th>起送价</th>
+                            <th>超公里数</th>
+                            <th>每公里价格</th>
+                            <th>区域</th>
+                            {if $Think.session.auth =='1'}
+                            <th>审核</th>
+                            {else/}
+                            <th>编辑</th>
+                            {/if}
+                        </tr>
+                        </thead>
+                        <tbody>
+                             {volist name="list" id="vo"}
+                                <tr data="{$vo.id}">
+                                    <td>{$vo.strat}</td>
+                                    <td>{$vo.over_km}</td>
+                                    <td>{$vo.how_much_km}</td>
+                                    <td>{$vo.area}</td>
+                                    {if $Think.session.auth =='1'}
+                                    <td>
+                                        <a href="javascript:void(0)" data_id="{$vo.id}" data_state='1' class="check">通过</a>
+                                        <a href="javascript:void(0)" data_id="{$vo.id}" data_state='0' class="check">驳回</a>
+                                    </td>
+                                    {else/}
+                                    <td>
+                                        <a href="edit?id={$vo.id}&area={$vo.area}">编辑</a>
+                                    </td>
+                                    {/if}
+                                </tr>
+                            {/volist}
+                        </tbody>
+                    </table>
+                </div>
+               
+            </div>
+        </div>
+    </div>
+</div>

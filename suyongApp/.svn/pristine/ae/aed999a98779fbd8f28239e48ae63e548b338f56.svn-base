@@ -1,0 +1,144 @@
+<?php
+
+namespace app\index\controller;
+use think\Controller;
+use think\Session;
+use think\Config;
+use app\api\controller\Api;
+use think\Db;
+
+class Index extends controller
+{
+    private $connect = 'mysql://root:suyongkeji@suyongw.cn:3306/send#utf8';
+
+      //登陆
+   public function login(){
+       if(empty($_POST['appid']) || empty($_POST['appsecret']) || empty($_POST['code'])){
+         return '差参数';
+       }
+       $appid = $_POST['appid'];
+       $appsecret = $_POST['appsecret'];
+       $code = $_POST['code'];
+       $url="https://api.weixin.qq.com/sns/jscode2session?appid=".$appid."&secret=".$appsecret."&js_code=".$code."&grant_type=authorization_code";
+       $arr = $this->curl_get($url);  
+       $res = json_decode($arr,true);
+       return json_encode($res);
+   }
+
+      //curl
+    public function curl_get($url){
+       $info=curl_init();
+       curl_setopt($info,CURLOPT_RETURNTRANSFER,true);
+       curl_setopt($info,CURLOPT_HEADER,0);
+       curl_setopt($info,CURLOPT_NOBODY,0);
+       curl_setopt($info,CURLOPT_SSL_VERIFYPEER, false);
+       curl_setopt($info,CURLOPT_SSL_VERIFYHOST, false);
+       curl_setopt($info,CURLOPT_URL,$url);
+       $output= curl_exec($info);
+       curl_close($info);
+       return $output;
+    }
+
+    public function index(){
+      echo "1";
+    }
+    //手机验证码
+    public function send_valiCode($phone)
+    {
+        $code = rand(10000, 99999);
+        $sms_code = json_encode(['code' => $code]);
+        $url = 'https://api.mysubmail.com/message/xsend.json';
+        $data = "appid=14520&to=" . $phone . "&project=f7Br63&signature=fd766e9534c72a7856ab962bf8fc9059&vars=" . $sms_code;
+        $res = $this->_requestPost($url, $data);
+        $result = json_decode($res, true);
+        if ($result['status'] == 'success') {
+            return $code;
+        }
+        return false;
+    }
+    public static function _requestPost($url, $data, $ssl = true)
+    {
+        // curl完成
+        $curl = curl_init();
+
+        //设置curl选项
+        curl_setopt($curl, CURLOPT_URL, $url);//URL
+        $user_agent = isset($_SERVER['HTTP_USER_AGENT']) ? $_SERVER['HTTP_USER_AGENT'] : 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36';
+        curl_setopt($curl, CURLOPT_USERAGENT, $user_agent);//user_agent，请求代理信息
+        curl_setopt($curl, CURLOPT_AUTOREFERER, true);//referer头，请求来源
+        //SSL相关
+        if ($ssl) {
+            curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);//禁用后cURL将终止从服务端进行验证
+            curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);//检查服务器SSL证书中是否存在一个公用名(common name)。
+        }
+        // 处理post相关选项
+        curl_setopt($curl, CURLOPT_POST, true);// 是否为POST请求
+        curl_setopt($curl, CURLOPT_POSTFIELDS, $data);// 处理请求数据
+        // 处理响应结果
+        curl_setopt($curl, CURLOPT_HEADER, false);//是否处理响应头
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);//curl_exec()是否返回响应结果
+
+        // 发出请求
+        $response = curl_exec($curl);
+        if (false === $response) {
+            return false;
+        }
+        return $response;
+    }
+    //注册
+    public function register($openid,$username,$tel,$password,$trade){
+        $data = [
+                'openid'=>$openid,
+                'username'=>$username,
+                'tel'=>$tel,
+                'password'=>$password,
+                'trade'=>$trade
+                ];
+        $res = Db::connect($this->connect)->table('user')->insert($data);
+        return $res?'1':'0'; 
+    }
+    //登录
+    public function user_login($tel,$password){
+        $user = Db::connect($this->connect)->table('user')->where('tel',$tel)->where('password',$password)->find();
+        return $user?'1':'0';
+    }
+    //注册骑士
+    public function register_knight($username,$tel,$type,$area,$id_card,$car){
+        $data = [
+                'username'=>$username,
+                'tel'=>$tel,
+                'type'=>$type,
+                'area'=>$area,
+                'id_card'=>$id_card,
+                'car'=>$car
+                ];
+        $res = Db::connect($this->connect)->table('knight')->insert($data);
+        return $res?'1':'0';
+    }
+    //发起订单
+    public function strat_order(){
+        $data = input('post.');
+        $data['order_num'] = $this->rand_num();
+        $data['start'] = time();
+        $res = Db::connect($this->connect)->table('order')->insert($data);
+        return $res?'1':'0';
+    }
+    // 随机订单号
+    public function rand_num(){
+      $num = mt_rand(1,100);
+      $time = time();
+      $rand_num = $num.$time;
+      return $rand_num;
+    }
+    //订单管理
+    public function order_info($openid){
+        $re = Db::connect($this->connect) ->table('order')
+                                            ->alias('o')
+                                            ->join('user u','o.openid = u.openid')
+                                            ->join('user u2','o.to_openid = u2.openid')
+                                            ->field('o.*,u.username,u2.username as to_user')
+                                            ->where('o.openid',$openid)
+                                            ->select();
+        return json_encode($re,JSON_UNESCAPED_UNICODE);
+    }
+}

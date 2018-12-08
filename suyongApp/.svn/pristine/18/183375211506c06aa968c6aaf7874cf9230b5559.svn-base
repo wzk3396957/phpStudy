@@ -1,0 +1,41 @@
+<?php
+
+namespace app\home\controller;
+
+use app\home\controller\Base;
+use think\Db;
+use think\Session;
+
+class Area extends Base{
+
+	private $connect = 'mysql://root:suyongkeji@suyongw.cn:3306/send#utf8';
+
+    public function setArea(){
+        $CONFIG = [
+            'css' => [
+                'css/plugins/city-picker-master/city-picker.css',
+            ],
+            'js' => [
+                'js/plugins/city-picker-master/jquery.min.js',
+                'js/plugins/city-picker-master/city-picker.data.js',
+                'js/plugins/city-picker-master/city-picker.js',
+            ],
+            'path' => [
+                '首页',
+                '文章列表'
+            ]
+
+        ];
+        $this->assign('CONFIG', $CONFIG);
+        return $this -> fetch();
+    }
+
+    public function do_set(){
+        $data = input('post.');
+        $data['up'] = Session::get('id');
+        $up_auth = Session::get('auth');
+        $data['auth'] = $up_auth + 1;
+        $res = Db::connect($this->connect)->table('admin')->insert($data);
+        return $res?'1':'0';
+    }
+}

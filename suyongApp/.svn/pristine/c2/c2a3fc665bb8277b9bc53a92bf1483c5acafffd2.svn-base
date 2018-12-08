@@ -1,0 +1,35 @@
+$(document).ready(function () {
+     $("#add_detail").on('click',function () {
+           
+            var username = $("#username").val();
+            var password = $("#password").val();
+            var password = $("#area").val();
+           
+            if(!username || !password || !area){
+                toastr.warning('请填写完整信息');
+            }else{
+                $.ajax({
+                    type: 'POST',
+                    url:'do_set',
+                    data: {
+                        username:username,
+                        password:password,
+                        area:area
+                    },
+                    dataType: 'json',
+                    success: function (data) {
+                        // console.log(data);
+                        if(data == '1'){
+                            
+                            toastr.success('设置成功！');
+                            window.setTimeout("window.location='showList'",1000);
+                        }else{
+                            toastr.success('设置失败');
+                            return false;
+                        }
+                    }
+                });
+            }
+        });
+});
+

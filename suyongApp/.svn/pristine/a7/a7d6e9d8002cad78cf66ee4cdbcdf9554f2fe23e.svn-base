@@ -1,0 +1,68 @@
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:77:"C:\inetpub\wwwroot\suyongPay\public/../application/wxpay\view\join\index.html";i:1536916941;}*/ ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+    <title>商户主页</title>
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://as.alipayobjects.com/g/component/fastclick/1.0.6/fastclick.js"></script>
+    <link rel="stylesheet" href="/static/css/userindex.css">
+    <script>
+        if ('addEventListener' in document) {
+            document.addEventListener('DOMContentLoaded', function () {
+                FastClick.attach(document.body);
+            }, false);
+        }
+        if (!window.Promise) {
+            document.writeln('<script src="https://as.alipayobjects.com/g/component/es6-promise/3.2.2/es6-promise.min.js"' + '>' + '<' + '/' + 'script>');
+        }
+    </script>
+    <script src="/static/js/remutil.js"></script>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12" style="padding: 0;">
+            <div class="info">
+                <div class="info-title flex-row">
+                    <!--<div class="flex-y-center">
+                        <img class="info-img" src="http://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTKOD0SIaJQ99ypGxUnELv8g45A36vsUrM0PKDOZCuqQHRhibuWmHwyr4u4rZKK4NjzndkoRMQQcIOA/132" />
+                    </div>-->
+                    <div class="info-block">
+                        <div class="info-up info-blod"><?php echo $arr['name']; ?></div>
+                    </div>
+                </div>
+                <div class="info-content flex-row">
+                    <div class="info-left">
+                        <div class="info-label">
+                            <div class="info-first">当月流水</div>
+                            <div class="info-second info-blod info-big flex-row"><?php echo $arr['month_money']; ?> 元</div>
+                        </div>
+                        <div class="info-label">
+                            <div class="info-first">可提现金额（已扣除手续费）</div>
+                            <div class="info-second info-blod info-big flex-row">1元</div>
+                        </div>
+                    </div>
+                    <div class="info-right">
+
+                        <div class="info-btn">提现</div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script src="/static/js/jquery.min.js"></script>
+
+<script>
+
+
+</script>
+</body>
+</html>

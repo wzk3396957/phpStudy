@@ -1,0 +1,140 @@
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:85:"C:\inetpub\wwwroot\suyongPay\public/../application/wxpay\view\index\money_center.html";i:1536995826;}*/ ?>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+    <title>财务中心</title>
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://as.alipayobjects.com/g/component/fastclick/1.0.6/fastclick.js"></script>
+    <script>
+        if ('addEventListener' in document) {
+            document.addEventListener('DOMContentLoaded', function () {
+                FastClick.attach(document.body);
+            }, false);
+        }
+        if (!window.Promise) {
+            document.writeln('<script src="https://as.alipayobjects.com/g/component/es6-promise/3.2.2/es6-promise.min.js"' + '>' + '<' + '/' + 'script>');
+        }
+    </script>
+    <style>
+        .g-line {
+            height: 89px;
+            border-top: 13px solid #F9F8FD;
+            line-height: 70px;
+        }
+
+        .g-line .left-icon {
+            width: 35px;
+            height: 33px;
+        }
+
+        .g-line .right-text {
+            float: right;
+            color: #F4AC00;
+            font-size: 12px;
+        }
+
+        .g-line .right-arrow {
+            float: right;
+            margin-top: 30px;
+            margin-left: 20px;
+            width: 7px;
+            height: 10px;
+        }
+        .first-g-line {
+            position: relative;
+            height: 89px;
+            border-top: 13px solid #F9F8FD;
+            line-height: 70px;
+        }
+
+        .first-g-line .left-icon {
+            width: 35px;
+            height: 33px;
+        }
+        .first-g-line span{
+            font-size: 15px;
+            font-width: 500;
+        }
+        .first-g-line .right-text {
+            float: right;
+            font-size: 12px;
+        }
+        .first-g-line .money{
+            position: absolute;
+            bottom: 5px;
+            left: 20px;
+            line-height: 0;
+            color: #F4AC00;
+        }
+        .col-xs-10{
+            padding-left: 0;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="first-g-line">
+            <div class="col-xs-2">
+                <img src="/static/images/tixian.png" alt="" class="left-icon">
+
+            </div>
+            <div class="col-xs-10">
+                <span>提现金额(元)</span>
+                <p class="money">100</p>
+                <span class="right-text">提现额度最低20</span>
+            </div>
+        </div>
+        <div class="g-line">
+            <div class="col-xs-2">
+                <img src="/static/images/byls.png" alt="" class="left-icon">
+            </div>
+            <div class="col-xs-10">
+                <span>本月流水</span>
+                <img src="/static/images/right-arrow.png" alt="" class="right-arrow">
+                <span class="right-text"><?php echo $res['month_money']; ?>元</span>
+            </div>
+        </div>
+
+        <div class="g-line">
+            <div class="col-xs-2">
+                <img src="/static/images/tdls.png" alt="" class="left-icon">
+            </div>
+            <div class="col-xs-10">
+                <span>下级团队总流水</span>
+                <img src="/static/images/right-arrow.png" alt="" class="right-arrow">
+                <span class="right-text"><?php echo $arr['all_money']; ?>元</span>
+            </div>
+        </div>
+
+        <div class="g-line">
+            <div class="col-xs-2">
+                <img src="/static/images/wdsy.png" alt="" class="left-icon">
+            </div>
+            <div class="col-xs-10">
+                <span>我的收益</span>
+                <img src="/static/images/right-arrow.png" alt="" class="right-arrow">
+                <span class="right-text">提现额度最低20</span>
+            </div>
+        </div>
+
+        <div class="g-line">
+            <div class="col-xs-2">
+                <img src="/static/images/tx.png" alt="" class="left-icon">
+            </div>
+            <div class="col-xs-10">
+                <span>可提现额</span>
+                <img src="/static/images/right-arrow.png" alt="" class="right-arrow">
+                <span class="right-text">提现额度最低20</span>
+            </div>
+        </div>
+    </div>
+
+</div>
+</body>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</html>

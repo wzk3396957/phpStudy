@@ -1,0 +1,640 @@
+2017-11-28 09:29:17 exception 'think\exception\ErrorException' with message 'Accessing static property Workerman\Connection\TcpConnection::$connections as non static' in C:\inetpub\wwwroot\suyongMP\application\api\service\SocketService.php:16
+Stack trace:
+#0 C:\inetpub\wwwroot\suyongMP\application\api\service\SocketService.php(16): think\Error::appError(2048, 'Accessing stati...', 'C:\\inetpub\\wwwr...', 16, Array)
+#1 C:\inetpub\wwwroot\suyongMP\application\api\controller\Socket.php(25): app\api\service\SocketService->_onMessage(Object(Workerman\Connection\TcpConnection), 'sadasd')
+#2 [internal function]: app\api\controller\Socket->onMessage(Object(Workerman\Connection\TcpConnection), 'sadasd')
+#3 C:\inetpub\wwwroot\suyongMP\vendor\workerman\workerman-for-win\Connection\TcpConnection.php(629): call_user_func(Array, Object(Workerman\Connection\TcpConnection), 'sadasd')
+#4 [internal function]: Workerman\Connection\TcpConnection->baseRead(Resource id #71)
+#5 C:\inetpub\wwwroot\suyongMP\vendor\workerman\workerman-for-win\Events\Select.php(286): call_user_func_array(Array, Array)
+#6 C:\inetpub\wwwroot\suyongMP\vendor\workerman\workerman-for-win\Worker.php(856): Workerman\Events\Select->loop()
+#7 C:\inetpub\wwwroot\suyongMP\vendor\workerman\workerman-for-win\Worker.php(473): Workerman\Worker->run()
+#8 C:\inetpub\wwwroot\suyongMP\vendor\workerman\workerman-for-win\Worker.php(382): Workerman\Worker::runAllWorkers()
+#9 C:\inetpub\wwwroot\suyongMP\vendor\topthink\think-worker\src\Server.php(61): Workerman\Worker::runAll()
+#10 [internal function]: think\worker\Server->__construct(Array)
+#11 C:\inetpub\wwwroot\suyongMP\thinkphp\library\think\App.php(216): ReflectionClass->newInstanceArgs(Array)
+#12 C:\inetpub\wwwroot\suyongMP\thinkphp\library\think\Loader.php(400): think\App::invokeClass('app\\api\\control...')
+#13 C:\inetpub\wwwroot\suyongMP\thinkphp\library\think\App.php(388): think\Loader::controller('socket', 'controller', false, 'Error')
+#14 C:\inetpub\wwwroot\suyongMP\thinkphp\library\think\App.php(296): think\App::module(Array, Array, NULL)
+#15 C:\inetpub\wwwroot\suyongMP\thinkphp\library\think\App.php(124): think\App::exec(Array, Array)
+#16 C:\inetpub\wwwroot\suyongMP\thinkphp\start.php(18): think\App::run()
+#17 C:\inetpub\wwwroot\suyongMP\public\socket.php(20): require('C:\\inetpub\\wwwr...')
+#18 {main}
+2017-11-28 09:57:46 exception 'think\exception\ErrorException' with message 'var_export does not handle circular references' in C:\inetpub\wwwroot\suyongMP\thinkphp\library\think\log\driver\File.php:57
+Stack trace:
+#0 [internal function]: think\Error::appError(2, 'var_export does...', 'C:\\inetpub\\wwwr...', 57, Array)
+#1 C:\inetpub\wwwroot\suyongMP\thinkphp\library\think\log\driver\File.php(57): var_export(Object(Workerman\Connection\TcpConnection), true)
+#2 C:\inetpub\wwwroot\suyongMP\thinkphp\library\think\Log.php(157): think\log\driver\File->save(Array)
+#3 C:\inetpub\wwwroot\suyongMP\thinkphp\library\think\Log.php(89): think\Log::save()
+#4 [internal function]: think\Log::record(Object(Workerman\Connection\TcpConnection), 'error')
+#5 C:\inetpub\wwwroot\suyongMP\thinkphp\library\think\Log.php(209): call_user_func_array('\\think\\Log::rec...', Array)
+#6 C:\inetpub\wwwroot\suyongMP\application\api\controller\Socket.php(35): think\Log::__callStatic('error', Array)
+#7 C:\inetpub\wwwroot\suyongMP\application\api\controller\Socket.php(35): think\Log::error(Object(Workerman\Connection\TcpConnection))
+#8 [internal function]: app\api\controller\Socket->onConnect(Object(Workerman\Connection\TcpConnection))
+#9 C:\inetpub\wwwroot\suyongMP\vendor\workerman\workerman-for-win\Worker.php(904): call_user_func(Array, Object(Workerman\Connection\TcpConnection))
+#10 [internal function]: Workerman\Worker->acceptConnection(Resource id #68)
+#11 C:\inetpub\wwwroot\suyongMP\vendor\workerman\workerman-for-win\Events\Select.php(286): call_user_func_array(Array, Array)
+#12 C:\inetpub\wwwroot\suyongMP\vendor\workerman\workerman-for-win\Worker.php(856): Workerman\Events\Select->loop()
+#13 C:\inetpub\wwwroot\suyongMP\vendor\workerman\workerman-for-win\Worker.php(473): Workerman\Worker->run()
+#14 C:\inetpub\wwwroot\suyongMP\vendor\workerman\workerman-for-win\Worker.php(382): Workerman\Worker::runAllWorkers()
+#15 C:\inetpub\wwwroot\suyongMP\vendor\topthink\think-worker\src\Server.php(61): Workerman\Worker::runAll()
+#16 [internal function]: think\worker\Server->__construct(Array)
+#17 C:\inetpub\wwwroot\suyongMP\thinkphp\library\think\App.php(216): ReflectionClass->newInstanceArgs(Array)
+#18 C:\inetpub\wwwroot\suyongMP\thinkphp\library\think\Loader.php(400): think\App::invokeClass('app\\api\\control...')
+#19 C:\inetpub\wwwroot\suyongMP\thinkphp\library\think\App.php(388): think\Loader::controller('socket', 'controller', false, 'Error')
+#20 C:\inetpub\wwwroot\suyongMP\thinkphp\library\think\App.php(296): think\App::module(Array, Array, NULL)
+#21 C:\inetpub\wwwroot\suyongMP\thinkphp\library\think\App.php(124): think\App::exec(Array, Array)
+#22 C:\inetpub\wwwroot\suyongMP\thinkphp\start.php(18): think\App::run()
+#23 C:\inetpub\wwwroot\suyongMP\public\socket.php(20): require('C:\\inetpub\\wwwr...')
+#24 {main}
+2017-11-28 09:59:11 exception 'think\exception\ErrorException' with message 'var_export does not handle circular references' in C:\inetpub\wwwroot\suyongMP\thinkphp\library\think\log\driver\File.php:57
+Stack trace:
+#0 [internal function]: think\Error::appError(2, 'var_export does...', 'C:\\inetpub\\wwwr...', 57, Array)
+#1 C:\inetpub\wwwroot\suyongMP\thinkphp\library\think\log\driver\File.php(57): var_export(Object(Workerman\Connection\TcpConnection), true)
+#2 C:\inetpub\wwwroot\suyongMP\thinkphp\library\think\Log.php(157): think\log\driver\File->save(Array)
+#3 C:\inetpub\wwwroot\suyongMP\thinkphp\library\think\Log.php(89): think\Log::save()
+#4 [internal function]: think\Log::record(Object(Workerman\Connection\TcpConnection), 'error')
+#5 C:\inetpub\wwwroot\suyongMP\thinkphp\library\think\Log.php(209): call_user_func_array('\\think\\Log::rec...', Array)
+#6 C:\inetpub\wwwroot\suyongMP\application\api\controller\Socket.php(35): think\Log::__callStatic('error', Array)
+#7 C:\inetpub\wwwroot\suyongMP\application\api\controller\Socket.php(35): think\Log::error(Object(Workerman\Connection\TcpConnection))
+#8 [internal function]: app\api\controller\Socket->onConnect(Object(Workerman\Connection\TcpConnection))
+#9 C:\inetpub\wwwroot\suyongMP\vendor\workerman\workerman-for-win\Worker.php(904): call_user_func(Array, Object(Workerman\Connection\TcpConnection))
+#10 [internal function]: Workerman\Worker->acceptConnection(Resource id #67)
+#11 C:\inetpub\wwwroot\suyongMP\vendor\workerman\workerman-for-win\Events\Select.php(286): call_user_func_array(Array, Array)
+#12 C:\inetpub\wwwroot\suyongMP\vendor\workerman\workerman-for-win\Worker.php(856): Workerman\Events\Select->loop()
+#13 C:\inetpub\wwwroot\suyongMP\vendor\workerman\workerman-for-win\Worker.php(473): Workerman\Worker->run()
+#14 C:\inetpub\wwwroot\suyongMP\vendor\workerman\workerman-for-win\Worker.php(382): Workerman\Worker::runAllWorkers()
+#15 C:\inetpub\wwwroot\suyongMP\vendor\topthink\think-worker\src\Server.php(60): Workerman\Worker::runAll()
+#16 [internal function]: think\worker\Server->__construct(Array)
+#17 C:\inetpub\wwwroot\suyongMP\thinkphp\library\think\App.php(216): ReflectionClass->newInstanceArgs(Array)
+#18 C:\inetpub\wwwroot\suyongMP\thinkphp\library\think\Loader.php(400): think\App::invokeClass('app\\api\\control...')
+#19 C:\inetpub\wwwroot\suyongMP\thinkphp\library\think\App.php(388): think\Loader::controller('socket', 'controller', false, 'Error')
+#20 C:\inetpub\wwwroot\suyongMP\thinkphp\library\think\App.php(296): think\App::module(Array, Array, NULL)
+#21 C:\inetpub\wwwroot\suyongMP\thinkphp\library\think\App.php(124): think\App::exec(Array, Array)
+#22 C:\inetpub\wwwroot\suyongMP\thinkphp\start.php(18): think\App::run()
+#23 C:\inetpub\wwwroot\suyongMP\public\socket.php(20): require('C:\\inetpub\\wwwr...')
+#24 {main}
+2017-11-28 10:00:11 exception 'think\exception\ErrorException' with message 'var_export does not handle circular references' in C:\inetpub\wwwroot\suyongMP\thinkphp\library\think\log\driver\File.php:57
+Stack trace:
+#0 [internal function]: think\Error::appError(2, 'var_export does...', 'C:\\inetpub\\wwwr...', 57, Array)
+#1 C:\inetpub\wwwroot\suyongMP\thinkphp\library\think\log\driver\File.php(57): var_export(Object(Workerman\Connection\TcpConnection), true)
+#2 C:\inetpub\wwwroot\suyongMP\thinkphp\library\think\Log.php(157): think\log\driver\File->save(Array)
+#3 C:\inetpub\wwwroot\suyongMP\thinkphp\library\think\Log.php(89): think\Log::save()
+#4 [internal function]: think\Log::record(Object(Workerman\Connection\TcpConnection), 'error')
+#5 C:\inetpub\wwwroot\suyongMP\thinkphp\library\think\Log.php(209): call_user_func_array('\\think\\Log::rec...', Array)
+#6 C:\inetpub\wwwroot\suyongMP\application\api\controller\Socket.php(34): think\Log::__callStatic('error', Array)
+#7 C:\inetpub\wwwroot\suyongMP\application\api\controller\Socket.php(34): think\Log::error(Object(Workerman\Connection\TcpConnection))
+#8 [internal function]: app\api\controller\Socket->onConnect(Object(Workerman\Connection\TcpConnection))
+#9 C:\inetpub\wwwroot\suyongMP\vendor\workerman\workerman-for-win\Worker.php(904): call_user_func(Array, Object(Workerman\Connection\TcpConnection))
+#10 [internal function]: Workerman\Worker->acceptConnection(Resource id #67)
+#11 C:\inetpub\wwwroot\suyongMP\vendor\workerman\workerman-for-win\Events\Select.php(286): call_user_func_array(Array, Array)
+#12 C:\inetpub\wwwroot\suyongMP\vendor\workerman\workerman-for-win\Worker.php(856): Workerman\Events\Select->loop()
+#13 C:\inetpub\wwwroot\suyongMP\vendor\workerman\workerman-for-win\Worker.php(473): Workerman\Worker->run()
+#14 C:\inetpub\wwwroot\suyongMP\vendor\workerman\workerman-for-win\Worker.php(382): Workerman\Worker::runAllWorkers()
+#15 C:\inetpub\wwwroot\suyongMP\vendor\topthink\think-worker\src\Server.php(60): Workerman\Worker::runAll()
+#16 [internal function]: think\worker\Server->__construct(Array)
+#17 C:\inetpub\wwwroot\suyongMP\thinkphp\library\think\App.php(216): ReflectionClass->newInstanceArgs(Array)
+#18 C:\inetpub\wwwroot\suyongMP\thinkphp\library\think\Loader.php(400): think\App::invokeClass('app\\api\\control...')
+#19 C:\inetpub\wwwroot\suyongMP\thinkphp\library\think\App.php(388): think\Loader::controller('socket', 'controller', false, 'Error')
+#20 C:\inetpub\wwwroot\suyongMP\thinkphp\library\think\App.php(296): think\App::module(Array, Array, NULL)
+#21 C:\inetpub\wwwroot\suyongMP\thinkphp\library\think\App.php(124): think\App::exec(Array, Array)
+#22 C:\inetpub\wwwroot\suyongMP\thinkphp\start.php(18): think\App::run()
+#23 C:\inetpub\wwwroot\suyongMP\public\socket.php(20): require('C:\\inetpub\\wwwr...')
+#24 {main}
+2017-11-28 10:02:09 exception 'think\exception\ErrorException' with message 'var_export does not handle circular references' in C:\inetpub\wwwroot\suyongMP\thinkphp\library\think\log\driver\File.php:57
+Stack trace:
+#0 [internal function]: think\Error::appError(2, 'var_export does...', 'C:\\inetpub\\wwwr...', 57, Array)
+#1 C:\inetpub\wwwroot\suyongMP\thinkphp\library\think\log\driver\File.php(57): var_export(Object(Workerman\Connection\TcpConnection), true)
+#2 C:\inetpub\wwwroot\suyongMP\thinkphp\library\think\Log.php(157): think\log\driver\File->save(Array)
+#3 C:\inetpub\wwwroot\suyongMP\thinkphp\library\think\Log.php(89): think\Log::save()
+#4 [internal function]: think\Log::record(Object(Workerman\Connection\TcpConnection), 'error')
+#5 C:\inetpub\wwwroot\suyongMP\thinkphp\library\think\Log.php(209): call_user_func_array('\\think\\Log::rec...', Array)
+#6 C:\inetpub\wwwroot\suyongMP\application\api\controller\Socket.php(35): think\Log::__callStatic('error', Array)
+#7 C:\inetpub\wwwroot\suyongMP\application\api\controller\Socket.php(35): think\Log::error(Object(Workerman\Connection\TcpConnection))
+#8 [internal function]: app\api\controller\Socket->onConnect(Object(Workerman\Connection\TcpConnection))
+#9 C:\inetpub\wwwroot\suyongMP\vendor\workerman\workerman-for-win\Worker.php(904): call_user_func(Array, Object(Workerman\Connection\TcpConnection))
+#10 [internal function]: Workerman\Worker->acceptConnection(Resource id #67)
+#11 C:\inetpub\wwwroot\suyongMP\vendor\workerman\workerman-for-win\Events\Select.php(286): call_user_func_array(Array, Array)
+#12 C:\inetpub\wwwroot\suyongMP\vendor\workerman\workerman-for-win\Worker.php(856): Workerman\Events\Select->loop()
+#13 C:\inetpub\wwwroot\suyongMP\vendor\workerman\workerman-for-win\Worker.php(473): Workerman\Worker->run()
+#14 C:\inetpub\wwwroot\suyongMP\vendor\workerman\workerman-for-win\Worker.php(382): Workerman\Worker::runAllWorkers()
+#15 C:\inetpub\wwwroot\suyongMP\vendor\topthink\think-worker\src\Server.php(60): Workerman\Worker::runAll()
+#16 [internal function]: think\worker\Server->__construct(Array)
+#17 C:\inetpub\wwwroot\suyongMP\thinkphp\library\think\App.php(216): ReflectionClass->newInstanceArgs(Array)
+#18 C:\inetpub\wwwroot\suyongMP\thinkphp\library\think\Loader.php(400): think\App::invokeClass('app\\api\\control...')
+#19 C:\inetpub\wwwroot\suyongMP\thinkphp\library\think\App.php(388): think\Loader::controller('socket', 'controller', false, 'Error')
+#20 C:\inetpub\wwwroot\suyongMP\thinkphp\library\think\App.php(296): think\App::module(Array, Array, NULL)
+#21 C:\inetpub\wwwroot\suyongMP\thinkphp\library\think\App.php(124): think\App::exec(Array, Array)
+#22 C:\inetpub\wwwroot\suyongMP\thinkphp\start.php(18): think\App::run()
+#23 C:\inetpub\wwwroot\suyongMP\public\socket.php(20): require('C:\\inetpub\\wwwr...')
+#24 {main}
+2017-11-28 16:50:18 exception 'Exception' with message 'You can't send(array) to client, you need to convert it to a string. ' in C:\inetpub\wwwroot\suyongMP\vendor\workerman\workerman-for-win\Protocols\Websocket.php:225
+Stack trace:
+#0 C:\inetpub\wwwroot\suyongMP\vendor\workerman\workerman-for-win\Connection\TcpConnection.php(310): Workerman\Protocols\Websocket::encode(Array, Object(Workerman\Connection\TcpConnection))
+#1 C:\inetpub\wwwroot\suyongMP\application\api\controller\Socket.php(42): Workerman\Connection\TcpConnection->send(Array)
+#2 [internal function]: app\api\controller\Socket->onMessage(Object(Workerman\Connection\TcpConnection), '{"miniapp_id":1...')
+#3 C:\inetpub\wwwroot\suyongMP\vendor\workerman\workerman-for-win\Connection\TcpConnection.php(629): call_user_func(Array, Object(Workerman\Connection\TcpConnection), '{"miniapp_id":1...')
+#4 [internal function]: Workerman\Connection\TcpConnection->baseRead(Resource id #70)
+#5 C:\inetpub\wwwroot\suyongMP\vendor\workerman\workerman-for-win\Events\Select.php(286): call_user_func_array(Array, Array)
+#6 C:\inetpub\wwwroot\suyongMP\vendor\workerman\workerman-for-win\Worker.php(856): Workerman\Events\Select->loop()
+#7 C:\inetpub\wwwroot\suyongMP\vendor\workerman\workerman-for-win\Worker.php(473): Workerman\Worker->run()
+#8 C:\inetpub\wwwroot\suyongMP\vendor\workerman\workerman-for-win\Worker.php(382): Workerman\Worker::runAllWorkers()
+#9 C:\inetpub\wwwroot\suyongMP\vendor\topthink\think-worker\src\Server.php(60): Workerman\Worker::runAll()
+#10 [internal function]: think\worker\Server->__construct(Array)
+#11 C:\inetpub\wwwroot\suyongMP\thinkphp\library\think\App.php(216): ReflectionClass->newInstanceArgs(Array)
+#12 C:\inetpub\wwwroot\suyongMP\thinkphp\library\think\Loader.php(400): think\App::invokeClass('app\\api\\control...')
+#13 C:\inetpub\wwwroot\suyongMP\thinkphp\library\think\App.php(388): think\Loader::controller('socket', 'controller', false, 'Error')
+#14 C:\inetpub\wwwroot\suyongMP\thinkphp\library\think\App.php(296): think\App::module(Array, Array, NULL)
+#15 C:\inetpub\wwwroot\suyongMP\thinkphp\library\think\App.php(124): think\App::exec(Array, Array)
+#16 C:\inetpub\wwwroot\suyongMP\thinkphp\start.php(18): think\App::run()
+#17 C:\inetpub\wwwroot\suyongMP\public\socket.php(20): require('C:\\inetpub\\wwwr...')
+#18 {main}
+2017-11-28 17:50:17 exception 'think\exception\ErrorException' with message 'Array to string conversion' in C:\inetpub\wwwroot\suyongMP\application\api\service\SocketService.php:26
+Stack trace:
+#0 C:\inetpub\wwwroot\suyongMP\application\api\service\SocketService.php(26): think\Error::appError(8, 'Array to string...', 'C:\\inetpub\\wwwr...', 26, Array)
+#1 C:\inetpub\wwwroot\suyongMP\application\api\controller\Socket.php(31): app\api\service\SocketService->_message(Object(Workerman\Connection\TcpConnection), Array)
+#2 [internal function]: app\api\controller\Socket->onMessage(Object(Workerman\Connection\TcpConnection), '{"miniapp_id":1...')
+#3 C:\inetpub\wwwroot\suyongMP\vendor\workerman\workerman-for-win\Connection\TcpConnection.php(629): call_user_func(Array, Object(Workerman\Connection\TcpConnection), '{"miniapp_id":1...')
+#4 [internal function]: Workerman\Connection\TcpConnection->baseRead(Resource id #71)
+#5 C:\inetpub\wwwroot\suyongMP\vendor\workerman\workerman-for-win\Events\Select.php(286): call_user_func_array(Array, Array)
+#6 C:\inetpub\wwwroot\suyongMP\vendor\workerman\workerman-for-win\Worker.php(857): Workerman\Events\Select->loop()
+#7 C:\inetpub\wwwroot\suyongMP\vendor\workerman\workerman-for-win\Worker.php(474): Workerman\Worker->run()
+#8 C:\inetpub\wwwroot\suyongMP\vendor\workerman\workerman-for-win\Worker.php(383): Workerman\Worker::runAllWorkers()
+#9 C:\inetpub\wwwroot\suyongMP\vendor\topthink\think-worker\src\Server.php(60): Workerman\Worker::runAll()
+#10 [internal function]: think\worker\Server->__construct(Array)
+#11 C:\inetpub\wwwroot\suyongMP\thinkphp\library\think\App.php(216): ReflectionClass->newInstanceArgs(Array)
+#12 C:\inetpub\wwwroot\suyongMP\thinkphp\library\think\Loader.php(400): think\App::invokeClass('app\\api\\control...')
+#13 C:\inetpub\wwwroot\suyongMP\thinkphp\library\think\App.php(388): think\Loader::controller('socket', 'controller', false, 'Error')
+#14 C:\inetpub\wwwroot\suyongMP\thinkphp\library\think\App.php(296): think\App::module(Array, Array, NULL)
+#15 C:\inetpub\wwwroot\suyongMP\thinkphp\library\think\App.php(124): think\App::exec(Array, Array)
+#16 C:\inetpub\wwwroot\suyongMP\thinkphp\start.php(18): think\App::run()
+#17 C:\inetpub\wwwroot\suyongMP\public\socket.php(20): require('C:\\inetpub\\wwwr...')
+#18 {main}
+2017-11-29 09:24:24 exception 'Exception' with message 'You can't send(array) to client, you need to convert it to a string. ' in C:\inetpub\wwwroot\suyongMP\vendor\workerman\workerman-for-win\Protocols\Websocket.php:225
+Stack trace:
+#0 C:\inetpub\wwwroot\suyongMP\vendor\workerman\workerman-for-win\Connection\TcpConnection.php(310): Workerman\Protocols\Websocket::encode(Array, Object(Workerman\Connection\TcpConnection))
+#1 C:\inetpub\wwwroot\suyongMP\application\api\controller\Socket.php(31): Workerman\Connection\TcpConnection->send(Array)
+#2 [internal function]: app\api\controller\Socket->onMessage(Object(Workerman\Connection\TcpConnection), '{"miniapp_id":1...')
+#3 C:\inetpub\wwwroot\suyongMP\vendor\workerman\workerman-for-win\Connection\TcpConnection.php(629): call_user_func(Array, Object(Workerman\Connection\TcpConnection), '{"miniapp_id":1...')
+#4 [internal function]: Workerman\Connection\TcpConnection->baseRead(Resource id #71)
+#5 C:\inetpub\wwwroot\suyongMP\vendor\workerman\workerman-for-win\Events\Select.php(286): call_user_func_array(Array, Array)
+#6 C:\inetpub\wwwroot\suyongMP\vendor\workerman\workerman-for-win\Worker.php(857): Workerman\Events\Select->loop()
+#7 C:\inetpub\wwwroot\suyongMP\vendor\workerman\workerman-for-win\Worker.php(474): Workerman\Worker->run()
+#8 C:\inetpub\wwwroot\suyongMP\vendor\workerman\workerman-for-win\Worker.php(383): Workerman\Worker::runAllWorkers()
+#9 C:\inetpub\wwwroot\suyongMP\vendor\topthink\think-worker\src\Server.php(60): Workerman\Worker::runAll()
+#10 [internal function]: think\worker\Server->__construct(Array)
+#11 C:\inetpub\wwwroot\suyongMP\thinkphp\library\think\App.php(216): ReflectionClass->newInstanceArgs(Array)
+#12 C:\inetpub\wwwroot\suyongMP\thinkphp\library\think\Loader.php(400): think\App::invokeClass('app\\api\\control...')
+#13 C:\inetpub\wwwroot\suyongMP\thinkphp\library\think\App.php(388): think\Loader::controller('socket', 'controller', false, 'Error')
+#14 C:\inetpub\wwwroot\suyongMP\thinkphp\library\think\App.php(296): think\App::module(Array, Array, NULL)
+#15 C:\inetpub\wwwroot\suyongMP\thinkphp\library\think\App.php(124): think\App::exec(Array, Array)
+#16 C:\inetpub\wwwroot\suyongMP\thinkphp\start.php(18): think\App::run()
+#17 C:\inetpub\wwwroot\suyongMP\public\socket.php(20): require('C:\\inetpub\\wwwr...')
+#18 {main}
+2017-11-29 09:50:05 exception 'Exception' with message 'You can't send(array) to client, you need to convert it to a string. ' in C:\inetpub\wwwroot\suyongMP\vendor\workerman\workerman-for-win\Protocols\Websocket.php:225
+Stack trace:
+#0 C:\inetpub\wwwroot\suyongMP\vendor\workerman\workerman-for-win\Connection\TcpConnection.php(310): Workerman\Protocols\Websocket::encode(Array, Object(Workerman\Connection\TcpConnection))
+#1 C:\inetpub\wwwroot\suyongMP\application\api\controller\Socket.php(31): Workerman\Connection\TcpConnection->send(Array)
+#2 [internal function]: app\api\controller\Socket->onMessage(Object(Workerman\Connection\TcpConnection), '{"miniapp_id":1...')
+#3 C:\inetpub\wwwroot\suyongMP\vendor\workerman\workerman-for-win\Connection\TcpConnection.php(629): call_user_func(Array, Object(Workerman\Connection\TcpConnection), '{"miniapp_id":1...')
+#4 [internal function]: Workerman\Connection\TcpConnection->baseRead(Resource id #71)
+#5 C:\inetpub\wwwroot\suyongMP\vendor\workerman\workerman-for-win\Events\Select.php(286): call_user_func_array(Array, Array)
+#6 C:\inetpub\wwwroot\suyongMP\vendor\workerman\workerman-for-win\Worker.php(857): Workerman\Events\Select->loop()
+#7 C:\inetpub\wwwroot\suyongMP\vendor\workerman\workerman-for-win\Worker.php(474): Workerman\Worker->run()
+#8 C:\inetpub\wwwroot\suyongMP\vendor\workerman\workerman-for-win\Worker.php(383): Workerman\Worker::runAllWorkers()
+#9 C:\inetpub\wwwroot\suyongMP\vendor\topthink\think-worker\src\Server.php(60): Workerman\Worker::runAll()
+#10 [internal function]: think\worker\Server->__construct(Array)
+#11 C:\inetpub\wwwroot\suyongMP\thinkphp\library\think\App.php(216): ReflectionClass->newInstanceArgs(Array)
+#12 C:\inetpub\wwwroot\suyongMP\thinkphp\library\think\Loader.php(400): think\App::invokeClass('app\\api\\control...')
+#13 C:\inetpub\wwwroot\suyongMP\thinkphp\library\think\App.php(388): think\Loader::controller('socket', 'controller', false, 'Error')
+#14 C:\inetpub\wwwroot\suyongMP\thinkphp\library\think\App.php(296): think\App::module(Array, Array, NULL)
+#15 C:\inetpub\wwwroot\suyongMP\thinkphp\library\think\App.php(124): think\App::exec(Array, Array)
+#16 C:\inetpub\wwwroot\suyongMP\thinkphp\start.php(18): think\App::run()
+#17 C:\inetpub\wwwroot\suyongMP\public\socket.php(20): require('C:\\inetpub\\wwwr...')
+#18 {main}
+2017-11-29 11:04:45 exception 'Exception' with message 'You can't send(array) to client, you need to convert it to a string. ' in C:\inetpub\wwwroot\suyongMP\vendor\workerman\workerman-for-win\Protocols\Websocket.php:225
+Stack trace:
+#0 C:\inetpub\wwwroot\suyongMP\vendor\workerman\workerman-for-win\Connection\TcpConnection.php(310): Workerman\Protocols\Websocket::encode(Array, Object(Workerman\Connection\TcpConnection))
+#1 C:\inetpub\wwwroot\suyongMP\application\api\controller\Socket.php(31): Workerman\Connection\TcpConnection->send(Array)
+#2 [internal function]: app\api\controller\Socket->onMessage(Object(Workerman\Connection\TcpConnection), '{"miniapp_id":1...')
+#3 C:\inetpub\wwwroot\suyongMP\vendor\workerman\workerman-for-win\Connection\TcpConnection.php(629): call_user_func(Array, Object(Workerman\Connection\TcpConnection), '{"miniapp_id":1...')
+#4 [internal function]: Workerman\Connection\TcpConnection->baseRead(Resource id #75)
+#5 C:\inetpub\wwwroot\suyongMP\vendor\workerman\workerman-for-win\Events\Select.php(286): call_user_func_array(Array, Array)
+#6 C:\inetpub\wwwroot\suyongMP\vendor\workerman\workerman-for-win\Worker.php(857): Workerman\Events\Select->loop()
+#7 C:\inetpub\wwwroot\suyongMP\vendor\workerman\workerman-for-win\Worker.php(474): Workerman\Worker->run()
+#8 C:\inetpub\wwwroot\suyongMP\vendor\workerman\workerman-for-win\Worker.php(383): Workerman\Worker::runAllWorkers()
+#9 C:\inetpub\wwwroot\suyongMP\vendor\topthink\think-worker\src\Server.php(60): Workerman\Worker::runAll()
+#10 [internal function]: think\worker\Server->__construct(Array)
+#11 C:\inetpub\wwwroot\suyongMP\thinkphp\library\think\App.php(216): ReflectionClass->newInstanceArgs(Array)
+#12 C:\inetpub\wwwroot\suyongMP\thinkphp\library\think\Loader.php(400): think\App::invokeClass('app\\api\\control...')
+#13 C:\inetpub\wwwroot\suyongMP\thinkphp\library\think\App.php(388): think\Loader::controller('socket', 'controller', false, 'Error')
+#14 C:\inetpub\wwwroot\suyongMP\thinkphp\library\think\App.php(296): think\App::module(Array, Array, NULL)
+#15 C:\inetpub\wwwroot\suyongMP\thinkphp\library\think\App.php(124): think\App::exec(Array, Array)
+#16 C:\inetpub\wwwroot\suyongMP\thinkphp\start.php(18): think\App::run()
+#17 C:\inetpub\wwwroot\suyongMP\public\socket.php(20): require('C:\\inetpub\\wwwr...')
+#18 {main}
+2017-11-29 11:07:28 exception 'Exception' with message 'You can't send(array) to client, you need to convert it to a string. ' in C:\inetpub\wwwroot\suyongMP\vendor\workerman\workerman-for-win\Protocols\Websocket.php:225
+Stack trace:
+#0 C:\inetpub\wwwroot\suyongMP\vendor\workerman\workerman-for-win\Connection\TcpConnection.php(310): Workerman\Protocols\Websocket::encode(Array, Object(Workerman\Connection\TcpConnection))
+#1 C:\inetpub\wwwroot\suyongMP\application\api\controller\Socket.php(32): Workerman\Connection\TcpConnection->send(Array)
+#2 [internal function]: app\api\controller\Socket->onMessage(Object(Workerman\Connection\TcpConnection), '{"miniapp_id":1...')
+#3 C:\inetpub\wwwroot\suyongMP\vendor\workerman\workerman-for-win\Connection\TcpConnection.php(629): call_user_func(Array, Object(Workerman\Connection\TcpConnection), '{"miniapp_id":1...')
+#4 [internal function]: Workerman\Connection\TcpConnection->baseRead(Resource id #73)
+#5 C:\inetpub\wwwroot\suyongMP\vendor\workerman\workerman-for-win\Events\Select.php(286): call_user_func_array(Array, Array)
+#6 C:\inetpub\wwwroot\suyongMP\vendor\workerman\workerman-for-win\Worker.php(857): Workerman\Events\Select->loop()
+#7 C:\inetpub\wwwroot\suyongMP\vendor\workerman\workerman-for-win\Worker.php(474): Workerman\Worker->run()
+#8 C:\inetpub\wwwroot\suyongMP\vendor\workerman\workerman-for-win\Worker.php(383): Workerman\Worker::runAllWorkers()
+#9 C:\inetpub\wwwroot\suyongMP\vendor\topthink\think-worker\src\Server.php(60): Workerman\Worker::runAll()
+#10 [internal function]: think\worker\Server->__construct(Array)
+#11 C:\inetpub\wwwroot\suyongMP\thinkphp\library\think\App.php(216): ReflectionClass->newInstanceArgs(Array)
+#12 C:\inetpub\wwwroot\suyongMP\thinkphp\library\think\Loader.php(400): think\App::invokeClass('app\\api\\control...')
+#13 C:\inetpub\wwwroot\suyongMP\thinkphp\library\think\App.php(388): think\Loader::controller('socket', 'controller', false, 'Error')
+#14 C:\inetpub\wwwroot\suyongMP\thinkphp\library\think\App.php(296): think\App::module(Array, Array, NULL)
+#15 C:\inetpub\wwwroot\suyongMP\thinkphp\library\think\App.php(124): think\App::exec(Array, Array)
+#16 C:\inetpub\wwwroot\suyongMP\thinkphp\start.php(18): think\App::run()
+#17 C:\inetpub\wwwroot\suyongMP\public\socket.php(20): require('C:\\inetpub\\wwwr...')
+#18 {main}
+2017-11-29 11:17:30 exception 'think\exception\ErrorException' with message 'Illegal string offset 'data'' in C:\inetpub\wwwroot\suyongMP\application\api\service\SocketService.php:31
+Stack trace:
+#0 C:\inetpub\wwwroot\suyongMP\application\api\service\SocketService.php(31): think\Error::appError(2, 'Illegal string ...', 'C:\\inetpub\\wwwr...', 31, Array)
+#1 C:\inetpub\wwwroot\suyongMP\application\api\controller\Socket.php(30): app\api\service\SocketService::_messageTouch(Array)
+#2 [internal function]: app\api\controller\Socket->onMessage(Object(Workerman\Connection\TcpConnection), '{"miniapp_id":1...')
+#3 C:\inetpub\wwwroot\suyongMP\vendor\workerman\workerman-for-win\Connection\TcpConnection.php(629): call_user_func(Array, Object(Workerman\Connection\TcpConnection), '{"miniapp_id":1...')
+#4 [internal function]: Workerman\Connection\TcpConnection->baseRead(Resource id #70)
+#5 C:\inetpub\wwwroot\suyongMP\vendor\workerman\workerman-for-win\Events\Select.php(286): call_user_func_array(Array, Array)
+#6 C:\inetpub\wwwroot\suyongMP\vendor\workerman\workerman-for-win\Worker.php(857): Workerman\Events\Select->loop()
+#7 C:\inetpub\wwwroot\suyongMP\vendor\workerman\workerman-for-win\Worker.php(474): Workerman\Worker->run()
+#8 C:\inetpub\wwwroot\suyongMP\vendor\workerman\workerman-for-win\Worker.php(383): Workerman\Worker::runAllWorkers()
+#9 C:\inetpub\wwwroot\suyongMP\vendor\topthink\think-worker\src\Server.php(60): Workerman\Worker::runAll()
+#10 [internal function]: think\worker\Server->__construct(Array)
+#11 C:\inetpub\wwwroot\suyongMP\thinkphp\library\think\App.php(216): ReflectionClass->newInstanceArgs(Array)
+#12 C:\inetpub\wwwroot\suyongMP\thinkphp\library\think\Loader.php(400): think\App::invokeClass('app\\api\\control...')
+#13 C:\inetpub\wwwroot\suyongMP\thinkphp\library\think\App.php(388): think\Loader::controller('socket', 'controller', false, 'Error')
+#14 C:\inetpub\wwwroot\suyongMP\thinkphp\library\think\App.php(296): think\App::module(Array, Array, NULL)
+#15 C:\inetpub\wwwroot\suyongMP\thinkphp\library\think\App.php(124): think\App::exec(Array, Array)
+#16 C:\inetpub\wwwroot\suyongMP\thinkphp\start.php(18): think\App::run()
+#17 C:\inetpub\wwwroot\suyongMP\public\socket.php(20): require('C:\\inetpub\\wwwr...')
+#18 {main}
+2017-11-29 11:18:28 exception 'think\exception\ErrorException' with message 'Illegal string offset 'data'' in C:\inetpub\wwwroot\suyongMP\application\api\service\SocketService.php:31
+Stack trace:
+#0 C:\inetpub\wwwroot\suyongMP\application\api\service\SocketService.php(31): think\Error::appError(2, 'Illegal string ...', 'C:\\inetpub\\wwwr...', 31, Array)
+#1 C:\inetpub\wwwroot\suyongMP\application\api\controller\Socket.php(30): app\api\service\SocketService::_messageTouch(Array)
+#2 [internal function]: app\api\controller\Socket->onMessage(Object(Workerman\Connection\TcpConnection), '{"miniapp_id":1...')
+#3 C:\inetpub\wwwroot\suyongMP\vendor\workerman\workerman-for-win\Connection\TcpConnection.php(629): call_user_func(Array, Object(Workerman\Connection\TcpConnection), '{"miniapp_id":1...')
+#4 [internal function]: Workerman\Connection\TcpConnection->baseRead(Resource id #70)
+#5 C:\inetpub\wwwroot\suyongMP\vendor\workerman\workerman-for-win\Events\Select.php(286): call_user_func_array(Array, Array)
+#6 C:\inetpub\wwwroot\suyongMP\vendor\workerman\workerman-for-win\Worker.php(857): Workerman\Events\Select->loop()
+#7 C:\inetpub\wwwroot\suyongMP\vendor\workerman\workerman-for-win\Worker.php(474): Workerman\Worker->run()
+#8 C:\inetpub\wwwroot\suyongMP\vendor\workerman\workerman-for-win\Worker.php(383): Workerman\Worker::runAllWorkers()
+#9 C:\inetpub\wwwroot\suyongMP\vendor\topthink\think-worker\src\Server.php(60): Workerman\Worker::runAll()
+#10 [internal function]: think\worker\Server->__construct(Array)
+#11 C:\inetpub\wwwroot\suyongMP\thinkphp\library\think\App.php(216): ReflectionClass->newInstanceArgs(Array)
+#12 C:\inetpub\wwwroot\suyongMP\thinkphp\library\think\Loader.php(400): think\App::invokeClass('app\\api\\control...')
+#13 C:\inetpub\wwwroot\suyongMP\thinkphp\library\think\App.php(388): think\Loader::controller('socket', 'controller', false, 'Error')
+#14 C:\inetpub\wwwroot\suyongMP\thinkphp\library\think\App.php(296): think\App::module(Array, Array, NULL)
+#15 C:\inetpub\wwwroot\suyongMP\thinkphp\library\think\App.php(124): think\App::exec(Array, Array)
+#16 C:\inetpub\wwwroot\suyongMP\thinkphp\start.php(18): think\App::run()
+#17 C:\inetpub\wwwroot\suyongMP\public\socket.php(20): require('C:\\inetpub\\wwwr...')
+#18 {main}
+2017-11-29 15:17:25 exception 'Exception' with message 'You can't send(array) to client, you need to convert it to a string. ' in C:\inetpub\wwwroot\suyongMP\vendor\workerman\workerman-for-win\Protocols\Websocket.php:225
+Stack trace:
+#0 C:\inetpub\wwwroot\suyongMP\vendor\workerman\workerman-for-win\Connection\TcpConnection.php(310): Workerman\Protocols\Websocket::encode(Array, Object(Workerman\Connection\TcpConnection))
+#1 C:\inetpub\wwwroot\suyongMP\application\api\controller\Socket.php(32): Workerman\Connection\TcpConnection->send(Array)
+#2 [internal function]: app\api\controller\Socket->onMessage(Object(Workerman\Connection\TcpConnection), '{"miniapp_id":1...')
+#3 C:\inetpub\wwwroot\suyongMP\vendor\workerman\workerman-for-win\Connection\TcpConnection.php(629): call_user_func(Array, Object(Workerman\Connection\TcpConnection), '{"miniapp_id":1...')
+#4 [internal function]: Workerman\Connection\TcpConnection->baseRead(Resource id #69)
+#5 C:\inetpub\wwwroot\suyongMP\vendor\workerman\workerman-for-win\Events\Select.php(286): call_user_func_array(Array, Array)
+#6 C:\inetpub\wwwroot\suyongMP\vendor\workerman\workerman-for-win\Worker.php(856): Workerman\Events\Select->loop()
+#7 C:\inetpub\wwwroot\suyongMP\vendor\workerman\workerman-for-win\Worker.php(473): Workerman\Worker->run()
+#8 C:\inetpub\wwwroot\suyongMP\vendor\workerman\workerman-for-win\Worker.php(382): Workerman\Worker::runAllWorkers()
+#9 C:\inetpub\wwwroot\suyongMP\vendor\topthink\think-worker\src\Server.php(60): Workerman\Worker::runAll()
+#10 [internal function]: think\worker\Server->__construct(Array)
+#11 C:\inetpub\wwwroot\suyongMP\thinkphp\library\think\App.php(216): ReflectionClass->newInstanceArgs(Array)
+#12 C:\inetpub\wwwroot\suyongMP\thinkphp\library\think\Loader.php(400): think\App::invokeClass('app\\api\\control...')
+#13 C:\inetpub\wwwroot\suyongMP\thinkphp\library\think\App.php(388): think\Loader::controller('socket', 'controller', false, 'Error')
+#14 C:\inetpub\wwwroot\suyongMP\thinkphp\library\think\App.php(296): think\App::module(Array, Array, NULL)
+#15 C:\inetpub\wwwroot\suyongMP\thinkphp\library\think\App.php(124): think\App::exec(Array, Array)
+#16 C:\inetpub\wwwroot\suyongMP\thinkphp\start.php(18): think\App::run()
+#17 C:\inetpub\wwwroot\suyongMP\public\socket.php(20): require('C:\\inetpub\\wwwr...')
+#18 {main}
+2017-11-30 16:42:34 SendBufferToWorker fail. The connections between Gateway and BusinessWorker are not ready. See http://wiki.workerman.net/Error3 for detail
+2017-11-30 16:42:34 SendBufferToWorker fail. The connections between Gateway and BusinessWorker are not ready. See http://wiki.workerman.net/Error3 for detail
+2017-11-30 17:06:52 SendBufferToWorker fail. The connections between Gateway and BusinessWorker are not ready. See http://wiki.workerman.net/Error3 for detail
+2017-11-30 17:06:52 SendBufferToWorker fail. The connections between Gateway and BusinessWorker are not ready. See http://wiki.workerman.net/Error3 for detail
+2017-12-01 17:26:46 SendBufferToWorker fail. The connections between Gateway and BusinessWorker are not ready. See http://wiki.workerman.net/Error3 for detail
+2017-12-01 17:26:46 SendBufferToWorker fail. The connections between Gateway and BusinessWorker are not ready. See http://wiki.workerman.net/Error3 for detail
+2017-12-01 17:26:55 SendBufferToWorker fail. The connections between Gateway and BusinessWorker are not ready. See http://wiki.workerman.net/Error3 for detail
+2017-12-01 17:26:55 SendBufferToWorker fail. The connections between Gateway and BusinessWorker are not ready. See http://wiki.workerman.net/Error3 for detail
+2017-12-01 17:27:11 SendBufferToWorker fail. The connections between Gateway and BusinessWorker are not ready. See http://wiki.workerman.net/Error3 for detail
+2017-12-01 17:27:11 SendBufferToWorker fail. The connections between Gateway and BusinessWorker are not ready. See http://wiki.workerman.net/Error3 for detail
+2017-12-01 17:29:48 exception 'InvalidArgumentException' with message 'Undefined db type' in C:\inetpub\wwwroot\suyongMP\thinkphp\library\think\Db.php:77
+Stack trace:
+#0 C:\inetpub\wwwroot\suyongMP\thinkphp\library\think\Db.php(154): think\Db::connect()
+#1 C:\inetpub\wwwroot\suyongMP\application\api\model\DataModel.php(132): think\Db::__callStatic('table', Array)
+#2 C:\inetpub\wwwroot\suyongMP\application\api\model\DataModel.php(132): think\Db::table('wyz_miniapps')
+#3 C:\inetpub\wwwroot\suyongMP\application\api\service\SocketService.php(60): app\api\model\DataModel::changeInfo('miniapp_socket_...', Array)
+#4 [internal function]: app\api\service\SocketService::onConnect('ac1112050fa0000...')
+#5 C:\inetpub\wwwroot\suyongMP\vendor\workerman\gateway-worker-for-win\src\BusinessWorker.php(379): call_user_func('\\app\\api\\servic...', 'ac1112050fa0000...')
+#6 [internal function]: GatewayWorker\BusinessWorker->onGatewayMessage(Object(Workerman\Connection\AsyncTcpConnection), Array)
+#7 C:\inetpub\wwwroot\suyongMP\vendor\workerman\workerman-for-win\Connection\TcpConnection.php(629): call_user_func(Array, Object(Workerman\Connection\AsyncTcpConnection), Array)
+#8 [internal function]: Workerman\Connection\TcpConnection->baseRead(Resource id #38)
+#9 C:\inetpub\wwwroot\suyongMP\vendor\workerman\workerman-for-win\Events\Select.php(286): call_user_func_array(Array, Array)
+#10 C:\inetpub\wwwroot\suyongMP\vendor\workerman\workerman-for-win\Worker.php(856): Workerman\Events\Select->loop()
+#11 C:\inetpub\wwwroot\suyongMP\vendor\workerman\gateway-worker-for-win\src\BusinessWorker.php(190): Workerman\Worker->run()
+#12 C:\inetpub\wwwroot\suyongMP\vendor\workerman\workerman-for-win\Worker.php(473): GatewayWorker\BusinessWorker->run()
+#13 C:\inetpub\wwwroot\suyongMP\vendor\workerman\workerman-for-win\Worker.php(382): Workerman\Worker::runAllWorkers()
+#14 C:\inetpub\wwwroot\suyongMP\public\socket_bussiness.php(32): Workerman\Worker::runAll()
+#15 {main}
+2017-12-01 17:31:13 exception 'InvalidArgumentException' with message 'Undefined db type' in C:\inetpub\wwwroot\suyongMP\thinkphp\library\think\Db.php:77
+Stack trace:
+#0 C:\inetpub\wwwroot\suyongMP\thinkphp\library\think\Db.php(154): think\Db::connect()
+#1 C:\inetpub\wwwroot\suyongMP\application\api\model\DataModel.php(151): think\Db::__callStatic('table', Array)
+#2 C:\inetpub\wwwroot\suyongMP\application\api\model\DataModel.php(151): think\Db::table('wyz_miniapps')
+#3 C:\inetpub\wwwroot\suyongMP\application\api\service\SocketService.php(100): app\api\model\DataModel::deleteInfo('miniapp_socket_...', Array)
+#4 [internal function]: app\api\service\SocketService::onClose('ac1112050fa0000...')
+#5 C:\inetpub\wwwroot\suyongMP\vendor\workerman\gateway-worker-for-win\src\BusinessWorker.php(390): call_user_func('\\app\\api\\servic...', 'ac1112050fa0000...')
+#6 [internal function]: GatewayWorker\BusinessWorker->onGatewayMessage(Object(Workerman\Connection\AsyncTcpConnection), Array)
+#7 C:\inetpub\wwwroot\suyongMP\vendor\workerman\workerman-for-win\Connection\TcpConnection.php(629): call_user_func(Array, Object(Workerman\Connection\AsyncTcpConnection), Array)
+#8 [internal function]: Workerman\Connection\TcpConnection->baseRead(Resource id #38)
+#9 C:\inetpub\wwwroot\suyongMP\vendor\workerman\workerman-for-win\Events\Select.php(286): call_user_func_array(Array, Array)
+#10 C:\inetpub\wwwroot\suyongMP\vendor\workerman\workerman-for-win\Worker.php(856): Workerman\Events\Select->loop()
+#11 C:\inetpub\wwwroot\suyongMP\vendor\workerman\gateway-worker-for-win\src\BusinessWorker.php(190): Workerman\Worker->run()
+#12 C:\inetpub\wwwroot\suyongMP\vendor\workerman\workerman-for-win\Worker.php(473): GatewayWorker\BusinessWorker->run()
+#13 C:\inetpub\wwwroot\suyongMP\vendor\workerman\workerman-for-win\Worker.php(382): Workerman\Worker::runAllWorkers()
+#14 C:\inetpub\wwwroot\suyongMP\public\socket_bussiness.php(32): Workerman\Worker::runAll()
+#15 {main}
+2017-12-01 17:31:16 exception 'InvalidArgumentException' with message 'Undefined db type' in C:\inetpub\wwwroot\suyongMP\thinkphp\library\think\Db.php:77
+Stack trace:
+#0 C:\inetpub\wwwroot\suyongMP\thinkphp\library\think\Db.php(154): think\Db::connect()
+#1 C:\inetpub\wwwroot\suyongMP\application\api\model\DataModel.php(132): think\Db::__callStatic('table', Array)
+#2 C:\inetpub\wwwroot\suyongMP\application\api\model\DataModel.php(132): think\Db::table('wyz_miniapps')
+#3 C:\inetpub\wwwroot\suyongMP\application\api\service\SocketService.php(60): app\api\model\DataModel::changeInfo('miniapp_socket_...', Array)
+#4 [internal function]: app\api\service\SocketService::onConnect('ac1112050fa0000...')
+#5 C:\inetpub\wwwroot\suyongMP\vendor\workerman\gateway-worker-for-win\src\BusinessWorker.php(379): call_user_func('\\app\\api\\servic...', 'ac1112050fa0000...')
+#6 [internal function]: GatewayWorker\BusinessWorker->onGatewayMessage(Object(Workerman\Connection\AsyncTcpConnection), Array)
+#7 C:\inetpub\wwwroot\suyongMP\vendor\workerman\workerman-for-win\Connection\TcpConnection.php(629): call_user_func(Array, Object(Workerman\Connection\AsyncTcpConnection), Array)
+#8 [internal function]: Workerman\Connection\TcpConnection->baseRead(Resource id #38)
+#9 C:\inetpub\wwwroot\suyongMP\vendor\workerman\workerman-for-win\Events\Select.php(286): call_user_func_array(Array, Array)
+#10 C:\inetpub\wwwroot\suyongMP\vendor\workerman\workerman-for-win\Worker.php(856): Workerman\Events\Select->loop()
+#11 C:\inetpub\wwwroot\suyongMP\vendor\workerman\gateway-worker-for-win\src\BusinessWorker.php(190): Workerman\Worker->run()
+#12 C:\inetpub\wwwroot\suyongMP\vendor\workerman\workerman-for-win\Worker.php(473): GatewayWorker\BusinessWorker->run()
+#13 C:\inetpub\wwwroot\suyongMP\vendor\workerman\workerman-for-win\Worker.php(382): Workerman\Worker::runAllWorkers()
+#14 C:\inetpub\wwwroot\suyongMP\public\socket_bussiness.php(32): Workerman\Worker::runAll()
+#15 {main}
+2017-12-01 17:31:57 exception 'InvalidArgumentException' with message 'Undefined db type' in C:\inetpub\wwwroot\suyongMP\thinkphp\library\think\Db.php:77
+Stack trace:
+#0 C:\inetpub\wwwroot\suyongMP\thinkphp\library\think\Db.php(154): think\Db::connect()
+#1 C:\inetpub\wwwroot\suyongMP\application\api\model\DataModel.php(132): think\Db::__callStatic('table', Array)
+#2 C:\inetpub\wwwroot\suyongMP\application\api\model\DataModel.php(132): think\Db::table('wyz_miniapps')
+#3 C:\inetpub\wwwroot\suyongMP\application\api\service\SocketService.php(60): app\api\model\DataModel::changeInfo('miniapp_socket_...', Array)
+#4 [internal function]: app\api\service\SocketService::onConnect('ac1112050fa0000...')
+#5 C:\inetpub\wwwroot\suyongMP\vendor\workerman\gateway-worker-for-win\src\BusinessWorker.php(379): call_user_func('\\app\\api\\servic...', 'ac1112050fa0000...')
+#6 [internal function]: GatewayWorker\BusinessWorker->onGatewayMessage(Object(Workerman\Connection\AsyncTcpConnection), Array)
+#7 C:\inetpub\wwwroot\suyongMP\vendor\workerman\workerman-for-win\Connection\TcpConnection.php(629): call_user_func(Array, Object(Workerman\Connection\AsyncTcpConnection), Array)
+#8 [internal function]: Workerman\Connection\TcpConnection->baseRead(Resource id #38)
+#9 C:\inetpub\wwwroot\suyongMP\vendor\workerman\workerman-for-win\Events\Select.php(286): call_user_func_array(Array, Array)
+#10 C:\inetpub\wwwroot\suyongMP\vendor\workerman\workerman-for-win\Worker.php(856): Workerman\Events\Select->loop()
+#11 C:\inetpub\wwwroot\suyongMP\vendor\workerman\gateway-worker-for-win\src\BusinessWorker.php(190): Workerman\Worker->run()
+#12 C:\inetpub\wwwroot\suyongMP\vendor\workerman\workerman-for-win\Worker.php(473): GatewayWorker\BusinessWorker->run()
+#13 C:\inetpub\wwwroot\suyongMP\vendor\workerman\workerman-for-win\Worker.php(382): Workerman\Worker::runAllWorkers()
+#14 C:\inetpub\wwwroot\suyongMP\public\socket_bussiness.php(32): Workerman\Worker::runAll()
+#15 {main}
+2017-12-01 17:32:02 exception 'InvalidArgumentException' with message 'Undefined db type' in C:\inetpub\wwwroot\suyongMP\thinkphp\library\think\Db.php:77
+Stack trace:
+#0 C:\inetpub\wwwroot\suyongMP\thinkphp\library\think\Db.php(154): think\Db::connect()
+#1 C:\inetpub\wwwroot\suyongMP\application\api\model\DataModel.php(151): think\Db::__callStatic('table', Array)
+#2 C:\inetpub\wwwroot\suyongMP\application\api\model\DataModel.php(151): think\Db::table('wyz_miniapps')
+#3 C:\inetpub\wwwroot\suyongMP\application\api\service\SocketService.php(100): app\api\model\DataModel::deleteInfo('miniapp_socket_...', Array)
+#4 [internal function]: app\api\service\SocketService::onClose('ac1112050fa0000...')
+#5 C:\inetpub\wwwroot\suyongMP\vendor\workerman\gateway-worker-for-win\src\BusinessWorker.php(390): call_user_func('\\app\\api\\servic...', 'ac1112050fa0000...')
+#6 [internal function]: GatewayWorker\BusinessWorker->onGatewayMessage(Object(Workerman\Connection\AsyncTcpConnection), Array)
+#7 C:\inetpub\wwwroot\suyongMP\vendor\workerman\workerman-for-win\Connection\TcpConnection.php(629): call_user_func(Array, Object(Workerman\Connection\AsyncTcpConnection), Array)
+#8 [internal function]: Workerman\Connection\TcpConnection->baseRead(Resource id #38)
+#9 C:\inetpub\wwwroot\suyongMP\vendor\workerman\workerman-for-win\Events\Select.php(286): call_user_func_array(Array, Array)
+#10 C:\inetpub\wwwroot\suyongMP\vendor\workerman\workerman-for-win\Worker.php(856): Workerman\Events\Select->loop()
+#11 C:\inetpub\wwwroot\suyongMP\vendor\workerman\gateway-worker-for-win\src\BusinessWorker.php(190): Workerman\Worker->run()
+#12 C:\inetpub\wwwroot\suyongMP\vendor\workerman\workerman-for-win\Worker.php(473): GatewayWorker\BusinessWorker->run()
+#13 C:\inetpub\wwwroot\suyongMP\vendor\workerman\workerman-for-win\Worker.php(382): Workerman\Worker::runAllWorkers()
+#14 C:\inetpub\wwwroot\suyongMP\public\socket_bussiness.php(32): Workerman\Worker::runAll()
+#15 {main}
+2017-12-01 17:32:03 exception 'InvalidArgumentException' with message 'Undefined db type' in C:\inetpub\wwwroot\suyongMP\thinkphp\library\think\Db.php:77
+Stack trace:
+#0 C:\inetpub\wwwroot\suyongMP\thinkphp\library\think\Db.php(154): think\Db::connect()
+#1 C:\inetpub\wwwroot\suyongMP\application\api\model\DataModel.php(132): think\Db::__callStatic('table', Array)
+#2 C:\inetpub\wwwroot\suyongMP\application\api\model\DataModel.php(132): think\Db::table('wyz_miniapps')
+#3 C:\inetpub\wwwroot\suyongMP\application\api\service\SocketService.php(60): app\api\model\DataModel::changeInfo('miniapp_socket_...', Array)
+#4 [internal function]: app\api\service\SocketService::onConnect('ac1112050fa0000...')
+#5 C:\inetpub\wwwroot\suyongMP\vendor\workerman\gateway-worker-for-win\src\BusinessWorker.php(379): call_user_func('\\app\\api\\servic...', 'ac1112050fa0000...')
+#6 [internal function]: GatewayWorker\BusinessWorker->onGatewayMessage(Object(Workerman\Connection\AsyncTcpConnection), Array)
+#7 C:\inetpub\wwwroot\suyongMP\vendor\workerman\workerman-for-win\Connection\TcpConnection.php(629): call_user_func(Array, Object(Workerman\Connection\AsyncTcpConnection), Array)
+#8 [internal function]: Workerman\Connection\TcpConnection->baseRead(Resource id #38)
+#9 C:\inetpub\wwwroot\suyongMP\vendor\workerman\workerman-for-win\Events\Select.php(286): call_user_func_array(Array, Array)
+#10 C:\inetpub\wwwroot\suyongMP\vendor\workerman\workerman-for-win\Worker.php(856): Workerman\Events\Select->loop()
+#11 C:\inetpub\wwwroot\suyongMP\vendor\workerman\gateway-worker-for-win\src\BusinessWorker.php(190): Workerman\Worker->run()
+#12 C:\inetpub\wwwroot\suyongMP\vendor\workerman\workerman-for-win\Worker.php(473): GatewayWorker\BusinessWorker->run()
+#13 C:\inetpub\wwwroot\suyongMP\vendor\workerman\workerman-for-win\Worker.php(382): Workerman\Worker::runAllWorkers()
+#14 C:\inetpub\wwwroot\suyongMP\public\socket_bussiness.php(32): Workerman\Worker::runAll()
+#15 {main}
+2017-12-01 17:33:08 exception 'InvalidArgumentException' with message 'Undefined db type' in C:\inetpub\wwwroot\suyongMP\thinkphp\library\think\Db.php:77
+Stack trace:
+#0 C:\inetpub\wwwroot\suyongMP\thinkphp\library\think\Db.php(154): think\Db::connect()
+#1 C:\inetpub\wwwroot\suyongMP\application\api\model\DataModel.php(151): think\Db::__callStatic('table', Array)
+#2 C:\inetpub\wwwroot\suyongMP\application\api\model\DataModel.php(151): think\Db::table('wyz_miniapps')
+#3 C:\inetpub\wwwroot\suyongMP\application\api\service\SocketService.php(100): app\api\model\DataModel::deleteInfo('miniapp_socket_...', Array)
+#4 [internal function]: app\api\service\SocketService::onClose('ac1112050fa0000...')
+#5 C:\inetpub\wwwroot\suyongMP\vendor\workerman\gateway-worker-for-win\src\BusinessWorker.php(390): call_user_func('\\app\\api\\servic...', 'ac1112050fa0000...')
+#6 [internal function]: GatewayWorker\BusinessWorker->onGatewayMessage(Object(Workerman\Connection\AsyncTcpConnection), Array)
+#7 C:\inetpub\wwwroot\suyongMP\vendor\workerman\workerman-for-win\Connection\TcpConnection.php(629): call_user_func(Array, Object(Workerman\Connection\AsyncTcpConnection), Array)
+#8 [internal function]: Workerman\Connection\TcpConnection->baseRead(Resource id #38)
+#9 C:\inetpub\wwwroot\suyongMP\vendor\workerman\workerman-for-win\Events\Select.php(286): call_user_func_array(Array, Array)
+#10 C:\inetpub\wwwroot\suyongMP\vendor\workerman\workerman-for-win\Worker.php(856): Workerman\Events\Select->loop()
+#11 C:\inetpub\wwwroot\suyongMP\vendor\workerman\gateway-worker-for-win\src\BusinessWorker.php(190): Workerman\Worker->run()
+#12 C:\inetpub\wwwroot\suyongMP\vendor\workerman\workerman-for-win\Worker.php(473): GatewayWorker\BusinessWorker->run()
+#13 C:\inetpub\wwwroot\suyongMP\vendor\workerman\workerman-for-win\Worker.php(382): Workerman\Worker::runAllWorkers()
+#14 C:\inetpub\wwwroot\suyongMP\public\socket_bussiness.php(32): Workerman\Worker::runAll()
+#15 {main}
+2017-12-01 17:33:15 SendBufferToWorker fail. The connections between Gateway and BusinessWorker are not ready. See http://wiki.workerman.net/Error3 for detail
+2017-12-01 17:33:15 SendBufferToWorker fail. The connections between Gateway and BusinessWorker are not ready. See http://wiki.workerman.net/Error3 for detail
+2017-12-01 17:33:29 SendBufferToWorker fail. The connections between Gateway and BusinessWorker are not ready. See http://wiki.workerman.net/Error3 for detail
+2017-12-01 17:33:29 SendBufferToWorker fail. The connections between Gateway and BusinessWorker are not ready. See http://wiki.workerman.net/Error3 for detail
+2017-12-01 17:33:34 SendBufferToWorker fail. The connections between Gateway and BusinessWorker are not ready. See http://wiki.workerman.net/Error3 for detail
+2017-12-01 17:33:34 SendBufferToWorker fail. The connections between Gateway and BusinessWorker are not ready. See http://wiki.workerman.net/Error3 for detail
+2017-12-01 17:33:35 SendBufferToWorker fail. The connections between Gateway and BusinessWorker are not ready. See http://wiki.workerman.net/Error3 for detail
+2017-12-01 17:33:35 SendBufferToWorker fail. The connections between Gateway and BusinessWorker are not ready. See http://wiki.workerman.net/Error3 for detail
+2017-12-01 17:34:29 exception 'InvalidArgumentException' with message 'Undefined db type' in C:\inetpub\wwwroot\suyongMP\thinkphp\library\think\Db.php:77
+Stack trace:
+#0 C:\inetpub\wwwroot\suyongMP\thinkphp\library\think\Db.php(154): think\Db::connect()
+#1 C:\inetpub\wwwroot\suyongMP\application\api\model\DataModel.php(132): think\Db::__callStatic('table', Array)
+#2 C:\inetpub\wwwroot\suyongMP\application\api\model\DataModel.php(132): think\Db::table('wyz_miniapps')
+#3 C:\inetpub\wwwroot\suyongMP\application\api\service\SocketService.php(60): app\api\model\DataModel::changeInfo('miniapp_socket_...', Array)
+#4 [internal function]: app\api\service\SocketService::onConnect('ac1112050fa0000...')
+#5 C:\inetpub\wwwroot\suyongMP\vendor\workerman\gateway-worker-for-win\src\BusinessWorker.php(379): call_user_func('\\app\\api\\servic...', 'ac1112050fa0000...')
+#6 [internal function]: GatewayWorker\BusinessWorker->onGatewayMessage(Object(Workerman\Connection\AsyncTcpConnection), Array)
+#7 C:\inetpub\wwwroot\suyongMP\vendor\workerman\workerman-for-win\Connection\TcpConnection.php(629): call_user_func(Array, Object(Workerman\Connection\AsyncTcpConnection), Array)
+#8 [internal function]: Workerman\Connection\TcpConnection->baseRead(Resource id #38)
+#9 C:\inetpub\wwwroot\suyongMP\vendor\workerman\workerman-for-win\Events\Select.php(286): call_user_func_array(Array, Array)
+#10 C:\inetpub\wwwroot\suyongMP\vendor\workerman\workerman-for-win\Worker.php(856): Workerman\Events\Select->loop()
+#11 C:\inetpub\wwwroot\suyongMP\vendor\workerman\gateway-worker-for-win\src\BusinessWorker.php(190): Workerman\Worker->run()
+#12 C:\inetpub\wwwroot\suyongMP\vendor\workerman\workerman-for-win\Worker.php(473): GatewayWorker\BusinessWorker->run()
+#13 C:\inetpub\wwwroot\suyongMP\vendor\workerman\workerman-for-win\Worker.php(382): Workerman\Worker::runAllWorkers()
+#14 C:\inetpub\wwwroot\suyongMP\public\socket_bussiness.php(32): Workerman\Worker::runAll()
+#15 {main}
+2017-12-01 17:35:04 exception 'InvalidArgumentException' with message 'Undefined db type' in C:\inetpub\wwwroot\suyongMP\thinkphp\library\think\Db.php:77
+Stack trace:
+#0 C:\inetpub\wwwroot\suyongMP\thinkphp\library\think\Db.php(154): think\Db::connect()
+#1 C:\inetpub\wwwroot\suyongMP\application\api\model\DataModel.php(151): think\Db::__callStatic('table', Array)
+#2 C:\inetpub\wwwroot\suyongMP\application\api\model\DataModel.php(151): think\Db::table('wyz_miniapps')
+#3 C:\inetpub\wwwroot\suyongMP\application\api\service\SocketService.php(100): app\api\model\DataModel::deleteInfo('miniapp_socket_...', Array)
+#4 [internal function]: app\api\service\SocketService::onClose('ac1112050fa0000...')
+#5 C:\inetpub\wwwroot\suyongMP\vendor\workerman\gateway-worker-for-win\src\BusinessWorker.php(390): call_user_func('\\app\\api\\servic...', 'ac1112050fa0000...')
+#6 [internal function]: GatewayWorker\BusinessWorker->onGatewayMessage(Object(Workerman\Connection\AsyncTcpConnection), Array)
+#7 C:\inetpub\wwwroot\suyongMP\vendor\workerman\workerman-for-win\Connection\TcpConnection.php(629): call_user_func(Array, Object(Workerman\Connection\AsyncTcpConnection), Array)
+#8 [internal function]: Workerman\Connection\TcpConnection->baseRead(Resource id #38)
+#9 C:\inetpub\wwwroot\suyongMP\vendor\workerman\workerman-for-win\Events\Select.php(286): call_user_func_array(Array, Array)
+#10 C:\inetpub\wwwroot\suyongMP\vendor\workerman\workerman-for-win\Worker.php(856): Workerman\Events\Select->loop()
+#11 C:\inetpub\wwwroot\suyongMP\vendor\workerman\gateway-worker-for-win\src\BusinessWorker.php(190): Workerman\Worker->run()
+#12 C:\inetpub\wwwroot\suyongMP\vendor\workerman\workerman-for-win\Worker.php(473): GatewayWorker\BusinessWorker->run()
+#13 C:\inetpub\wwwroot\suyongMP\vendor\workerman\workerman-for-win\Worker.php(382): Workerman\Worker::runAllWorkers()
+#14 C:\inetpub\wwwroot\suyongMP\public\socket_bussiness.php(32): Workerman\Worker::runAll()
+#15 {main}
+2017-12-01 17:35:05 SendBufferToWorker fail. The connections between Gateway and BusinessWorker are not ready. See http://wiki.workerman.net/Error3 for detail
+2017-12-01 17:35:05 SendBufferToWorker fail. The connections between Gateway and BusinessWorker are not ready. See http://wiki.workerman.net/Error3 for detail
+2017-12-01 17:35:06 SendBufferToWorker fail. The connections between Gateway and BusinessWorker are not ready. See http://wiki.workerman.net/Error3 for detail
+2017-12-01 17:35:06 SendBufferToWorker fail. The connections between Gateway and BusinessWorker are not ready. See http://wiki.workerman.net/Error3 for detail
+2017-12-01 17:35:06 SendBufferToWorker fail. The connections between Gateway and BusinessWorker are not ready. See http://wiki.workerman.net/Error3 for detail
+2017-12-01 17:35:06 SendBufferToWorker fail. The connections between Gateway and BusinessWorker are not ready. See http://wiki.workerman.net/Error3 for detail
+2017-12-01 17:35:07 SendBufferToWorker fail. The connections between Gateway and BusinessWorker are not ready. See http://wiki.workerman.net/Error3 for detail
+2017-12-01 17:35:07 SendBufferToWorker fail. The connections between Gateway and BusinessWorker are not ready. See http://wiki.workerman.net/Error3 for detail
+2017-12-01 17:35:07 SendBufferToWorker fail. The connections between Gateway and BusinessWorker are not ready. See http://wiki.workerman.net/Error3 for detail
+2017-12-01 17:35:07 SendBufferToWorker fail. The connections between Gateway and BusinessWorker are not ready. See http://wiki.workerman.net/Error3 for detail
+2017-12-01 17:35:07 SendBufferToWorker fail. The connections between Gateway and BusinessWorker are not ready. See http://wiki.workerman.net/Error3 for detail
+2017-12-01 17:35:07 SendBufferToWorker fail. The connections between Gateway and BusinessWorker are not ready. See http://wiki.workerman.net/Error3 for detail
+2017-12-01 17:35:07 SendBufferToWorker fail. The connections between Gateway and BusinessWorker are not ready. See http://wiki.workerman.net/Error3 for detail
+2017-12-01 17:35:07 SendBufferToWorker fail. The connections between Gateway and BusinessWorker are not ready. See http://wiki.workerman.net/Error3 for detail
+2017-12-01 17:35:08 SendBufferToWorker fail. The connections between Gateway and BusinessWorker are not ready. See http://wiki.workerman.net/Error3 for detail
+2017-12-01 17:35:08 SendBufferToWorker fail. The connections between Gateway and BusinessWorker are not ready. See http://wiki.workerman.net/Error3 for detail
+2017-12-01 17:35:21 SendBufferToWorker fail. The connections between Gateway and BusinessWorker are not ready. See http://wiki.workerman.net/Error3 for detail
+2017-12-01 17:35:21 SendBufferToWorker fail. The connections between Gateway and BusinessWorker are not ready. See http://wiki.workerman.net/Error3 for detail
+2017-12-01 17:35:21 SendBufferToWorker fail. The connections between Gateway and BusinessWorker are not ready. See http://wiki.workerman.net/Error3 for detail
+2017-12-01 17:35:21 SendBufferToWorker fail. The connections between Gateway and BusinessWorker are not ready. See http://wiki.workerman.net/Error3 for detail
+2017-12-01 17:35:22 SendBufferToWorker fail. The connections between Gateway and BusinessWorker are not ready. See http://wiki.workerman.net/Error3 for detail
+2017-12-01 17:35:22 SendBufferToWorker fail. The connections between Gateway and BusinessWorker are not ready. See http://wiki.workerman.net/Error3 for detail
+2017-12-01 17:44:33 exception 'InvalidArgumentException' with message 'Undefined db type' in C:\inetpub\wwwroot\suyongMP\thinkphp\library\think\Db.php:77
+Stack trace:
+#0 C:\inetpub\wwwroot\suyongMP\thinkphp\library\think\Db.php(154): think\Db::connect()
+#1 C:\inetpub\wwwroot\suyongMP\application\api\model\DataModel.php(132): think\Db::__callStatic('table', Array)
+#2 C:\inetpub\wwwroot\suyongMP\application\api\model\DataModel.php(132): think\Db::table('wyz_miniapps')
+#3 C:\inetpub\wwwroot\suyongMP\application\api\service\SocketService.php(60): app\api\model\DataModel::changeInfo('miniapp_socket_...', Array)
+#4 [internal function]: app\api\service\SocketService::onConnect('ac1112050fa0000...')
+#5 C:\inetpub\wwwroot\suyongMP\vendor\workerman\gateway-worker-for-win\src\BusinessWorker.php(379): call_user_func('\\app\\api\\servic...', 'ac1112050fa0000...')
+#6 [internal function]: GatewayWorker\BusinessWorker->onGatewayMessage(Object(Workerman\Connection\AsyncTcpConnection), Array)
+#7 C:\inetpub\wwwroot\suyongMP\vendor\workerman\workerman-for-win\Connection\TcpConnection.php(629): call_user_func(Array, Object(Workerman\Connection\AsyncTcpConnection), Array)
+#8 [internal function]: Workerman\Connection\TcpConnection->baseRead(Resource id #38)
+#9 C:\inetpub\wwwroot\suyongMP\vendor\workerman\workerman-for-win\Events\Select.php(286): call_user_func_array(Array, Array)
+#10 C:\inetpub\wwwroot\suyongMP\vendor\workerman\workerman-for-win\Worker.php(856): Workerman\Events\Select->loop()
+#11 C:\inetpub\wwwroot\suyongMP\vendor\workerman\gateway-worker-for-win\src\BusinessWorker.php(190): Workerman\Worker->run()
+#12 C:\inetpub\wwwroot\suyongMP\vendor\workerman\workerman-for-win\Worker.php(473): GatewayWorker\BusinessWorker->run()
+#13 C:\inetpub\wwwroot\suyongMP\vendor\workerman\workerman-for-win\Worker.php(382): Workerman\Worker::runAllWorkers()
+#14 C:\inetpub\wwwroot\suyongMP\public\socket_bussiness.php(32): Workerman\Worker::runAll()
+#15 {main}
+2017-12-01 17:45:13 exception 'InvalidArgumentException' with message 'Undefined db type' in C:\inetpub\wwwroot\suyongMP\thinkphp\library\think\Db.php:77
+Stack trace:
+#0 C:\inetpub\wwwroot\suyongMP\thinkphp\library\think\Db.php(154): think\Db::connect()
+#1 C:\inetpub\wwwroot\suyongMP\application\api\model\DataModel.php(151): think\Db::__callStatic('table', Array)
+#2 C:\inetpub\wwwroot\suyongMP\application\api\model\DataModel.php(151): think\Db::table('wyz_miniapps')
+#3 C:\inetpub\wwwroot\suyongMP\application\api\service\SocketService.php(101): app\api\model\DataModel::deleteInfo('miniapp_socket_...', Array)
+#4 [internal function]: app\api\service\SocketService::onClose('ac1112050fa0000...')
+#5 C:\inetpub\wwwroot\suyongMP\vendor\workerman\gateway-worker-for-win\src\BusinessWorker.php(390): call_user_func('\\app\\api\\servic...', 'ac1112050fa0000...')
+#6 [internal function]: GatewayWorker\BusinessWorker->onGatewayMessage(Object(Workerman\Connection\AsyncTcpConnection), Array)
+#7 C:\inetpub\wwwroot\suyongMP\vendor\workerman\workerman-for-win\Connection\TcpConnection.php(629): call_user_func(Array, Object(Workerman\Connection\AsyncTcpConnection), Array)
+#8 [internal function]: Workerman\Connection\TcpConnection->baseRead(Resource id #38)
+#9 C:\inetpub\wwwroot\suyongMP\vendor\workerman\workerman-for-win\Events\Select.php(286): call_user_func_array(Array, Array)
+#10 C:\inetpub\wwwroot\suyongMP\vendor\workerman\workerman-for-win\Worker.php(856): Workerman\Events\Select->loop()
+#11 C:\inetpub\wwwroot\suyongMP\vendor\workerman\gateway-worker-for-win\src\BusinessWorker.php(190): Workerman\Worker->run()
+#12 C:\inetpub\wwwroot\suyongMP\vendor\workerman\workerman-for-win\Worker.php(473): GatewayWorker\BusinessWorker->run()
+#13 C:\inetpub\wwwroot\suyongMP\vendor\workerman\workerman-for-win\Worker.php(382): Workerman\Worker::runAllWorkers()
+#14 C:\inetpub\wwwroot\suyongMP\public\socket_bussiness.php(32): Workerman\Worker::runAll()
+#15 {main}
+2017-12-01 17:45:16 SendBufferToWorker fail. The connections between Gateway and BusinessWorker are not ready. See http://wiki.workerman.net/Error3 for detail
+2017-12-01 17:45:16 SendBufferToWorker fail. The connections between Gateway and BusinessWorker are not ready. See http://wiki.workerman.net/Error3 for detail
+2017-12-01 17:45:19 SendBufferToWorker fail. The connections between Gateway and BusinessWorker are not ready. See http://wiki.workerman.net/Error3 for detail
+2017-12-01 17:45:19 SendBufferToWorker fail. The connections between Gateway and BusinessWorker are not ready. See http://wiki.workerman.net/Error3 for detail
+2017-12-02 06:35:53 exception 'think\exception\PDOException' with message 'SQLSTATE[HY000]: General error: 2006 MySQL server has gone away' in C:\inetpub\wwwroot\suyongMP\thinkphp\library\think\db\Connection.php:451
+Stack trace:
+#0 C:\inetpub\wwwroot\suyongMP\thinkphp\library\think\db\Query.php(241): think\db\Connection->execute('UPDATE `wyz_min...', Array)
+#1 C:\inetpub\wwwroot\suyongMP\thinkphp\library\think\db\Query.php(2257): think\db\Query->execute('UPDATE `wyz_min...', Array)
+#2 C:\inetpub\wwwroot\suyongMP\application\api\model\DataModel.php(132): think\db\Query->update(Array)
+#3 C:\inetpub\wwwroot\suyongMP\application\api\service\SocketService.php(60): app\api\model\DataModel::changeInfo('miniapp_socket_...', Array)
+#4 [internal function]: app\api\service\SocketService::onConnect('ac1112050fa0000...')
+#5 C:\inetpub\wwwroot\suyongMP\vendor\workerman\gateway-worker-for-win\src\BusinessWorker.php(379): call_user_func('\\app\\api\\servic...', 'ac1112050fa0000...')
+#6 [internal function]: GatewayWorker\BusinessWorker->onGatewayMessage(Object(Workerman\Connection\AsyncTcpConnection), Array)
+#7 C:\inetpub\wwwroot\suyongMP\vendor\workerman\workerman-for-win\Connection\TcpConnection.php(629): call_user_func(Array, Object(Workerman\Connection\AsyncTcpConnection), Array)
+#8 [internal function]: Workerman\Connection\TcpConnection->baseRead(Resource id #38)
+#9 C:\inetpub\wwwroot\suyongMP\vendor\workerman\workerman-for-win\Events\Select.php(286): call_user_func_array(Array, Array)
+#10 C:\inetpub\wwwroot\suyongMP\vendor\workerman\workerman-for-win\Worker.php(856): Workerman\Events\Select->loop()
+#11 C:\inetpub\wwwroot\suyongMP\vendor\workerman\gateway-worker-for-win\src\BusinessWorker.php(190): Workerman\Worker->run()
+#12 C:\inetpub\wwwroot\suyongMP\vendor\workerman\workerman-for-win\Worker.php(473): GatewayWorker\BusinessWorker->run()
+#13 C:\inetpub\wwwroot\suyongMP\vendor\workerman\workerman-for-win\Worker.php(382): Workerman\Worker::runAllWorkers()
+#14 C:\inetpub\wwwroot\suyongMP\public\socket_bussiness.php(39): Workerman\Worker::runAll()
+#15 {main}
+2017-12-02 19:04:59 SendBufferToWorker fail. The connections between Gateway and BusinessWorker are not ready. See http://wiki.workerman.net/Error3 for detail
+2017-12-02 19:04:59 SendBufferToWorker fail. The connections between Gateway and BusinessWorker are not ready. See http://wiki.workerman.net/Error3 for detail
+2017-12-03 03:30:11 SendBufferToWorker fail. The connections between Gateway and BusinessWorker are not ready. See http://wiki.workerman.net/Error3 for detail
+2017-12-03 03:30:11 SendBufferToWorker fail. The connections between Gateway and BusinessWorker are not ready. See http://wiki.workerman.net/Error3 for detail
+2017-12-03 16:53:09 SendBufferToWorker fail. The connections between Gateway and BusinessWorker are not ready. See http://wiki.workerman.net/Error3 for detail
+2017-12-03 16:53:09 SendBufferToWorker fail. The connections between Gateway and BusinessWorker are not ready. See http://wiki.workerman.net/Error3 for detail
+2017-12-04 00:18:25 SendBufferToWorker fail. The connections between Gateway and BusinessWorker are not ready. See http://wiki.workerman.net/Error3 for detail
+2017-12-04 00:18:25 SendBufferToWorker fail. The connections between Gateway and BusinessWorker are not ready. See http://wiki.workerman.net/Error3 for detail
+2017-12-04 14:41:19 SendBufferToWorker fail. The connections between Gateway and BusinessWorker are not ready. See http://wiki.workerman.net/Error3 for detail
+2017-12-04 14:41:19 SendBufferToWorker fail. The connections between Gateway and BusinessWorker are not ready. See http://wiki.workerman.net/Error3 for detail
+2017-12-04 15:21:57 SendBufferToWorker fail. The connections between Gateway and BusinessWorker are not ready. See http://wiki.workerman.net/Error3 for detail
+2017-12-04 15:21:57 SendBufferToWorker fail. The connections between Gateway and BusinessWorker are not ready. See http://wiki.workerman.net/Error3 for detail
+2017-12-04 15:22:03 SendBufferToWorker fail. The connections between Gateway and BusinessWorker are not ready. See http://wiki.workerman.net/Error3 for detail
+2017-12-04 15:22:03 SendBufferToWorker fail. The connections between Gateway and BusinessWorker are not ready. See http://wiki.workerman.net/Error3 for detail
+2017-12-04 15:22:07 SendBufferToWorker fail. The connections between Gateway and BusinessWorker are not ready. See http://wiki.workerman.net/Error3 for detail
+2017-12-04 15:22:07 SendBufferToWorker fail. The connections between Gateway and BusinessWorker are not ready. See http://wiki.workerman.net/Error3 for detail
+2017-12-04 16:12:46 exception 'InvalidArgumentException' with message 'Undefined db type' in C:\inetpub\wwwroot\suyongMP\thinkphp\library\think\Db.php:77
+Stack trace:
+#0 C:\inetpub\wwwroot\suyongMP\thinkphp\library\think\Db.php(154): think\Db::connect()
+#1 C:\inetpub\wwwroot\suyongMP\application\api\model\DataModel.php(34): think\Db::__callStatic('table', Array)
+#2 C:\inetpub\wwwroot\suyongMP\application\api\model\DataModel.php(34): think\Db::table('wyz_miniapps')
+#3 C:\inetpub\wwwroot\suyongMP\application\api\service\SocketService.php(78): app\api\model\DataModel::selectInfo('authorizer_appi...', Array)
+#4 [internal function]: app\api\service\SocketService::onMessage('ac1112050fa0000...', '@online{"miniap...')
+#5 C:\inetpub\wwwroot\suyongMP\vendor\workerman\gateway-worker-for-win\src\BusinessWorker.php(384): call_user_func('\\app\\api\\servic...', 'ac1112050fa0000...', '@online{"miniap...')
+#6 [internal function]: GatewayWorker\BusinessWorker->onGatewayMessage(Object(Workerman\Connection\AsyncTcpConnection), Array)
+#7 C:\inetpub\wwwroot\suyongMP\vendor\workerman\workerman-for-win\Connection\TcpConnection.php(629): call_user_func(Array, Object(Workerman\Connection\AsyncTcpConnection), Array)
+#8 [internal function]: Workerman\Connection\TcpConnection->baseRead(Resource id #38)
+#9 C:\inetpub\wwwroot\suyongMP\vendor\workerman\workerman-for-win\Events\Select.php(286): call_user_func_array(Array, Array)
+#10 C:\inetpub\wwwroot\suyongMP\vendor\workerman\workerman-for-win\Worker.php(856): Workerman\Events\Select->loop()
+#11 C:\inetpub\wwwroot\suyongMP\vendor\workerman\gateway-worker-for-win\src\BusinessWorker.php(190): Workerman\Worker->run()
+#12 C:\inetpub\wwwroot\suyongMP\vendor\workerman\workerman-for-win\Worker.php(473): GatewayWorker\BusinessWorker->run()
+#13 C:\inetpub\wwwroot\suyongMP\vendor\workerman\workerman-for-win\Worker.php(382): Workerman\Worker::runAllWorkers()
+#14 C:\inetpub\wwwroot\suyongMP\public\socket_bussiness.php(40): Workerman\Worker::runAll()
+#15 {main}
+2018-03-20 11:29:10 Gateway: Worker->name conflict. Key:172.17.18.5:BusinessWorkers:0
+2018-03-20 11:29:11 Gateway: Worker->name conflict. Key:172.17.18.5:BusinessWorkers:0
+2018-03-20 11:29:12 Gateway: Worker->name conflict. Key:172.17.18.5:BusinessWorkers:0
+2018-03-20 11:29:13 Gateway: Worker->name conflict. Key:172.17.18.5:BusinessWorkers:0
+2018-03-20 11:29:14 Gateway: Worker->name conflict. Key:172.17.18.5:BusinessWorkers:0
+2018-03-20 11:29:15 Gateway: Worker->name conflict. Key:172.17.18.5:BusinessWorkers:0
+2018-03-20 11:29:16 Gateway: Worker->name conflict. Key:172.17.18.5:BusinessWorkers:0
+2018-03-20 11:29:17 Gateway: Worker->name conflict. Key:172.17.18.5:BusinessWorkers:0
+2018-03-20 11:29:17 Gateway: Worker->name conflict. Key:172.17.18.5:BusinessWorkers:0
+2018-03-20 11:29:18 Gateway: Worker->name conflict. Key:172.17.18.5:BusinessWorkers:0
+2018-03-20 11:29:19 Gateway: Worker->name conflict. Key:172.17.18.5:BusinessWorkers:0
+2018-03-20 11:29:20 Gateway: Worker->name conflict. Key:172.17.18.5:BusinessWorkers:0
+2018-03-20 11:29:21 Gateway: Worker->name conflict. Key:172.17.18.5:BusinessWorkers:0
+2018-03-20 11:29:22 Gateway: Worker->name conflict. Key:172.17.18.5:BusinessWorkers:0
+2018-03-20 11:33:40 Gateway: Worker->name conflict. Key:172.17.18.5:BusinessWorkers:0
+2018-03-20 11:33:42 Gateway: Worker->name conflict. Key:172.17.18.5:BusinessWorkers:0
+2018-03-20 11:33:43 Gateway: Worker->name conflict. Key:172.17.18.5:BusinessWorkers:0
+2018-03-20 11:33:44 Gateway: Worker->name conflict. Key:172.17.18.5:BusinessWorkers:0
+2018-03-20 11:33:45 Gateway: Worker->name conflict. Key:172.17.18.5:BusinessWorkers:0
+2018-03-20 11:33:46 Gateway: Worker->name conflict. Key:172.17.18.5:BusinessWorkers:0
+2018-03-20 11:33:47 Gateway: Worker->name conflict. Key:172.17.18.5:BusinessWorkers:0
+2018-03-20 11:33:48 Gateway: Worker->name conflict. Key:172.17.18.5:BusinessWorkers:0
+2018-03-20 11:33:49 Gateway: Worker->name conflict. Key:172.17.18.5:BusinessWorkers:0
+2018-03-20 11:33:50 Gateway: Worker->name conflict. Key:172.17.18.5:BusinessWorkers:0
+2018-03-20 11:33:51 Gateway: Worker->name conflict. Key:172.17.18.5:BusinessWorkers:0
+2018-03-20 11:33:52 Gateway: Worker->name conflict. Key:172.17.18.5:BusinessWorkers:0
+2018-03-20 11:33:53 Gateway: Worker->name conflict. Key:172.17.18.5:BusinessWorkers:0
+2018-03-20 11:33:54 Gateway: Worker->name conflict. Key:172.17.18.5:BusinessWorkers:0

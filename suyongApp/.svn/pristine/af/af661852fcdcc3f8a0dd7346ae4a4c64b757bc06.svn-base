@@ -1,0 +1,208 @@
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:77:"C:\inetpub\wwwroot\suyongPay\public/../application/wxpay\view\join\step3.html";i:1536656619;}*/ ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+    <title>填写店铺信息</title>
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="../css/bootstrap.min.css"> -->
+    <!-- <link rel="stylesheet" href="../css/edit.css"> -->
+	<link rel="stylesheet" href="/static/css/edit.css">
+    <script src="https://as.alipayobjects.com/g/component/fastclick/1.0.6/fastclick.js"></script>
+    <!-- <script src="../js/remutil.js"></script> -->
+	<script src="/static/js/remutil.js"></script>
+    <script>
+        if ('addEventListener' in document) {
+            document.addEventListener('DOMContentLoaded', function () {
+                FastClick.attach(document.body);
+            }, false);
+        }
+        if (!window.Promise) {
+            document.writeln('<script src="https://as.alipayobjects.com/g/component/es6-promise/3.2.2/es6-promise.min.js"' + '>' + '<' + '/' + 'script>');
+        }
+    </script>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <ul class="step">
+                <li class="select">
+                    <div class="circle select_bd"></div>
+                </li>
+                <li class="select">
+                    <div class="circle select_bd"></div>
+                </li>
+                <li class="select">
+                    <div class="circle"></div>
+                </li>
+                <li>
+                    <div class="circle"></div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-12" style="margin-top:20px;">
+            <div class="col-xs-12" style="background: white;padding: 20px;">
+                <div class="form clearfix">
+                    <div class="col-xs-3 left-leabel font-col">银行账号</div>
+                    <div class="col-xs-9">
+                        <input type="text" class="form-control" id="bank_card"  style="border:none;box-shadow: none">
+                    </div>
+                </div>
+
+                <div class="form clearfix pb-0">
+                    <div class="col-xs-3 left-leabel font-col">开户银行</div>
+                    <div class="col-xs-9">
+
+                            <select class="text font-col" style="background: white" id="bank">
+                                <option value="1">请选择</option>
+                            </select>
+
+
+                        <img class="right-arrow" src="/static/images/icon-right.png"/>
+                    </div>
+                </div>
+
+
+                <div class="form clearfix pb-0">
+                    <div class="col-xs-3 left-leabel font-col">开户地址</div>
+                    <div class="col-xs-9" id="expressArea">
+                        <div class="text font-col" id="isaddress">请选择开户地址</div>
+                        <img class="right-arrow" src="/static/images/icon-right.png"/>
+                    </div>
+                </div>
+
+
+                <!--<div class="form clearfix mb-50">
+                    <div class="col-xs-3 left-leabel font-col">支付名称</div>
+                    <div class="col-xs-9">
+                        <input type="text" class="form-control">
+                    </div>
+                    <div class="tips" style="bottom: -45px;">为确保交易资金安全，银行账户开户名称需与联系人姓名一致</div>
+                </div>-->
+
+                <div class="form clearfix pb-0 mb-30">
+                    <div class="col-xs-3 left-leabel font-col">商户费率</div>
+                    <div class="col-xs-9">
+                        <select class="text font-col" id="rate" style="background: white">
+                            <option value="1">0.5%</option>
+                            <option value="1">0.7%</option>
+                            <option value="1">0.8%</option>
+                            <option value="1">0.9%</option>
+                            <option value="1">1%</option>
+                        </select>
+                        <img class="right-arrow" src="/static/images/icon-right.png"/>
+                    </div>
+                    <div class="tips">拓展员根据商户沟通情况，进行费率选择</div>
+                </div>
+
+            </div>
+            <div class="col-xs-12 text-center done">
+                <a  id="done">完成</a>
+            </div>
+        </div>
+    </div>
+    <!--选择地区弹层-->
+    <section id="areaLayer" class="express-area-box">
+        <header>
+            <h3>选择地区</h3>
+            <a id="backUp" class="back" href="javascript:void(0)" title="返回"></a>
+            <a id="closeArea" class="close" href="javascript:void(0)" title="关闭"></a>
+        </header>
+        <article id="areaBox">
+            <ul id="areaList" class="area-list"></ul>
+        </article>
+    </section>
+    <!--遮罩层-->
+    <div id="areaMask" class="mask"></div>
+
+</div>
+<script src="/static/js/jquery.min.js"></script>
+<script src="/static/js/ajax.js"></script>
+<script src="/static/js/jquery.area.js"></script>
+<script>
+    $(function () {
+        var str = '';
+        var bankArr = [
+            '工商银行', '农业银行', '建设银行', '中国银行', '农商银行',
+            '光大银行', '兴业银行', '华夏银行', '交通银行', '招商银行',
+            '中信银行', '邮政储蓄银行', '浦发银行'
+        ]
+        for(let i = 0; i < bankArr.length; i++){
+            str += `<option>${bankArr[i]}</option>`
+        }
+        $("#bank").append(str)
+
+        $("#bank").change((e) => {
+            $("#bank").find("option:selected").text()
+        })
+        $("#done").click(() => {
+            try {
+                if (!$("#bank_card").val()) throw "请填写银行账号";
+                if ($("#bank").find("option:selected").text() == "请选择") throw "请选择开户银行";
+                if ($("#isaddress").text() == "请选择开户地址") throw "请选择开户地址";
+            } catch (err) {
+                alert(err)
+                return
+            }
+            save()
+        })
+        function save() {
+            var {
+                merchant_name,
+                shop_name,
+                city,
+                address,
+                shop_out_img,
+                shop_in_img,
+                invitation_code
+            } = JSON.parse(localStorage.getItem("first"))
+            var {
+                id_card_face_img,
+                id_card_img,
+                name,
+                id_card,
+                indate,
+                start_indate,
+                end_indate,
+                phone
+            } = JSON.parse(localStorage.getItem("second"))
+            var lastParm = {
+                bank_card: $("#bank_card").val(),
+                start_bank: $("#bank").find("option:selected").text(),
+                start_bank_address: $("#isaddress").text(),
+                rate: $("#rate").find("option:selected").text(),
+                merchant_name,
+                shop_name,
+                city,
+                address,
+                shop_out_img,
+                shop_in_img,
+                invitation_code,
+                id_card_face_img,
+                id_card_img,
+                name,
+                id_card,
+                indate,
+                start_indate,
+                end_indate,
+                phone
+            };
+            new req_api().save_date(lastParm).then(res => {
+                console.log(JSON.parse(res))
+                localStorage.clear();
+                window.location = "/wxpay/join/step4.html"
+            })
+
+            //localStorage.setItem("subData", JSON.stringify(lastParm))
+
+        }
+    })
+</script>
+</body>
+</html>

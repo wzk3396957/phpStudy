@@ -1,0 +1,127 @@
+
+
+
+  $.getUrlParam = function (name) {
+    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+    var r = window.location.search.substr(1).match(reg);
+    if (r != null) return unescape(r[2]); return null;
+  };
+    
+    $("#you_code").val($.getUrlParam('you_code'));
+
+    
+    $("#getCode").click(function(){   	
+      $.ajax({
+       url: "https://pay.suyongw.com/wxpay/index/sendSMS",
+       data: {
+        mobile: $("#phone").val()
+      },
+      dataType: 'json',
+      success:function(res){
+      }
+    })  		   		
+
+    })
+
+    var countdown=60;  
+    function settime(val) {
+      var phone = $("#phone").val()  
+      if(phone == ""){
+       alert("请输入手机号");
+       return false;
+     }else if(!(/^1(3|4|5|7|8)\d{9}$/.test(phone))){ 
+       alert("手机号码有误，请重填");  
+       return false; 
+     }else if (countdown == 0) {   
+      $("#getCode").text("获取验证码");  
+      countdown = 60;  
+      return false;  
+    } else{    
+      $("#getCode").text("重新发送(" + countdown + ")");  
+      countdown--;  
+    }  
+    setTimeout(function() {  
+      settime(val);  
+    },1000);  
+  }  
+
+  $(".submit").click(() => {
+    if(showRequest()){
+     $('#form').ajaxSubmit({
+      url: "/wxpay/index/register",
+      type: "post",
+      success:function(res){
+        var b = res.msg
+        if(b == "验证码错误" || b == "手机号已注册" || b == "用户输入非法字段,导致注册失败"){
+          confirm(res.msg)
+        }else if(b == "注册成功"){
+          var r = confirm(res.msg);
+          if(r == true){
+            window.location = "https://pay.suyongw.com/wxpay/index/index"
+          }
+      }
+    }
+  })
+   }
+ })
+
+
+  function showRequest(formData) { 
+    var phone = $("#phone").val();
+    if(phone ==""){
+     alert("号码不能为空！");
+     return false;
+   }else if(!(/^1(3|4|5|7|8)\d{9}$/.test(phone))){ 
+     alert("手机号码有误，请重填");  
+     return false; 
+   } 
+   var name = $("#name").val();
+   if(name == ""){
+    alert("姓名不能为空！");
+    return false;
+  }
+
+  var code = $("#code").val();
+  if(code == ""){
+   alert("请输入验证码");
+   return false;
+ }
+
+ var password = $("#password").val();
+ if(password=="" && password.length != 8){
+   alert("请输入8位以上密码！");
+   return false;
+ }
+
+ var password1 = $("#password1").val();
+ if(password1 == "" && password1.length != 8){
+  alert("请输入8位以上密码！");
+  return false;
+}else if(password != password1 ){
+  alert("请输入相同密码!");
+  return false;
+}
+
+var bank_card = $("#bank_card").val();
+var strBin = "10,18,30,35,37,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,58,60,62,65,68,69,84,87,88,94,95,98,99";
+if(bank_card==""){
+ alert("银行卡号不能为空！");
+ return false;
+}else if(bank_card.length < 16 || bank_card.legnth > 19 || strBin.indexOf(bank_card.substring(0, 2)) == -1){
+  alert("请输入正确银行卡号");
+  return false;
+}
+var id_card = $("#id_card").val();
+var reg = /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/;  
+if(reg.test(id_card) === false) {  
+ alert("身份证输入不合法");  
+ return  false;  
+}  
+return true;
+} 
+
+
+
+
+
+

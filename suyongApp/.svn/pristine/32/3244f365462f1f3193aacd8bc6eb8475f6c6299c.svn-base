@@ -1,0 +1,93 @@
+/*整体样式*/
+body {
+    font-family: "Helvetica Neue", "Hiragino Sans GB", "Microsoft YaHei", "\9ED1\4F53", Arial, sans-serif;
+}
+.sidebar-header .logo {
+    flex-grow: 0.86;
+}
+/*整体样式*/
+
+/*模态框*/
+.dropdown, .dropup {
+    margin-left: 20px;
+}
+
+b, strong {
+    font-size: 15px;
+}
+
+.footer {
+    height: 36px;
+}
+
+.inmodal .modal-body {
+    background: white;
+}
+
+.inmodal .modal-header {
+    padding: 12px 5px;
+    background-color: #f8f8f8;
+    height: 42px;
+}
+
+.modal-footer {
+    border-top: 0 #e5e5e5
+
+}
+/*模态框*/
+
+
+
+/*多图上传*/
+nobr {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.singleImg {
+    overflow: hidden;
+    float: left;
+    width: 12em;
+    height: 12em;
+    line-height: 12em;
+    margin: 3px;
+    display: table-cell;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    box-shadow: 1px 2px 3px rgba(34, 34, 34, 0.25);
+}
+
+.singleImg span {
+    cursor: pointer;
+    transition: all 1s;
+}
+
+.singleImg span:hover {
+    transform: scale(1.2);
+}
+
+.singleImg img {
+    padding: 4px;
+    width: 12em;
+    height: 12em;
+    text-align: center;
+    border-radius: 10px;
+}
+
+.singleImg#add {
+    /*padding:0 calc(10em / 2);*/
+}
+
+.singleImg#add .fa {
+    width: 100%;
+    text-align: center;
+    color: #ccc;
+}
+
+.singleImg#add span {
+    position: relative;
+    top: -10em;
+    left: 4em;
+    color: #666;
+}
+/*多图上传*/

@@ -1,0 +1,96 @@
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:81:"C:\inetpub\wwwroot\suyongPay\public/../application/wxpay\view\index\merchant.html";i:1537149419;}*/ ?>
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>商户管理</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0,viewport-fit=cover">
+	<link rel="stylesheet" type="text/css" href="/static/css/merchant.css?v=1.0">
+	<link rel="stylesheet" type="text/css" href="/static/css/reset.css">
+	<script src="/static/js/jquery-3.3.1.min.js"></script>
+	<script type="text/javascript">
+		window.onload = function main() {
+			Tabs(".list-item", ".contents", "list-item-checked", "contents-checked");
+
+		}
+	</script>
+</head>
+<body>
+	<ul id="list-title">
+		<li class="list-item list-item-checked">進件</li>
+		<li class="list-item">商戶</li>
+	</ul>
+	<div id="content-box">
+		<div class="contents contents-checked" >
+			<div class="status">
+				<select id="status">
+					<option value="0" >全部状态</option>
+					<option value="1" >审核中</option>
+					<!-- <option value="2" >待开通</option> -->
+					<option value="2" >已开通</option>
+					<!-- <option value="4" >已冻结</option> -->
+					<option value="3" >已驳回</option>
+					<!-- <option value="6" >待签约</option> -->
+				</select>
+			</div>
+			<a href="https://pay.suyongw.com/wxpay/join/step1?invitation_code=<?php echo $arr['my_code']; ?>">
+				<div class="add">
+				<img src="/static/images/add.png">
+				<span>添加商户</span>
+			</div>
+		</a>
+		
+		<div class="msg" id="msg">
+			<p>zll<span class="sh-status">审核中</span></p>
+			<p style="color:#ccc">2018.08.14</p>
+			
+		</div>
+		<div class="msg">
+			<p>zll<span class="sh-status">已驳回</span></p>
+			<p style="color:#ccc">2018.08.14</p>
+
+		</div>
+		<div class="msg">
+			<p>zll<span class="sh-status">已开通</span></p>
+			<p style="color:#ccc">2018.08.14</p>
+		</div>
+		
+
+	</div>
+	<div class="contents" >
+		<!-- <div class="add">
+			<img src="/static/images/add.png">
+			<span>添加商户</span>
+		</div> -->
+	</div>
+	
+</div>
+
+<script>
+	function Tabs(tabs_name, contents_name, tabs_checked_style, contents_checked_style) {
+		var tabs = document.querySelectorAll(tabs_name),
+		contents = document.querySelectorAll(contents_name),
+		e_mark = 0;
+		for (var i = 0, len = tabs.length; i < len; i++) {
+			tabs[i].num = i;
+			tabs[i].onclick = function () {
+				tabs[e_mark].classList.toggle(tabs_checked_style);
+				tabs[this.num].classList.toggle(tabs_checked_style);
+				contents[e_mark].classList.toggle(contents_checked_style);
+				contents[this.num].classList.toggle(contents_checked_style);
+				e_mark = this.num;
+			};
+		}
+	}
+	$(function(){
+
+	})
+	$("#status").change(function(){
+		console.log($(this).val())
+	})
+	$("#a").click(function(){
+		console.log($(this))
+	})
+</script>
+</body>
+</html>

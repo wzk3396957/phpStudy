@@ -1,0 +1,93 @@
+
+body{
+	background-color: #f3f3f3;
+	overflow: hidden;
+}
+
+#list-title {
+	width: 90%;
+	height: 56px;
+	margin: 0 auto;
+	list-style-type: none;
+	padding-left: 0;
+}
+
+.list-item {
+	float: left;
+	width: 30%;
+	height: 35px;
+	margin: 2px;
+	line-height: 35px;
+	font-size: 20px;
+	text-align: center;
+	border: 1px solid #000;
+	cursor: pointer;
+}
+
+.list-item-checked {
+	background-color: #509863;
+	color: #ffffff;
+}
+
+#content-box {
+	position: relative;
+	clear: both;
+	width: 90%;
+	height: 302px;
+	margin: 0 auto;
+}
+
+.contents {
+	/*text-align: center;*/
+	z-index: 0;
+	opacity: 0;
+	visibility: hidden;
+	-webkit-transition: all .5s;
+	-moz-transition: all .5s;
+	-ms-transition: all .5s;
+	-o-transition: all .5s;
+	transition: all .5s;
+}
+
+.contents-checked {
+	z-index: 1;
+	opacity: 1;
+	visibility: visible;
+}
+
+.status{
+	width: 90%;
+	height: 60px;
+	color: #333;
+	margin: 20px auto;
+}
+
+select {
+	border: none;
+	appearance:none;
+	-moz-appearance:none;
+	-webkit-appearance:none;
+	background:#f3f3f3;
+	padding-right: 14px;
+	background: url("../images/downTri.png") no-repeat scroll right center transparent;
+}
+select::-ms-expand { 
+	display: none; 
+}
+
+.add{
+	width: 90%;
+	height: 80px;
+	background-color: #fff;
+	margin: 20px auto;
+	line-height: 80px;
+	color: #509863;
+	position: absolute;
+}
+
+.add img{
+	width: 35px;
+	height: 35px;
+	margin: 20px 10px -10px 20px ;
+}
+

@@ -1,0 +1,15 @@
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:78:"C:\inetpub\wwwroot\suyongPay\public/../application/wxpay\view\index\ceshi.html";i:1536112895;}*/ ?>
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0,viewport-fit=cover">
+	<link rel="stylesheet" type="text/css" href="/static/css/register.css">
+	<!-- <link rel="stylesheet" type="text/css" href="../../../../public/static/css/register.css"> -->
+</head>
+<body>
+<form action="<?php echo url('wxpay/index/register');?>">
+ <input type="submit" value="123">
+</form>
+</body>
+</html>

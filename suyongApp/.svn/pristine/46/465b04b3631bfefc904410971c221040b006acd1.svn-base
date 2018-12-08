@@ -1,0 +1,6 @@
+$(document).ready(function(){
+	$('#area').on('change',function(){
+		var done = $(this).val();
+		alert(done);
+	})
+});

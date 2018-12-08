@@ -1,0 +1,21 @@
+<?php
+
+namespace app\home\controller;
+
+use app\home\controller\Base;
+use think\Db;
+
+class Area extends Base{
+
+	private $connect = 'mysql://root:suyongkeji@suyongw.cn:3306/send#utf8';
+
+    public function setArea(){
+        $CONFIG = [
+            'path' => [
+                '首页',
+                '区域设置'
+            ]
+        ]; 
+        return $this -> fetch();
+    }
+}

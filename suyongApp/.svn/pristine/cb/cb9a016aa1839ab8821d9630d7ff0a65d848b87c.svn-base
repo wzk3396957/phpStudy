@@ -1,0 +1,319 @@
+<?php
+
+namespace app\index\controller;
+use think\Controller;
+use think\Session;
+use think\Config;
+use app\api\controller\Api;
+use app\api\controller\WeixinPay;
+use think\Db;
+
+class Index extends controller
+{
+    private $connect = 'mysql://root:suyongkeji@suyongw.cn:3306/send#utf8';
+    private $APPID = 'wx0259aa3028e37e57';
+    private $APPSECRET = 'dd02fc20a834be64770515aa0c75911d';
+    //private $MCH_ID = ;    //商户号
+    private $KEY = '6b4c1305cd4bb5a3c60ab4f3bc512e6b'; //支付秘钥
+      //登陆
+    public function login(){
+       $appid = $this->APPID;
+       $appsecret = $this->APPSECRET;
+       $code = $_POST['code'];
+       $url="https://api.weixin.qq.com/sns/jscode2session?appid=".$appid."&secret=".$appsecret."&js_code=".$code."&grant_type=authorization_code";
+       $arr = $this->curl_get($url);  
+       $res = json_decode($arr,true);
+       return json_encode($res);
+    }
+
+      //curl
+    public function curl_get($url){
+       $info=curl_init();
+       curl_setopt($info,CURLOPT_RETURNTRANSFER,true);
+       curl_setopt($info,CURLOPT_HEADER,0);
+       curl_setopt($info,CURLOPT_NOBODY,0);
+       curl_setopt($info,CURLOPT_SSL_VERIFYPEER, false);
+       curl_setopt($info,CURLOPT_SSL_VERIFYHOST, false);
+       curl_setopt($info,CURLOPT_URL,$url);
+       $output= curl_exec($info);
+       curl_close($info);
+       return $output;
+    }
+
+    public function index(){
+      echo "1";
+    }
+    //手机验证码
+    public function send_valiCode($phone)
+    {
+        $code = rand(10000, 99999);
+        $sms_code = json_encode(['code' => $code]);
+        $url = 'https://api.mysubmail.com/message/xsend.json';
+        $data = "appid=14520&to=" . $phone . "&project=f7Br63&signature=fd766e9534c72a7856ab962bf8fc9059&vars=" . $sms_code;
+        $res = $this->_requestPost($url, $data);
+        $result = json_decode($res, true);
+        if ($result['status'] == 'success') {
+            return $code;
+        }
+        return false;
+    }
+    public static function _requestPost($url, $data, $ssl = true)
+    {
+        // curl完成
+        $curl = curl_init();
+
+        //设置curl选项
+        curl_setopt($curl, CURLOPT_URL, $url);//URL
+        $user_agent = isset($_SERVER['HTTP_USER_AGENT']) ? $_SERVER['HTTP_USER_AGENT'] : 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36';
+        curl_setopt($curl, CURLOPT_USERAGENT, $user_agent);//user_agent，请求代理信息
+        curl_setopt($curl, CURLOPT_AUTOREFERER, true);//referer头，请求来源
+        //SSL相关
+        if ($ssl) {
+            curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);//禁用后cURL将终止从服务端进行验证
+            curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);//检查服务器SSL证书中是否存在一个公用名(common name)。
+        }
+        // 处理post相关选项
+        curl_setopt($curl, CURLOPT_POST, true);// 是否为POST请求
+        curl_setopt($curl, CURLOPT_POSTFIELDS, $data);// 处理请求数据
+        // 处理响应结果
+        curl_setopt($curl, CURLOPT_HEADER, false);//是否处理响应头
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);//curl_exec()是否返回响应结果
+
+        // 发出请求
+        $response = curl_exec($curl);
+        if (false === $response) {
+            return false;
+        }
+        return $response;
+    }
+    //curl
+    public function curl_get($url){
+       $info=curl_init();
+       curl_setopt($info,CURLOPT_RETURNTRANSFER,true);
+       curl_setopt($info,CURLOPT_HEADER,0);
+       curl_setopt($info,CURLOPT_NOBODY,0);
+       curl_setopt($info,CURLOPT_SSL_VERIFYPEER, false);
+       curl_setopt($info,CURLOPT_SSL_VERIFYHOST, false);
+       curl_setopt($info,CURLOPT_URL,$url);
+       $output= curl_exec($info);
+       curl_close($info);
+       return $output;
+    }
+    //注册
+    public function register(){
+        $data = input('post.');
+        $user = Db::connect($this->connect)->table('user')->where('tel',$data['tel'])->find();
+        if($user){
+          return '2';
+        }
+        $data['up'] =intval($data['up']);
+        $re = Db::connect($this->connect)->table('admin')->where('id',$data['up'])->find();
+        if(!$re){
+            return '3';
+        }
+        $res = Db::connect($this->connect)->table('user')->insert($data);
+        return $res?'1':'0'; 
+    }
+    //登录
+    public function user_login($tel,$password){
+        $user = Db::connect($this->connect)->table('user')->where('tel',$tel)->where('password',$password)->find();
+        if($user){
+            $res = Db::connect($this->connect)->table('user')->where('openid',$user['openid'])->update(['state'=>1]);
+            return $res?'1':'0';
+        }else{
+            return '0';
+        }
+    }
+    //注册骑士
+    public function register_knight(){
+        $data = input('post.');
+        $knight = Db::connect($this->connect)->table('knight')->where('tel',$data['tel'])->find();
+        if($knight){
+          return '2';
+        }
+        $res = Db::connect($this->connect)->table('knight')->insert($data);
+        return $res?'1':'0';
+    }
+    //发起订单
+    public function strat_order(){
+        $data = input('post.');
+        $data['order_num'] = $this->rand_num();
+        $data['start'] = time();
+        $res = Db::connect($this->connect)->table('order')->insert($data);
+        return $res?'1':'0';
+    }
+    // 随机订单号
+    public function rand_num(){
+      $num = mt_rand(1,100);
+      $time = time();
+      $rand_num = $num.$time;
+      return $rand_num;
+    }
+    //订单管理
+    public function order_info($openid){
+        $re = Db::connect($this->connect) ->table('order')
+                                            ->alias('o')
+                                            ->join('user u','o.openid = u.openid')
+                                            ->join('user u2','o.to_openid = u2.openid')
+                                            ->field('o.*,u.username as from_user,u.tel as from_tel,u.head as from_head,u2.username as to_user,u2.tel as to_tel')
+                                            ->where('o.openid',$openid)
+                                            ->select();
+        return json_encode($re,JSON_UNESCAPED_UNICODE);
+    }
+    //商务合作
+    public function consociation(){
+        $data = input('post.');
+        $res = Db::connect($this->connect)->table('order')->insert($data);
+         return $res?'1':'0';
+    }
+    //评价
+    public function comment($order_num,$comment){
+        $res = Db::connect($this->connect)->table('order')->where('order_num',$order_num)->update(['comment'=>$comment]);
+        return $res?'1':'0';
+    }
+    //提现
+    public function pull_money($openid,$money){
+        $balance = Db::connect($this->connect)->table('user')->where('openid',$openid)->value('money');
+       if($money>$balance){
+            return 2;
+       }
+       $rand_num = $this->rand_num();
+       $re = $this->in_money($openid,$money,$rand_num,2);
+       if($re=='1'){
+          $n =  $balance-$money;
+          $res = Db::connect($this->connect)->table('user')->where('openid',$openid)->update(['money'=>$n]);
+          return $res?1:0;//调用提现函数
+       }else{
+          return 0;
+       }
+    }
+    //充值
+    public function balance_pay($openid,$money){
+        $openid = input('openid');
+        $out_trade_no = $this->rand_num(); //订单号
+        $body = '支付订单';   //商品描述
+        $re = $this->in_money($openid,$money,$rand_num,1);
+        if($re=='1'){
+            $total_fee = $money*100;  //单位分(整数)
+            $wx_pay = new WeixinPay($this->APPID,$openid,$this->MCH_ID,$this->KEY,$out_trade_no,$body,$total_fee);
+            return json_encode($wx_pay->pay());
+        }else{
+            return '0';
+        }
+    }
+    //充值成功
+    public function balance_pay_success($openid,$money){
+        DB::startTrans();
+        try{
+              Db::connect($this->connect)->table('money')->where('openid',$openid)->update(['state'=>1]);
+              Db::connect($this->connect)->table('user')->where('openid',$openid)->setInc('money',$money);
+              return '1';
+            }catch (Exception $e) {
+              return '0';
+              Db::rollback();
+            } 
+    }
+    //交易订单
+    private function in_money($openid,$money,$order_num,$type){
+        $res=Db::connect($this->connect)->table('money')->insert(['openid'=>$openid,'money'=>$money,'time'=>time(),'order_num'=>$rand_num,'type'=>$type]);
+        return $res?'1':'0';
+    }
+    //常用区域
+    public function often($openid){
+        $re = Db::connect($this->connect)->table('often')->where('openid',$openid)->field('start,over')->find();
+        return json_encode($re,JSON_UNESCAPED_UNICODE);
+    }
+    //交易查询
+    public function get_balance($time,$openid){
+        if($time=='1'){//本月
+            $start = strtotime(date('Y-m-01'));
+            $end = strtotime(date('Y-m-01'))+(60*60*24*24);
+            $month['time'] =array('between',[$start,$end]);
+        }else if($time=='2'){//上个月
+            $start = strtotime(date('Y-m-01'))-(60*60*24*24);
+            $end = strtotime(date('Y-m-01'))-1;
+            $month['time'] =array('between',[$start,$end]);
+        }else{
+            $month=null;
+        } 
+        $re = Db::connect($this->connect)->table('money')->where('openid',$openid)->where($month)->field('time,money')->select();
+        return json_encode($re,JSON_UNESCAPED_UNICODE);
+    }
+    //返回佣金
+    public function commission($openid,$money){
+        DB::startTrans();
+        try{
+              $id=Db::connect($this->connect)->table('user')->where('openid',$openid)->value('up');
+              Db::connect($this->connect)->table('admin')->where('id',$id)->setInc('money',$money*0.4);
+              $upid = Db::connect($this->connect)->table('admin')->where('id',$id)->value('up');
+              if($upid!=1){
+                Db::connect($this->connect)->table('admin')->where('id',$id)->setInc('money',$money*0.2);
+              }
+              return '1';
+            }catch (Exception $e) {
+              return '0';
+              Db::rollback();
+            } 
+    }
+    //判断用户是否登录
+    public function is_login($openid){
+        $is_login = Db::connect($this->connect)->table('user')->where('openid',$openid)->where('state',1)->find();
+        if($is_login){
+            return '1';
+        }else{
+            return '0';
+        }
+    }
+    //测试
+    public function tst(){
+        $post = input('post.');
+        dump($post);
+    }
+    //定位
+    public function address(){
+       // $longitude = input('longitude');
+       // $latitude = input('latitude');
+       $longitude = 23.40391;$latitude = 113.22026;
+       $key = '35DLaWTFLzP2qZviNwe2lzdG5KGjDSaV';
+       $url = "http://api.map.baidu.com/geocoder/v2/?ak=$key&location=$latitude,$longitude&output=json";
+       $res = $this->curl_get($url);
+       $result = json_decode($res, true);
+       // $city = $result['result']['addressComponent']['city'];
+       // return json_encode(['info'=>$city]);
+       dump($result);die;
+    }
+
+
+    
+    //结束
+     /*
+       * 微信支付
+       */
+    // public function wx_pay(){
+    //     $openid = input('openid');
+    //     $to_openid = input('to_openid');
+    //     $out_trade_no = $this->rand_num(); //订单号
+    //     $body = '支付订单';   //商品描述
+    //     $total_fee = Db::connect($this->connect)->table('text')->where('id',$textid)->value('price');//文章价格
+    //     $res = $this ->insert_order($openid,$username,$out_trade_no,$total_fee,$textid);
+    //     $total_fee = $total_fee*100;  //单位分(整数)
+    //     $wx_pay = new WeixinPay($this->APPID,$openid,$this->MCH_ID,$this->KEY,$out_trade_no,$body,$total_fee);
+    //     return json_encode($wx_pay->pay());
+    // }
+    // 订单信息入库
+    // public function insert_order($openid,$to_openid,$order_num,$price,$area,$type,$g,$ps){
+    //     $data = [
+    //               'openid'=>$openid,
+    //               'to_openid'=>$to_openid,
+    //               'order_num'=>$order_num,
+    //               'price'=>$price,
+    //               'start'=>time(),
+    //               'area'=>$area,
+    //               'type'=>$type,
+    //               'g'=>$g,
+    //               'ps'=>$ps
+    //             ];
+    //     $re = Db::connect($this->connect)->table('order')->insert($data);
+    //     return $re?1:0;
+    // }
+}

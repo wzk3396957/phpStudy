@@ -1,0 +1,27 @@
+<?php
+
+namespace app\home\controller;
+
+use app\home\controller\Base;
+use think\Db;
+use think\Session;
+
+class Area extends Base{
+
+	private $connect = 'mysql://root:suyongkeji@suyongw.cn:3306/send#utf8';
+
+	public function setlntegral(){
+		$CONFIG = [
+            'path' => [
+                '首页',
+                '设置积分规则'
+            ]
+        ];
+        $this->assign('CONFIG', $CONFIG);
+		return $this->fetch();
+	}
+
+	public function do_set(){
+
+	}
+}

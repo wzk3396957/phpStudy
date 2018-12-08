@@ -1,0 +1,73 @@
+<div class="row">
+    <div class="col-lg-12">
+         <!-- 表单例子 -->
+        <!-- <div style="padding: 15px;background-color: white">
+            <fieldset class="layui-elem-field site-demo-button">
+                <h2>欢迎您</h2>
+                <div class="layui-field-box">
+                    <table class="table">
+                        <tbody class=".table-striped">
+                        <thead>
+                        <tr>
+                            <th>例子</th>
+                            <th>例子1</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>测试</td>
+                            <td>测试1</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </fieldset>        
+          </div> -->
+<div style="margin:0 auto; width:100%; line-height:25px; padding: 30px">
+    <iframe src="" frameborder="0" name="iframeContent" style="display: none;"></iframe>
+    <form method="post" id="uploadForm" action="Activity/update_activity" target="iframeContent" enctype="multipart/form-data" class="form-horizontal">
+        <div class="form-group">
+            <label class="col-sm-2 control-label">单图例子：</label>
+            <div class="col-sm-10">
+                <div id="up_one_image"></div>
+            </div>
+            <div class="col-sm-8 col-sm-offset-2"><span class="help-block m-b-none">*单图例子</span></div>
+        </div><br>
+
+        <div class="form-group">
+            <label class="col-sm-2 control-label">多图例子：</label>
+            <div class="col-sm-10">
+                <div id="up_images"></div>
+            </div>
+            <div class="col-sm-8 col-sm-offset-2"><span class="help-block m-b-none">*多图例子</span></div>
+        </div><br>
+
+
+
+        <div class="form-group">
+            <label class="col-sm-2 control-label">文本框例子：</label>
+            <div class="col-sm-8"><input type="text" id="title" name="title" class="form-control"
+                                         placeholder="" value=""
+                                         required>
+                <span class="help-block m-b-none">*文本框例子</span>
+            </div>
+        </div><br>
+
+        <div class="form-group">
+            <label class="col-sm-2 control-label">编辑器例子：</label>
+             <div class="col-sm-10">
+                <script id="container" type="text/plain"></script>
+            </div>
+        </div><br>
+
+
+        <div class="form-group" style="padding: 20px">
+            <div class="col-sm-4 col-sm-offset-2">
+                <button class="btn btn-primary" data-style="zoom-in" type="submit">保存信息</button>
+            </div>
+        </div>
+    </form>
+   </div>
+
+    </div>
+</div>

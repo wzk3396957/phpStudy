@@ -1,0 +1,6 @@
+$(document).ready(function(){
+	$('#area').on('change',function(){
+		var area = $(this).val();
+		$(location).attr('href', "area/area/"+area);
+	});
+});

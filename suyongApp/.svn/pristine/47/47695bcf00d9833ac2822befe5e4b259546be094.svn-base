@@ -1,0 +1,46 @@
+<div class="row">
+    <div class="col-lg-12">
+        <div class="ibox float-e-margins">
+            <div class="ibox-content">
+
+                
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th>姓名</th>
+                            <th>电话</th>
+                            <th>派送类型</th>
+                            <th>区域</th>
+                            <th>身份证照片</th>
+                            <th>车辆照片</th>
+                            <th>审核</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                       	        {volist name="list" id="vo"}
+                                    <tr>
+                                        <td>{$vo.username}</td>
+                                        <td>{$vo.tel}</td>
+                                        <td>{$vo.type}</td>
+                                        <td>{$vo.area}</td>
+                                        <td>
+                                            {volist name="vo.id_img" id="f" key="k"}
+                                            <img src="{$f}"/>
+                                            {/volist}
+                                        </td>
+                                        <td><img src="{$vo.car}"></td>
+                                        <td>
+                                            <a href="javascript:void(0)" data_id="{$vo.id}" data_state="1" class="pass">通过</a>
+                                            <a href="javascript:void(0)" data_id="{$vo.id}" data_state="0" class="reject">驳回</a>
+                                        </td>
+                                    </tr>
+                                {/volist}
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

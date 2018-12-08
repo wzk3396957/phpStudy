@@ -1,0 +1,48 @@
+<div class="row">
+    <div class="col-lg-12">
+  
+<div style="margin:0 auto; width:100%; line-height:25px; padding: 30px">
+    <iframe src="" frameborder="0" name="iframeContent" style="display: none;"></iframe>
+    <form method="post" id="uploadForm" action="" target="iframeContent" enctype="multipart/form-data" class="form-horizontal">
+       
+
+
+        <div class="form-group">
+            <label class="col-sm-2 control-label">账号：</label>
+            <div class="col-sm-8"><input type="text" id="username" name="username" class="form-control"
+                                         placeholder="" value=""
+                                         required>
+                <span class="help-block m-b-none">*账号</span>
+            </div>
+        </div><br>
+        
+        <div class="form-group">
+            <label class="col-sm-2 control-label">密码：</label>
+            <div class="col-sm-8"><input type="password" id="password" name="password" class="form-control"
+                                         placeholder="" value=""
+                                         required>
+                <span class="help-block m-b-none">*密码</span>
+            </div>
+        </div><br>
+
+        {if $Think.session.auth =='2'}
+         <div class="form-group">
+            <label class="col-sm-2 control-label">区域：</label>
+            <div class="col-sm-8">
+                <div style="position: relative;">
+                <input class="form-control" readonly type="text" data-toggle="city-picker" data-level =“city” style="width:50%;" name="area" id="area">
+                </div>
+            </div>
+        </div><br>
+        {/if}
+
+        <div class="form-group" style="padding: 20px">
+            <div class="col-sm-4 col-sm-offset-2">
+                <button class="btn btn-primary" data-style="zoom-in" type="submit" id="add_detail">设置合伙人</button>
+            </div>
+        </div>
+    </form>
+   </div>
+
+    </div>
+</div>

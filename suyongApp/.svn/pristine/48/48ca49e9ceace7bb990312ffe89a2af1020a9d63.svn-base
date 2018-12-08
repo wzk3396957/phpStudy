@@ -1,0 +1,272 @@
+<?php if (!defined('THINK_PATH')) exit(); /*a:7:{s:78:"C:\inetpub\wwwroot\suyongPay\public/../application/admin\view\index\index.html";i:1535615810;s:64:"C:\inetpub\wwwroot\suyongPay\application\admin\view\_Layout.html";i:1535615810;s:70:"C:\inetpub\wwwroot\suyongPay\application\admin\view\_Layout\_head.html";i:1535615810;s:71:"C:\inetpub\wwwroot\suyongPay\application\admin\view\_Layout\_menus.html";i:1535615810;s:72:"C:\inetpub\wwwroot\suyongPay\application\admin\view\_Layout\_topbar.html";i:1535615810;s:72:"C:\inetpub\wwwroot\suyongPay\application\admin\view\_Layout\_footer.html";i:1535615810;s:70:"C:\inetpub\wwwroot\suyongPay\application\admin\view\_Layout\_foot.html";i:1535615810;}*/ ?>
+<!DOCTYPE html>
+<html>
+
+<?php 
+$_CONTROLLER = \think\Request::instance()->controller();
+ ?>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="icon" href="https://res.suyongw.com/152542789482059.jpg" type="img/x-ico" />
+    <title> 华众宇邦 | 化妆品 | 美容 | 保养 ····</title>
+
+    <link href="inspinia/css/bootstrap.min.css" rel="stylesheet">
+    <link href="inspinia/font-awesome/css/font-awesome.css" rel="stylesheet">
+
+    <!-- Toastr style -->
+    <link href="inspinia/css/plugins/toastr/toastr.min.css" rel="stylesheet">
+
+    <!-- Gritter -->
+    <link href="inspinia/js/plugins/gritter/jquery.gritter.css" rel="stylesheet">
+
+    <link href="inspinia/css/animate.css" rel="stylesheet">
+    <link href="inspinia/css/style.css" rel="stylesheet">
+
+    <!--Confirm-->
+    <link href="inspinia/js/plugins/confirm/jquery-confirm.min.css" rel="stylesheet">
+    <!--Confirm-->
+
+    <!--Controller_custom-->
+    <?php if(isset($CONFIG['css'][0])): $__FOR_START_405508516__=0;$__FOR_END_405508516__=count($CONFIG['css']);for($i=$__FOR_START_405508516__;$i < $__FOR_END_405508516__;$i+=1){ ?>
+    <link rel="stylesheet" href="inspinia/<?php echo $CONFIG['css'][$i]; ?>">
+    <?php } endif; ?>
+
+    <!--Main css-->
+    <link href="admin/main.css" rel="stylesheet">
+
+</head>
+
+
+
+<body class="pace-done" data-host="">
+
+<div id="wrapper">
+
+    <nav class="navbar-default navbar-static-side" role="navigation">
+    <div class="sidebar-collapse">
+        <ul class="nav metismenu" id="side-menu">
+            <li class="nav-header">
+                <div class="dropdown profile-element"> <span>
+                            <img style="width: 60px;height: 60px" alt="image" class="img-circle" src="<?php echo \think\Session::get('avatar'); ?>"/>
+                             </span>
+                    <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                            <span class="clear"> <span class="block m-t-xs"> <strong
+                                    class="font-bold"><?php echo \think\Session::get('username'); ?></strong>
+                             </span></span> </a>
+                </div>
+                <div class="logo-element">
+                    IN+
+                </div>
+            </li>
+
+
+
+            <li <?php echo ($_CONTROLLER=='Index') ? ' class="active"' : '' ?>>
+            <a href="index.html"><i class="fa fa-bank"></i><span class="nav-label">首页</span></a>
+            </li>
+
+
+            <li <?php echo ($_CONTROLLER=='Store') ? ' class="active"' : '' ?>>
+            <a href="store.html"><i class="fa fa-database"></i><span class="nav-label">我的店铺</span></a>
+            </li>
+
+
+            <li <?php echo ($_CONTROLLER=='Activity') ? ' class="active"' : '' ?>>
+            <a href="activity.html"><i class="fa fa-life-saver"></i><span class="nav-label">活动中心</span></a>
+            </li>
+
+
+            <li <?php echo ($_CONTROLLER=='Redpacket') ? ' class="active"' : '' ?>>
+            <a href="redpacket.html"><i class="fa fa-tasks"></i><span class="nav-label">红包列表</span></a>
+            </li>
+
+
+            <li <?php echo ($_CONTROLLER=='Order') ? ' class="active"' : '' ?>>
+            <a href="order.html"><i class="fa fa-money"></i><span class="nav-label">订单列表</span></a>
+            </li>
+
+            <?php if(\think\Session::get('uid') == 1): ?>
+            <li<?php echo ($_CONTROLLER=='User' or $_CONTROLLER=='Allredpacket' or $_CONTROLLER=='Allorder') ? ' class="active"' : '' ?>>
+            <a href="javascript:;"><i class="fa fa-th-large"></i> <span class="nav-label">Vip管理</span></a>
+            <ul class="nav nav-second-level">
+                <li <?php echo ($_CONTROLLER=='User') ? ' class="active"' : '' ?>>
+                <a href="user.html"><span class="nav-label">门店管理</span></a>
+                </li>
+                <li <?php echo ($_CONTROLLER=='Allredpacket') ? ' class="active"' : '' ?>>
+                <a href="allredpacket.html"><span class="nav-label">红包统计</span></a>
+                </li>
+                <li <?php echo ($_CONTROLLER=='Allorder') ? ' class="active"' : '' ?>>
+                <a href="allorder.html"><span class="nav-label">订单统计</span></a>
+                </li>
+
+            </ul>
+            </li>
+            <?php endif; ?>
+
+        </ul>
+
+    </div>
+</nav>
+
+    <div id="page-wrapper" class="gray-bg dashbard-1">
+
+    <div class="row border-bottom">
+    <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0;">
+        <div class="navbar-header">
+            <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars"></i> </a>
+            <form role="search" class="navbar-form-custom" action="search_results.html" style="display: none">
+                <div class="form-group">
+                    <input type="text" placeholder="搜索..." class="form-control" name="top-search" id="top-search">
+                </div>
+            </form>
+        </div>
+        <ul class="nav navbar-top-links navbar-right">
+
+            <li>
+                <a href="index.html">
+                    <?php echo \think\Session::get('username'); ?>
+                </a>
+            </li>
+            <li>
+                <a href="login.html">
+                    <i class="fa fa-sign-out"></i> 退出登录
+                </a>
+            </li>
+        </ul>
+
+    </nav>
+</div>
+
+<?php if(isset($CONFIG['path'][0])): ?>
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-10">
+        <h2><?php echo $CONFIG['path'][1]; ?></h2>
+        <ol class="breadcrumb">
+            <li>
+                <a href="index.html"><?php echo $CONFIG['path'][0]; ?></a>
+            </li>
+            <li class="active">
+                <strong><?php echo $CONFIG['path'][1]; ?></strong>
+            </li>
+        </ol>
+    </div>
+</div>
+<?php endif; ?>
+
+
+    <main class="main-container" style="padding-left: 8px; padding-top: 12px">
+
+        <div class="main-content" style="background-color: white">
+
+            <div class="row">
+    <div class="col-lg-12">
+<div style="padding: 15px;background-color: white">
+    <fieldset class="layui-elem-field site-demo-button">
+        <h2>欢迎您  <?php echo \think\Session::get('username'); ?></h2>
+        <div class="layui-field-box">
+            <table class="table">
+
+                <tbody class=".table-striped">
+                <tr>
+                    <td>系统名称：</td>
+                    <td>微信公众号报名抽奖系统</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>系统版本：</td>
+                    <td>V1.1.0</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>系统框架：</td>
+                    <td>Thinkphp 5.0</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>UI框架：</td>
+                    <td>Bootstarp 3.1</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>开发者：</td>
+                    <td>速用用科技</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>公司：</td>
+                    <td>华众宇邦</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>管理员微信：</td>
+                    <td>hua17629044941</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>门店专属公众号链接：</td>
+                    <td><a href="#" id="qr_code">点击获取</a></td>
+                    <td></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </fieldset>        </div>
+    </div>
+</div>
+
+        </div>
+
+        <div class="footer">
+    <div class="pull-right">
+        <a href="index.html"><small style="">联系我们</small></a>
+    </div>
+    <div class="pull-left">
+        <small>Copyright 速用科技  ©2017-2018</small>
+    </div>
+</div>
+
+
+    </main>
+
+    </div>
+
+</div>
+
+</body>
+
+<!-- Mainly scripts -->
+<script src="inspinia/js/jquery-2.1.1.js"></script>
+<script src="inspinia/js/bootstrap.min.js"></script>
+<script src="inspinia/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+<script src="inspinia/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+<script src="inspinia/js/jquery.cookie.js"></script>
+
+<!-- Custom and plugin javascript -->
+<script src="inspinia/js/inspinia.js"></script>
+<script src="inspinia/js/plugins/pace/pace.min.js"></script>
+
+<!--Confirm-->
+<script src="inspinia/js/plugins/confirm/jquery-confirm.min.js"></script>
+<script src="inspinia/js/plugins/toastr/toastr.min.js"></script>
+
+<!--Loading-->
+<script src="inspinia/js/plugins/loading/spin.min.js"></script>
+<script src="inspinia/js/plugins/loading/myloading.js"></script>
+
+
+<!--Controller_custom-->
+<?php if(isset($CONFIG['js'][0])): $__FOR_START_626826862__=0;$__FOR_END_626826862__=count($CONFIG['js']);for($i=$__FOR_START_626826862__;$i < $__FOR_END_626826862__;$i+=1){ ?>
+<script src="inspinia/<?php echo $CONFIG['js'][$i]; ?>"></script>
+<?php } endif; ?>
+
+<!--Loading js plugin-->
+<script src="admin/plugin.js"></script>
+
+<!--Controller_action-->
+<script src="admin/<?php echo \think\Request::instance()->controller(); ?>/<?php echo \think\Request::instance()->action(); ?>.js"></script>
+
+
+
+</html>

@@ -1,0 +1,240 @@
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:77:"C:\inetpub\wwwroot\suyongPay\public/../application/wxpay\view\index\cost.html";i:1536565526;}*/ ?>
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>流水</title>
+
+<link rel="stylesheet" href="../../../../public/static/css/cost.css" />
+
+</head>
+<body>
+
+	<table cellpadding="0" cellspacing="0" border="0" id="table" class="sortable">
+		<thead>
+			<tr>
+				
+				<th><h3>名字</h3></th>
+				<th><h3>金钱</h3></th>
+				<th><h3>日期</h3></th>
+
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				
+				<td>Ezekiel Hart</td>
+				<td>$73,229</td>
+				<td>2018.08.18</td>
+			</tr>
+			<tr>
+				
+				<td>Jaquelyn Pace</td>
+				<td>$130,752</td>
+				<td>2018.08.18</td>
+			</tr>
+			<tr>
+				
+				<td>Lois Pickett</td>
+				<td>$48,684</td>
+				<td>2018.08.18</td>
+			</tr>
+			<tr>
+				
+				<td>Keane Raymond</td>
+				<td>$7,023</td>
+				<td>2018.08.18</td>
+			</tr>
+			<tr>
+				
+				<td>Porter Thomas</td>
+				<td>$69,875</td>
+				<td>2018.08.18</td>
+			</tr>
+			<tr>
+			
+				<td>Imani Murphy</td>
+				<td>$113,763</td>
+				<td>2018.08.18</td>
+			</tr>
+			<tr>
+				
+				<td>Zachery Guthrie</td>
+				<td>$130,248</td>
+				<td>2018.08.18</td>
+			</tr>
+			<tr>
+				
+				<td>Harper Bowen</td>
+				<td>$73,197</td>
+				<td>4.5</td>
+			</tr>
+			<tr>
+				
+				<td>Caldwell </td>
+				<td>$63,736</td>
+				<td>7.5</td>
+			</tr>
+			<tr>
+				
+				<td>Baker </td>
+				<td>$2,868</td>
+				<td>0.1</td>
+			</tr>
+			<tr>
+				
+				<td>Yael </td>
+				<td>$126,469</td>
+				<td>8.9</td>
+			</tr>
+			<tr>
+				
+				<td>Fletcher Briggs</td>
+				<td>$142,448</td>
+				<td>8.9</td>
+			</tr>
+			<tr>
+				
+				<td>Maggy Murphy</td>
+				<td>$40,267</td>
+				<td>6.9</td>
+			</tr>
+			<tr>
+				
+				<td>Maggie Blake</td>
+				<td>$99,686</td>
+				<td>7.9dsfdfdsfds</td>
+			</tr>
+			<tr>
+				
+				<td>Ginger Bell</td>
+				<td>$112,997</td>
+				<td>4.5</td>
+			</tr>
+			<tr>
+				
+				<td>Iliana Ballard</td>
+				<td>$5,282</td>
+				<td>5.5</td>
+			</tr>
+			<tr>
+				
+				<td>Alisa Monroe</td>
+				<td>$103,999</td>
+				<td>5.9</td>
+			</tr>
+			<tr>
+				
+				<td>Kenyon Luna</td>
+				<td>$37,014</td>
+				<td>7.9</td>
+			</tr>
+			<tr>
+				
+				<td>Nola Kerr</td>
+				<td>$104,149</td>
+				<td>0.5</td>
+			</tr>
+			<tr>
+				
+				<td>Gail Cash</td>
+				<td>$31,090</td>
+				<td>1.5</td>
+			</tr>
+			<tr>
+				
+				<td>Kalia Ayala</td>
+				<td>$44,641</td>
+				<td>5.9</td>
+			</tr>
+			<tr>
+				
+				<td>Violet Ballard</td>
+				<td>$46,450</td>
+				<td>7.9</td>
+			</tr>
+			<tr>
+				
+				<td>Kevin Carrillo</td>
+				<td>$51,754</td>
+				<td>1.5</td>
+			</tr>
+			<tr>
+				
+				<td>Kevin Carrillo</td>
+				<td>$51,754</td>
+				<td>1.5</td>
+			</tr>
+			<tr>
+				
+				<td>Kevin Carrillo</td>
+				<td>$51,754</td>
+				<td>1.5</td>
+			</tr>
+			<tr>
+				
+				<td>Kevin Carrillo</td>
+				<td>$51,754</td>
+				<td>1.5</td>
+			</tr>
+			<tr>
+				
+				<td>Kevin Carrillo</td>
+				<td>$51,754</td>
+				<td>1.5</td>
+			</tr>
+			<tr>
+				
+				<td>Kevin Carrillo</td>
+				<td>$51,754</td>
+				<td>1.5</td>
+			</tr>
+			<tr>
+				
+				<td>Kevin Carrillo</td>
+				<td>$51,754</td>
+				<td>1.5</td>
+			</tr>
+
+			
+		</tbody>
+  </table>
+	<div id="controls">
+		<div id="perpage">
+			<select onchange="sorter.size(this.value)">
+			<option value="5">5</option>
+				<option value="10" selected="selected">10</option>
+				<option value="20">20</option>
+				<option value="50">50</option>
+				<option value="100">100</option>
+			</select>
+			<span>每页数量</span>
+		</div>
+		<div id="navigation">
+			<img src="../../../../public/static/images/first.gif" width="16" height="16" alt="First Page" onclick="sorter.move(-1,true)" />
+			<img src="../../../../public/static/images/previous.gif" width="16" height="16" alt="First Page" onclick="sorter.move(-1)" />
+			<img src="../../../../public/static/images/next.gif" width="16" height="16" alt="First Page" onclick="sorter.move(1)" />
+			<img src="../../../../public/static/images/last.gif" width="16" height="16" alt="Last Page" onclick="sorter.move(1,true)" />
+		</div>
+		<div id="text">当前页面<span id="currentpage"></span> 和 <span id="pagelimit"></span></div>
+	</div>
+	
+<script type="text/javascript" src="../../../../public/static/js/cost.js"></script>
+<script type="text/javascript">
+var sorter = new TINY.table.sorter("sorter");
+sorter.head = "head";
+sorter.asc = "asc";
+sorter.desc = "desc";
+sorter.even = "evenrow";
+sorter.odd = "oddrow";
+sorter.evensel = "evenselected";
+sorter.oddsel = "oddselected";
+sorter.paginate = true;
+sorter.currentid = "currentpage";
+sorter.limitid = "pagelimit";
+sorter.init("table",1);
+</script>
+
+</body>
+</html>

@@ -1,0 +1,49 @@
+<nav class="navbar-default navbar-static-side" role="navigation">
+    <div class="sidebar-collapse">
+        <ul class="nav metismenu" id="side-menu">
+            <li class="nav-header">
+                <div class="dropdown profile-element"> <span>
+                            <img style="width: 60px;height: 60px" alt="image" class="img-circle" src="https://www.suyongw.com/index/img/apple-touch-icon.png"/>
+                             </span>
+                    <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                            <span class="clear"> <span class="block m-t-xs"> <strong
+                                    class="font-bold">{$Think.session.username}</strong>
+                             </span></span> </a>
+                </div>
+                <div class="logo-element">
+                    IN+
+                </div>
+            </li>
+
+
+
+            <li <?php echo ($_CONTROLLER=='Index') ? ' class="active"' : '' ?>>
+            <a href="/index/index"><i class="fa fa-bank"></i><span class="nav-label">测试页面</span></a>
+            </li>
+           
+            <!-- 文本框例子 -->
+            <li <?php echo ($_CONTROLLER=='Knight') ? ' class="active"' : '' ?>>
+                <a href="javascript:">
+                    <i class="fa fa-bullhorn"></i>
+                    <span class="nav-label">骑士管理</span>
+                    <span class="fa arrow"></span>
+                </a>
+                    <ul class="nav nac-second-level collapse">
+                        <li<?php echo $_CONTROLLER=='Knight' ? ' class="active"':''?>>
+                            <a href="/Knight/showList">骑士列表</a>
+                        </li>
+                        <li<?php echo $_CONTROLLER=='Knight' ? ' class="active"':''?>>
+                            <a href="/Knight/checkList">骑士审核</a>
+                        </li>
+                        <li<?php echo $_CONTROLLER=='Knight' ? ' class="active"':''?>>
+                            <a href="/Knight/money">财务中心</a>
+                        </li>
+                    </ul>
+            </li>
+            
+
+
+        </ul>
+
+    </div>
+</nav>

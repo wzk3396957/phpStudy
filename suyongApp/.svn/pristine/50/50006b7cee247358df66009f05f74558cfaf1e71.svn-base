@@ -1,0 +1,30 @@
+<?php
+
+namespace app\home\controller;
+
+use app\home\controller\Base;
+use think\Db;
+
+class Order extends Base{
+
+	private $connect = 'mysql://root:suyongkeji@suyongw.cn:3306/send#utf8';
+
+    public function showList(){
+        $CONFIG = [
+            'path' => [
+                '首页',
+                '订单列表'
+            ]
+        ];
+        $this->assign('CONFIG', $CONFIG);
+        $area = Db::connect($this->connect)->table('order') ->group('area') ->select();
+        dump($area);die;
+        $list = Db::connect($this->connect) ->table('order')
+                                            ->alias('o')
+                                            ->join('user u','o.openid = u.openid')
+                                            ->field('o.*,u.username')
+                                            ->paginate(8);
+        $this->assign('list',$list);
+        return $this -> fetch();
+    }
+}

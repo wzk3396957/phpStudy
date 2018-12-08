@@ -1,0 +1,360 @@
+<?php if (!defined('THINK_PATH')) exit(); /*a:7:{s:97:"F:\phpstudy\PHPTutorial\WWW\BaoMing\YingXiong\public/../application/home\view\activity\index.html";i:1525232227;s:80:"F:\phpstudy\PHPTutorial\WWW\BaoMing\YingXiong\application\home\view\_Layout.html";i:1524898739;s:86:"F:\phpstudy\PHPTutorial\WWW\BaoMing\YingXiong\application\home\view\_Layout\_head.html";i:1524836918;s:87:"F:\phpstudy\PHPTutorial\WWW\BaoMing\YingXiong\application\home\view\_Layout\_menus.html";i:1525078626;s:88:"F:\phpstudy\PHPTutorial\WWW\BaoMing\YingXiong\application\home\view\_Layout\_topbar.html";i:1524574054;s:88:"F:\phpstudy\PHPTutorial\WWW\BaoMing\YingXiong\application\home\view\_Layout\_footer.html";i:1524800852;s:86:"F:\phpstudy\PHPTutorial\WWW\BaoMing\YingXiong\application\home\view\_Layout\_foot.html";i:1525005949;}*/ ?>
+<!DOCTYPE html>
+<html>
+
+<?php 
+$_CONTROLLER = \think\Request::instance()->controller();
+ ?>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>专业小程序模板开发一体化开放平台</title>
+
+    <link href="inspinia/css/bootstrap.min.css" rel="stylesheet">
+    <link href="inspinia/font-awesome/css/font-awesome.css" rel="stylesheet">
+
+    <!-- Toastr style -->
+    <link href="inspinia/css/plugins/toastr/toastr.min.css" rel="stylesheet">
+
+    <!-- Gritter -->
+    <link href="inspinia/js/plugins/gritter/jquery.gritter.css" rel="stylesheet">
+
+    <link href="inspinia/css/animate.css" rel="stylesheet">
+    <link href="inspinia/css/style.css" rel="stylesheet">
+
+    <!--Confirm-->
+    <link href="inspinia/js/plugins/confirm/jquery-confirm.min.css" rel="stylesheet">
+    <!--Confirm-->
+
+    <!--Controller_custom-->
+    <?php if(isset($CONFIG['css'][0])): $__FOR_START_11782__=0;$__FOR_END_11782__=count($CONFIG['css']);for($i=$__FOR_START_11782__;$i < $__FOR_END_11782__;$i+=1){ ?>
+    <link rel="stylesheet" href="inspinia/<?php echo $CONFIG['css'][$i]; ?>">
+    <?php } endif; ?>
+
+    <!--Main css-->
+    <link href="home/main.css" rel="stylesheet">
+
+</head>
+
+
+
+<body class="pace-done" data-host="">
+
+<div id="wrapper">
+
+    <nav class="navbar-default navbar-static-side" role="navigation">
+    <div class="sidebar-collapse">
+        <ul class="nav metismenu" id="side-menu">
+            <li class="nav-header">
+                <div class="dropdown profile-element"> <span>
+                            <img style="width: 60px;height: 60px" alt="image" class="img-circle" src="<?php echo \think\Session::get('avatar'); ?>"/>
+                             </span>
+                    <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                            <span class="clear"> <span class="block m-t-xs"> <strong
+                                    class="font-bold"><?php echo \think\Session::get('username'); ?></strong>
+                             </span></span> </a>
+                </div>
+                <div class="logo-element">
+                    IN+
+                </div>
+            </li>
+            <li <?php echo ($_CONTROLLER=='Index') ? ' class="active"' : '' ?>>
+            <a href="index.html"><i class="fa fa-bank"></i><span class="nav-label">首页</span></a>
+            </li>
+
+
+            <li <?php echo ($_CONTROLLER=='Store') ? ' class="active"' : '' ?>>
+            <a href="store.html"><i class="fa fa-database"></i><span class="nav-label">我的店铺</span></a>
+            </li>
+
+
+            <?php if(\think\Session::get('uid') == 1): ?>
+            <li <?php echo ($_CONTROLLER=='User') ? ' class="active"' : '' ?>>
+            <a href="user.html"><i class="fa fa-group"></i><span class="nav-label">门店管理</span></a>
+            </li>
+            <?php endif; ?>
+
+
+            <li <?php echo ($_CONTROLLER=='Activity') ? ' class="active"' : '' ?>>
+            <a href="activity.html"><i class="fa fa-life-saver"></i><span class="nav-label">活动中心</span></a>
+            </li>
+
+
+            <li <?php echo ($_CONTROLLER=='Redpacket') ? ' class="active"' : '' ?>>
+            <a href="redpacket.html"><i class="fa fa-tasks"></i><span class="nav-label">红包列表</span></a>
+            </li>
+
+            <?php if(\think\Session::get('uid') == 1): ?>
+            <li <?php echo ($_CONTROLLER=='Allredpacket') ? ' class="active"' : '' ?>>
+            <a href="allredpacket.html"><i class="fa fa-calculator"></i><span class="nav-label">红包统计</span></a>
+            </li>
+            <?php endif; ?>
+
+        </ul>
+
+    </div>
+</nav>
+
+    <div id="page-wrapper" class="gray-bg dashbard-1">
+
+    <div class="row border-bottom">
+    <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0;">
+        <div class="navbar-header">
+            <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars"></i> </a>
+            <form role="search" class="navbar-form-custom" action="search_results.html">
+                <div class="form-group">
+                    <input type="text" placeholder="搜索..." class="form-control" name="top-search" id="top-search">
+                </div>
+            </form>
+        </div>
+        <ul class="nav navbar-top-links navbar-right">
+
+            <li>
+                <a href="index.html">
+                    <?php echo \think\Session::get('username'); ?>
+                </a>
+            </li>
+            <li>
+                <a href="login.html">
+                    <i class="fa fa-sign-out"></i> 退出登录
+                </a>
+            </li>
+        </ul>
+
+    </nav>
+</div>
+
+<?php if(isset($CONFIG['path'][0])): ?>
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-10">
+        <h2><?php echo $CONFIG['path'][1]; ?></h2>
+        <ol class="breadcrumb">
+            <li>
+                <a href="index.html"><?php echo $CONFIG['path'][0]; ?></a>
+            </li>
+            <li class="active">
+                <strong><?php echo $CONFIG['path'][1]; ?></strong>
+            </li>
+        </ol>
+    </div>
+</div>
+<?php endif; ?>
+
+
+    <main class="main-container" style="padding-left: 8px; padding-top: 12px">
+
+        <div class="main-content" style="background-color: white">
+
+            <!--百度编辑器开始-->
+<script src="http://www.baoming.com/ueditor1433/ueditor.config.js" type="text/javascript"></script>
+<script src="http://www.baoming.com/ueditor1433/ueditor.all.min.js" type="text/javascript"></script>
+<script type="text/javascript" charset="utf-8" src="http://www.baoming.com/ueditor1433/lang/zh-cn/zh-cn.js"></script>
+
+<div style="margin:0 auto; width:100%; line-height:25px; padding: 30px">
+    <iframe src="" frameborder="0" name="iframeContent" style="display: none;"></iframe>
+    <form method="post" id="uploadForm" action="Activity/update_activity" target="iframeContent" enctype="multipart/form-data" class="form-horizontal">
+        <div class="form-group">
+            <label class="col-sm-2 control-label">活动链接封面图：</label>
+            <div class="col-sm-10">
+                <div id="up_one_image"></div>
+            </div>
+            <div class="col-sm-8 col-sm-offset-2"><span class="help-block m-b-none">*公众号文章封面图</span></div>
+        </div><br>
+
+        <div class="form-group">
+            <label class="col-sm-2 control-label">H5多图：</label>
+            <div class="col-sm-10">
+                <div id="up_images"></div>
+            </div>
+            <div class="col-sm-8 col-sm-offset-2"><span class="help-block m-b-none">*H5活动内容图，不得超过5张</span></div>
+        </div><br>
+
+        <div class="form-group">
+            <label class="col-sm-2 control-label">正标题：</label>
+            <div class="col-sm-8"><input type="text" id="title" name="title" class="form-control"
+                                         placeholder="" value=""
+                                         required>
+                <span class="help-block m-b-none">*公众号链接标题</span>
+            </div>
+        </div><br>
+
+        <div class="form-group">
+            <label class="col-sm-2 control-label">副标题：</label>
+            <div class="col-sm-8">
+                <textarea  class="form-control" name="description" id="description" style="width:100%; height:60px;" required></textarea>
+                <span class="help-block m-b-none">*公众号链接简单描述</span>
+            </div>
+        </div><br>
+
+        <div class="form-group">
+            <label class="col-sm-2 control-label">电话：</label>
+            <div class="col-sm-8"><input type="text" id="tel" name="tel" class="form-control"
+                                         placeholder="" value=""
+                                         required>
+                <span class="help-block m-b-none">*报名电话</span>
+            </div>
+        </div><br>
+
+        <div class="form-group">
+            <label class="col-sm-2 control-label">虚拟预约人数：</label>
+            <div class="col-sm-8"><input type="text" id="subscribe_num" name="subscribe_num" class="form-control"
+                                         placeholder="" value=""
+                                         required>
+                <span class="help-block m-b-none">*初始化报名人数</span>
+            </div>
+        </div><br>
+
+        <div class="form-group">
+            <label class="col-sm-2 control-label">活动截止时间：</label>
+            <div class="col-sm-8"><input type="text" id="outline_time" name="outline_time" class="form-control"
+                                         placeholder="" value=""
+                                         required>
+                <span class="help-block m-b-none">*样式如 2018-4-28</span>
+            </div>
+        </div><br>
+
+        <div class="form-group">
+            <label class="col-sm-2 control-label">活动地点：</label>
+            <div class="col-sm-8"><input type="text" id="address" name="address" class="form-control"
+                                         placeholder="" value=""
+                                         required>
+                <span class="help-block m-b-none">*请输入详细地址</span>
+            </div>
+        </div><br>
+
+        <div class="form-group">
+            <label class="col-sm-2 control-label">背景音乐：</label>
+            <div class="col-sm-8">
+                <input type="file" id="music" name="music" class="form-control" placeholder="" value="">
+                <span class="help-block m-b-none">* 请上传MP3格式的文件，60秒以内， 小于2M</span>
+            </div>
+        </div><br>
+
+        <div class="form-group" style="margin-top: 20px">
+            <label class="col-sm-2 control-label">活动详情：</label>
+            <div class="col-sm-8">
+        <textarea name="activity_describe" id="activity_describe" style="width:100%; height:250px;" required></textarea>
+            </div>
+        </div>
+        <button style="display: none" onclick="getContent()">获得内容</button>
+        <div class="form-group" style="padding: 20px">
+            <div class="col-sm-4 col-sm-offset-2">
+                <button class="btn btn-primary" data-style="zoom-in" type="submit">保存信息</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+
+
+
+<!--文件上传开始-->
+<script type="text/plain" id="input_editor" style="display:none;"></script><script type="text/javascript">
+//弹出文件上传的对话框
+var url='<?php echo url('Ueditor/index'); ?>';
+//实例化编辑器
+var upload_editor = UE.getEditor('input_editor',{
+    serverUrl :url
+});
+function upFiles(){
+    upload_editor.ready(function(){
+        upload_editor.hide();//隐藏编辑器
+        //文件上传监听
+        // 需要在ueditor.all.min.js文件中找到d.execCommand("insertHtml",l)之后插入d.fireEvent('afterUpfile',b)
+        upload_editor.addListener('afterUpfile', function (t, arg){
+            document.getElementById("file1").value=arg[0].url;
+        });
+    });
+    //弹出文件上传的对话框
+    var myFiles = upload_editor.getDialog("attachment");
+    myFiles.open();
+}
+</script>
+<!--文件上传结束-->
+<!--图片上传开始-->
+<script type="text/plain" id="input_editor1" style="display:none;"></script><script type="text/javascript">
+//弹出图片上传的对话框
+var url='<?php echo url('Ueditor/index'); ?>';
+//实例化编辑器
+var upload_editor1 = UE.getEditor('input_editor1',{
+    serverUrl :url
+});
+
+</script>
+<!--图片上传结束-->
+<!--富文本编辑器开始-->
+<script type="text/javascript">
+    var url='<?php echo url('Ueditor/index'); ?>';
+    var ue = UE.getEditor('activity_describe',{
+        serverUrl :url
+    });
+
+    function getContent() {
+        var arr = [];
+        arr.push(UE.getEditor('activity_describe').getContent());
+        return arr[0];
+        // alert(arr.join("\n"));
+    }
+</script>
+<!--富文本编辑器结束-->
+
+
+
+
+        </div>
+
+        <div class="footer">
+    <div class="pull-right">
+        <a href="index.html"><small style="">联系我们</small></a>
+    </div>
+    <div class="pull-left">
+        <small>Copyright 速用科技  ©2017-2018</small>
+    </div>
+</div>
+
+
+    </main>
+
+    </div>
+
+</div>
+
+</body>
+
+<!-- Mainly scripts -->
+<script src="inspinia/js/jquery-2.1.1.js"></script>
+<script src="inspinia/js/bootstrap.min.js"></script>
+<script src="inspinia/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+<script src="inspinia/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+<script src="inspinia/js/jquery.cookie.js"></script>
+
+<!-- Custom and plugin javascript -->
+<script src="inspinia/js/inspinia.js"></script>
+<script src="inspinia/js/plugins/pace/pace.min.js"></script>
+
+<!--Confirm-->
+<script src="inspinia/js/plugins/confirm/jquery-confirm.min.js"></script>
+<script src="inspinia/js/plugins/toastr/toastr.min.js"></script>
+
+<!--Loading-->
+<script src="inspinia/js/plugins/loading/spin.min.js"></script>
+<script src="inspinia/js/plugins/loading/myloading.js"></script>
+
+
+<!--Controller_custom-->
+<?php if(isset($CONFIG['js'][0])): $__FOR_START_28365__=0;$__FOR_END_28365__=count($CONFIG['js']);for($i=$__FOR_START_28365__;$i < $__FOR_END_28365__;$i+=1){ ?>
+<script src="inspinia/<?php echo $CONFIG['js'][$i]; ?>"></script>
+<?php } endif; ?>
+
+<!--Loading js plugin-->
+<script src="home/plugin.js"></script>
+
+<!--Controller_action-->
+<script src="home/<?php echo \think\Request::instance()->controller(); ?>/<?php echo \think\Request::instance()->action(); ?>.js"></script>
+
+
+
+</html>

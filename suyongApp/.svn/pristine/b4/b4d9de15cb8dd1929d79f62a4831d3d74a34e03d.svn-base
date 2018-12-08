@@ -1,0 +1,30 @@
+function req_api(){}
+
+function ajax(mainUrl, data, type = "GET") {
+    var url = "https://pay.suyongw.com/wxpay" + mainUrl;
+    return new Promise((resolve, reject) => {
+
+        $.ajax({
+            url,
+            type,
+            data,
+            dataType: "json",
+            success: res => {
+                resolve(res)
+            },
+            error: err => {
+                reject(err)
+            }
+        })
+
+    })
+}
+
+req_api.prototype = {
+    //登录
+    login: (parm) => ajax("/index/login", parm, "POST"),
+    //保存商户数据
+    save_date: (parm) => ajax("/join/save_date", parm, "POST")
+
+}
+

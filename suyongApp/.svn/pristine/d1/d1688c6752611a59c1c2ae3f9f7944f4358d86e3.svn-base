@@ -1,0 +1,41 @@
+<div class="row">
+    <div class="col-lg-12">
+        <div class="ibox float-e-margins">
+            <div class="ibox-content">
+
+                
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th>账号</th>
+                            <th>密码</th>
+                            <th>区域</th>
+                            <th>添加区域</th>
+                            <th>删除</th>
+                        </tr>
+                        </thead>
+                        
+                        <tbody>
+                       	        {volist name="list" id="vo"}
+                                    <tr>
+                                        <td>{$vo.username}</td>
+                                        <td>{$vo.password}</td>
+                                        <td>{$vo.area}</td>
+                                        <td>
+                                            <a href="addArea?id={$vo.id}">添加区域</a>
+                                        </td>
+                                        <td>
+                                            <a href="javascript:void(0)" data="{$vo.id}" class="del">删除</a>
+                                        </td>
+                                    </tr>
+                                {/volist}
+                        </tbody>
+                    </table>
+                    {$list->render()}
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

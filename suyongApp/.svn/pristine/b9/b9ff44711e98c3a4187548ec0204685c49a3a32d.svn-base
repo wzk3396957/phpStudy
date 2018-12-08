@@ -1,0 +1,21 @@
+// $(document).ready(function(){
+// 	$('#area').on('change',function(){
+// 		var area = $(this).val();
+// 		$.ajax({
+// 			url:'ajaxList',
+// 			type:'post',
+// 			dataType:'json',
+// 			data: {apage:page,area:area},
+// 			success:function(data){
+// 			$("#result").html(data.page);
+// 			$('#mylist').empty();
+// 			$obj='';
+// 			for (var i=0;i<data.list.length;i++)
+// 			{
+// 			$obj=$obj+'<tr><td>'+data.list[i].username+'</td><td>'+data.list[i].area+'</td><td>'+data.list[i].order_num+'</td><td>'+data.list[i].start+'</td><td>'+data.list[i].over+'</td><td>'+data.list[i].comment+'</td>';
+// 			}
+// 			$('#mylist').append($obj);
+// 			}
+// 		});
+// 	});
+// });

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+{include file="_Layout/_head" /}
+
+<body class="pace-done" data-host="">
+
+<div id="wrapper">
+
+    {include file="_Layout/_menus" /}
+
+    <div id="page-wrapper" class="gray-bg dashbard-1">
+
+    {include file="_Layout/_topbar" /}
+
+
+    <main class="main-container" style="padding-left: 8px; padding-top: 12px">
+
+        <div class="main-content" style="background-color: white">
+
+            {__CONTENT__}
+
+        </div>
+
+        {include file="_Layout/_footer" /}
+
+    </main>
+
+    </div>
+
+</div>
+
+</body>
+
+{include file="_Layout/_foot" /}
+
+</html>

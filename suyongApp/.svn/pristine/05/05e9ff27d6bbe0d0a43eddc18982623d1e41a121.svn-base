@@ -1,0 +1,52 @@
+<?php
+
+namespace app\home\controller;
+
+use app\home\controller\Base;
+use think\Db;
+use think\request;
+use think\Session;
+
+class Order extends Base{
+
+	private $connect = 'mysql://root:suyongkeji@suyongw.cn:3306/send#utf8';
+
+    public function showList(){
+        $CONFIG = [
+            'path' => [
+                '首页',
+                '订单列表'
+            ]
+        ];
+        $this->assign('CONFIG', $CONFIG);
+        $area = Db::connect($this->connect)->table('order') ->group('area') ->field('area')->select();
+        $this->assign('area',$area);
+        
+        $data =  input('get.data');
+        
+        $map = $this->auth();
+        if($data){
+            Session::set('areas',$data);
+            $list = Db::connect($this->connect) ->table('order')
+                                            ->alias('o')
+                                            ->join('user u','o.openid = u.openid')
+                                            ->field('o.*,u.username')
+                                            ->where($map)
+                                            ->where('area',$data)
+                                            ->paginate(2,false,['query' => request()->param()]);
+            $this->assign('list', $list);
+            return $this->fetch();
+        }
+        Session::delete('areas');
+        $list = Db::connect($this->connect) ->table('order')
+                                            ->alias('o')
+                                            ->join('user u','o.openid = u.openid')
+                                            ->where($map)
+                                            ->field('o.*,u.username')
+                                            ->paginate(2);
+        $this->assign('list', $list);
+        return $this->fetch();
+    }
+
+   
+}

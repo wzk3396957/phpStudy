@@ -1,0 +1,87 @@
+.loading-wrap-mask{
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0,0,0,.3);
+}
+.loading-wrap-mask .loading-wrap{
+    width: 140px;
+    height: 163px;
+    position: relative;
+    border-radius: 5px;
+    background: rgba(0,0,0,.6);
+    margin: 150px auto;
+}
+.loading-wrap-mask .loading-wrap .loading-text{
+    position: absolute;
+    width: 100%;
+    bottom: 20px;
+    color: white;
+    text-align: center;
+}
+
+
+@-webkit-keyframes loading{
+    50%{
+        transform: scale(0.4);
+        opacity: 0.3;
+    }
+    100%{
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+.loading{
+    position: relative;
+    left: 65px;
+    top: 50px;
+}
+.loading i{
+    display: block;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    position: absolute;
+    background: #fff;
+}
+.loading i:nth-child(1){
+    top: 25px;
+    left: 0;
+    -webkit-animation: loading 1s ease 0s infinite;
+}
+.loading i:nth-child(2){
+    top: 17px;
+    left: 17px;
+    -webkit-animation: loading 1s ease 0.12s infinite;
+}
+.loading i:nth-child(3){
+    top: 0;
+    left: 25px;
+    -webkit-animation: loading 1s ease 0.24s infinite;
+}
+.loading i:nth-child(4){
+    top: -17px;
+    left: 17px;
+    -webkit-animation: loading 1s ease 0.36s infinite;
+}
+.loading i:nth-child(5){
+    top: -25px;
+    left: 0;
+    -webkit-animation: loading 1s ease 0.48s infinite;
+}
+.loading i:nth-child(6){
+    top: -17px;
+    left: -17px;
+    -webkit-animation: loading 1s ease 0.6s infinite;
+}
+.loading i:nth-child(7){
+    top: 0;
+    left: -25px;
+    -webkit-animation: loading 1s ease 0.72s infinite;
+}
+.loading i:nth-child(8){
+    top: 17px;
+    left: -17px;
+    -webkit-animation: loading 1s ease 0.84s infinite;
+}

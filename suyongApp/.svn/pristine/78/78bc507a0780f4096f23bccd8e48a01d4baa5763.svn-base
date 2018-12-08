@@ -1,0 +1,26 @@
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:76:"C:\inetpub\wwwroot\suyongPay\public/../application/wxpay\view\index\yao.html";i:1536809127;}*/ ?>
+<!DOCTYPE html>
+<html>
+<head>
+	<title>邀请合伙人</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0,viewport-fit=cover">
+	<!-- <link rel="stylesheet" type="text/css" href="/static/css/register.css"> -->
+	<link rel="stylesheet" type="text/css" href="/static/css/yao.css">
+</head>
+<body>
+	<div class="adv-box">
+		<div class="adv-img">
+			<img src="/static/images/advice.png">
+		</div>
+		<div class="adv-txt">
+			<h3>邀请链接</h3>
+			<p>点击链接，分享给好友</p>
+		</div>
+		<!-- <div class="adv-btn">
+			<button id="copy">复制链接</button>
+		</div> -->
+	</div>
+
+	<div class="adv-show"><a href="<?php echo $arr['url']; ?>"><?php echo $arr['url']; ?></a></div>
+</body>
+</html>

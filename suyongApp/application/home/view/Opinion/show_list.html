@@ -1,0 +1,36 @@
+<div class="row">
+    <div class="col-lg-12">
+        <div class="ibox float-e-margins">
+            <div class="ibox-content">
+
+                
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th>骑士名</th>
+                            <th>意见内容</th>
+                            <th>图片</th>
+                        </tr>
+                        </thead>
+                       
+                        <style>
+                            img{width:50px;}
+                        </style>
+                        <tbody>
+                       	        {volist name="list" id="vo"}
+                                    <tr>
+                                        <td>{$vo.username}</td>
+                                        <td>{$vo.content}</td>
+                                        <td><a href="{$vo.img}"><img src="{$vo.img}"/></a></td>
+                                    <tr>
+                                {/volist}
+                        </tbody>
+                    </table>
+                    {$list->render()}
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

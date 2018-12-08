@@ -1,0 +1,83 @@
+<?php
+
+namespace app\home\controller;
+
+use app\home\controller\Base;
+use think\Db;
+use think\request;
+use think\Session;
+
+class Order extends Base{
+
+	private $connect = 'mysql://root:suyongkeji@suyongw.cn:3306/send#utf8';
+
+    public function showList(){
+        $CONFIG = [
+            'path' => [
+                '首页',
+                '订单列表'
+            ]
+        ];
+        $this->assign('CONFIG', $CONFIG);
+        $area = Db::connect($this->connect)->table('order') ->group('area') ->field('area')->select();
+        $this->assign('area',$area);
+        
+        $data =  input('get.data');
+        
+        if(Session::get('auth')=='2'){
+            if($data){
+                Session::set('areas',$data);
+                $list = Db::connect($this->connect) ->table('order')
+                                                ->alias('o')
+                                                ->join('user u','o.openid = u.openid')
+                                                ->field('o.*,u.username')
+                                                ->where('area',$data)
+                                                ->where('area','in',Session::get('area'))
+                                                ->paginate(2,false,['query' => request()->param()]);
+                $this->assign('list', $list);
+                return $this->fetch();
+            }
+            Session::delete('areas');
+            $list = Db::connect($this->connect) ->table('order')
+                                                ->alias('o')
+                                                ->join('user u','o.openid = u.openid')
+                                                ->field('o.*,u.username')
+                                                ->where('area','in',Session::get('area'))
+                                                ->paginate(2);
+            $this->assign('list', $list);
+            return $this->fetch();
+        }else if(Session::get('auth')=='3'){
+            $area = Session::get('area');
+            $list = Db::connect($this->connect) ->table('order')
+                                            ->alias('o')
+                                            ->join('user u','o.openid = u.openid')
+                                            ->field('o.*,u.username')
+                                            ->where('area',$area)
+                                            ->paginate(2);
+            $this->assign('list', $list);
+            return $this->fetch();
+        }
+
+        if($data){
+            Session::set('areas',$data);
+            $list = Db::connect($this->connect) ->table('order')
+                                            ->alias('o')
+                                            ->join('user u','o.openid = u.openid')
+                                            ->field('o.*,u.username')
+                                            ->where('area',$data)
+                                            ->paginate(2,false,['query' => request()->param()]);
+            $this->assign('list', $list);
+            return $this->fetch();
+        }
+        Session::delete('areas');
+        $list = Db::connect($this->connect) ->table('order')
+                                            ->alias('o')
+                                            ->join('user u','o.openid = u.openid')
+                                            ->field('o.*,u.username')
+                                            ->paginate(2);
+        $this->assign('list', $list);
+        return $this->fetch();
+    }
+
+   
+}

@@ -1,0 +1,11 @@
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:82:"C:\inetpub\wwwroot\suyongPay\public/../application/wxpay\view\atm\partner_ATM.html";i:1536906095;}*/ ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>合伙人提现</title>
+</head>
+<body>
+<h1>(页面地址：https://pay.suyongw.com/wxpay/atm/partneratm)</h1>
+</body>
+</html>

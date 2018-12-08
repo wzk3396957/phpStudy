@@ -1,0 +1,33 @@
+<div class="row">
+    <div class="col-lg-12">
+        <div class="ibox float-e-margins">
+            <div class="ibox-content">
+
+                
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th>商家名</th>
+                            <th>收益</th>
+                            <th>时间</th>
+                        </tr>
+                        </thead>
+                            
+                        <tbody>
+                            {volist name="list" id="vo"}
+                                    <tr>
+                                        <td>{$vo.username}</td>
+                                        <td>{$vo.money}</td>
+                                        <td>{$vo.time|date="Y-m-d H:i:s",###}</td>
+                                    </tr>
+                                {/volist}
+                        </tbody>
+                    </table> 
+                    {$list->render()}
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

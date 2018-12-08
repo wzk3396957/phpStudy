@@ -1,0 +1,60 @@
+<?php
+
+namespace app\home\controller;
+
+use app\home\controller\Base;
+use think\Db;
+
+class Area extends Base{
+
+	private $connect = 'mysql://root:suyongkeji@suyongw.cn:3306/send#utf8';
+
+    public function setArea(){
+        $CONFIG = [
+            'css' => [
+                '../static/css/city-picker.css',
+            ],
+            'js' => [
+                '../static/js/jquery.min.js',
+                '../static/js/city-picker.data.js',
+                '../static/js/city-picker.js',
+            ],
+            'path' => [
+                '首页',
+                '文章列表'
+            ]
+
+        ];
+        $this->assign('CONFIG', $CONFIG);
+        return $this -> fetch();
+    }
+
+    public function do_set(){
+        $data = input('post.');
+        $res = Db::connect($this->connect)->table('admin')->insert($data);
+        return $res?'1':'0';
+    }
+
+    public function showList(){
+        $CONFIG = [
+            'path' => [
+                '首页',
+                '合伙人列表'
+            ]
+        ]; 
+        $this->assign('CONFIG', $CONFIG);
+        $list = Db::connect($this->connect)->table('admin')->where('id','neq',1)->paginate(10);
+        $this->assign('list',$list);
+        return $this->fetch();
+    }
+     // 删除
+    public function del(){
+        $id = input('id');
+        if (empty($id)) {
+            return 'request lost!';
+        }
+        $res = Db::connect($this->connect)->table('admin')->where('id',$id)->delete();
+        
+        return $res? '1' : '0';
+    }
+}

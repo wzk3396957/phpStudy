@@ -1,0 +1,32 @@
+<div class="row">
+
+    <div class="col-lg-12">
+        <div class="ibox float-e-margins">
+            <div class="ibox-content">
+
+                
+
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th>账号</th>
+                            <th>邀请码</th>
+                            <th>用法</th>
+                        </tr>
+                        </thead>
+                        
+                        <tbody id='myList'>
+                                    <tr>
+                                        <td>{$data.username}</td>
+                                        <td>{$data.id}KA59</td>
+                                        <td>请将邀请码给商家完成注册</td>
+                                    </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,49 @@
+<div class="row">
+    <div class="col-lg-12">
+  
+<div style="margin:0 auto; width:100%; line-height:25px; padding: 30px">
+    <iframe src="" frameborder="0" name="iframeContent" style="display: none;"></iframe>
+    <form method="post" id="uploadForm" action="do_set" target="iframeContent" enctype="multipart/form-data" class="form-horizontal">
+       
+
+
+        <div class="form-group">
+            <label class="col-sm-2 control-label">账号：</label>
+            <div class="col-sm-8"><input type="text" id="title" name="title" class="form-control"
+                                         placeholder="" value=""
+                                         required>
+                <span class="help-block m-b-none">*账号</span>
+            </div>
+        </div><br>
+        
+        <div class="form-group">
+            <label class="col-sm-2 control-label">密码：</label>
+            <div class="col-sm-8"><input type="text" id="price" name="price" class="form-control"
+                                         placeholder="" value=""
+                                         required>
+                <span class="help-block m-b-none">*密码</span>
+            </div>
+        </div><br>
+
+       
+         <div class="form-group">
+            <label class="col-sm-2 control-label">区域：</label>
+            <div class="col-sm-8">
+                <select id="cmbProvince" name="cmbProvince"></select>  
+				<select id="cmbCity" name="cmbCity"></select>  
+				<select id="cmbArea" name="cmbArea"></select>  
+				<!-- <input type="text" value="详细地址" onblur="if(this.value=''){this.value='详细地址'}" onfocus="if(this.value='详细地址'){this.value='';this.style.color='#ff0000'}"> -->
+            </div>
+        </div><br>
+
+
+        <div class="form-group" style="padding: 20px">
+            <div class="col-sm-4 col-sm-offset-2">
+                <button class="btn btn-primary" data-style="zoom-in" type="submit" id="add_detail">添加文章</button>
+            </div>
+        </div>
+    </form>
+   </div>
+
+    </div>
+</div>

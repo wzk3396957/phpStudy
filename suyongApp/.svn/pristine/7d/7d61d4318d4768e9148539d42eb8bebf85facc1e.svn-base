@@ -1,0 +1,43 @@
+<?php
+
+namespace app\home\controller;
+
+use app\home\controller\Base;
+use think\Db;
+use think\Session;
+
+class Pull extends Base{
+
+	private $connect = 'mysql://root:suyongkeji@suyongw.cn:3306/send#utf8';
+    private $string = 'WK1BCMX647TDJH39SNA2YFVRGPZE85RQU';// 商家邀请码解码字符串
+
+	public function showList(){
+        $CONFIG = [
+            'path' => [
+                '首页',
+                '邀请商家/骑士'
+            ]
+        ]; 
+        $this->assign('CONFIG', $CONFIG);
+        $id = Session::get('id');
+        $data = Db::connect($this->connect)->table('admin')->where('id',$id)->find();
+        $data['invite'] = $this->setInvite($data['id'],$this->string);
+        $this->assign('data',$data);
+        return $this->fetch();
+    }
+
+    // 根据id生成唯一邀请码
+    private function setInvite($id,$string){
+        $code = '';
+        while ($id) {
+            $mod = $id %33;
+            $id = (int)$id /33;
+            $code = $string[$mod].$code;
+        }
+        if(strlen($code) < 6){
+            $code = str_pad($code,6,'0',STR_PAD_LEFT);
+        }
+
+        return $code;
+    }
+}

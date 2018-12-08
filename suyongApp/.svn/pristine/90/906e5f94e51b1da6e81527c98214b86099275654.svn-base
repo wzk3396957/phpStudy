@@ -1,0 +1,82 @@
+<?php
+
+namespace app\home\controller;
+
+use app\home\controller\Base;
+use think\Db;
+
+class Knight extends Base{
+
+	private $connect = 'mysql://root:suyongkeji@suyongw.cn:3306/send#utf8';
+
+    public function showList(){
+        $CONFIG = [
+            'path' => [
+                '首页',
+                '骑士列表'
+            ]
+        ];
+        $this->assign('CONFIG', $CONFIG);
+        $map = $this->auth();
+        $list = Db::connect($this->connect)->table('knight')->where($map)->where(['state'=>1])->paginate(8)->each(function($item, $key){
+                $id_img = explode(",",$item["id_card"]);
+                $item['id_img']=$id_img;
+                return $item;
+            });
+        $this->assign('list',$list);
+        return $this -> fetch();
+    }
+
+	public function checkList(){
+		$CONFIG = [
+            'path' => [
+                '首页',
+                '骑士审核'
+            ]
+        ];
+        $this->assign('CONFIG', $CONFIG);
+
+        $map = $this->auth();
+        $list = Db::connect($this->connect)->table('knight')->where($map)->where(['state'=>2])->paginate(8)->each(function($item, $key){
+                $id_img = explode(",",$item["id_card"]);
+                $item['id_img']=$id_img;
+                return $item;
+            });
+        $this->assign('list',$list);
+		return $this -> fetch();
+	}
+	//审核
+    public function check(){
+        $id = input("post.id");
+        $state = input("post.state");
+        //dump($p);die;
+        $re = Db::connect($this->connect)->table('knight')->where('id',$id)->update(['state'=>$state]);
+        return $re?'1':'0';
+    }
+    // 删除
+    public function del(){
+        $id = input('id');
+        if (empty($id)) {
+            return 'request lost!';
+        }
+        $res = Db::connect($this->connect)->table('knight')->where('id',$id)->delete();
+        
+        return $res? '1' : '0';
+    }
+    //财务中心
+    public function money(){
+        $CONFIG = [
+            'path' => [
+                '首页',
+                '财务中心'
+            ]
+        ];
+        $list = Db::connect($this->connect)->table('finance') ->alias('f')
+                                                              ->join('knight k','f.k_id = k.id')
+                                                              ->field('f.*,k.username')
+                                                              ->paginate(10);
+        $this->assign('CONFIG',$CONFIG);
+        $this->assign('list',$list);
+        return $this->fetch();
+    }
+}

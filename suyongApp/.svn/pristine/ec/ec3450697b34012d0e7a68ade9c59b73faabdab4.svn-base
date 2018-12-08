@@ -1,0 +1,38 @@
+<div class="row">
+    <div class="col-lg-12">
+  
+<div style="margin:0 auto; width:100%; line-height:25px; padding: 30px">
+    <iframe src="" frameborder="0" name="iframeContent" style="display: none;"></iframe>
+    <form method="post" id="uploadForm" action="" target="iframeContent" enctype="multipart/form-data" class="form-horizontal">
+       
+
+
+        <div class="form-group">
+            <label class="col-sm-2 control-label">上级合伙人：</label>
+            <div class="col-sm-8"><input type="text" id="up" name="up" class="form-control"
+                                         placeholder="" value="{$data.up}"
+                                         required>
+                <span class="help-block m-b-none">*上级合伙人分成</span>
+            </div>
+        </div><br>
+        
+        <div class="form-group">
+            <label class="col-sm-2 control-label">上上级合伙人：</label>
+            <div class="col-sm-8"><input type="text" id="upup" name="upup" class="form-control"
+                                         placeholder="" value="{$data.upup}"
+                                         required>
+                <span class="help-block m-b-none">*上上级合伙人分成</span>
+            </div>
+        </div><br>
+        
+        <input type='hidden' name='id' id='id' value='{$data.id}'>
+        <div class="form-group" style="padding: 20px">
+            <div class="col-sm-4 col-sm-offset-2">
+                <button class="btn btn-primary" data-style="zoom-in" type="submit" id="add_detail">设置分成</button>
+            </div>
+        </div>
+    </form>
+   </div>
+
+    </div>
+</div>

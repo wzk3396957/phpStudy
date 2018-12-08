@@ -1,0 +1,19 @@
+$("#out_login").click(function(){
+
+        $.ajax({
+            url: "https://pay.suyongw.com/wxpay/index/out_login",
+            type: 'POST',
+            data: {
+            },
+            dataType: 'json',
+            success:function(res){
+                var b = res.info;
+                if(b == 0){
+                    confirm(res.msg)
+                }else if (b == 1){
+                    window.location= "https://pay.suyongw.com/wxpay/index/login"
+                }
+            }
+        })
+
+});

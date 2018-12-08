@@ -1,0 +1,69 @@
+table.dataTable{
+    margin-top:10px !important;
+}
+select.input-sm{
+    height:35px
+}
+div.dataTables_wrapper div.dataTables_filter{
+    margin-top:3px
+}
+th{
+    text-align : center;
+}
+td{
+    text-align : center;
+}
+.dataTables_wrapper{
+    padding-bottom : 2px;
+}
+div.table-responsive>div.dataTables_wrapper>div.row>div[class^="col-"]:last-child{
+    padding-right : 10px;
+}
+div.table-responsive>div.dataTables_wrapper>div.row>div[class^="col-"]:first-child{
+    padding-right : 10px;
+}
+table.dataTable thead>tr>th.sorting_asc, table.dataTable thead>tr>th.sorting_desc, table.dataTable thead>tr>th.sorting, table.dataTable thead>tr>td.sorting_asc, table.dataTable thead>tr>td.sorting_desc, table.dataTable thead>tr>td.sorting{
+    padding-right : 1px;
+}
+div.dataTables_wrapper div.dataTables_info{
+    padding-top : 20px;
+    padding-left: 20px;
+}
+.pagination{
+    padding-top : 20px;
+    padding-right: 20px;
+}
+/**每页几条**/
+.dataTables_length{
+    padding-left: 10px;
+    padding-top: 10px;
+    width: 300px;
+}
+/**搜索**/
+.dataTables_filter{
+    padding-right: 1px;
+    padding-top: 10px;
+}
+div.dataTables_wrapper div.dataTables_filter label{
+    font-weight : bold;
+}
+/**上边框**/
+.table>caption+thead>tr:first-child>td, .table>caption+thead>tr:first-child>th, .table>colgroup+thead>tr:first-child>td, .table>colgroup+thead>tr:first-child>th, .table>thead:first-child>tr:first-child>td, .table>thead:first-child>tr:first-child>th{
+    border-top : 1px;
+}
+/**排序**!*/
+table.dataTable thead .sorting:after {
+    opacity: 0.2;
+    content: "\f0dc";
+    font-family: FontAwesome;
+}
+table.dataTable thead .sorting_asc:after {
+    content: "\f0de";
+    color:#337ab7;
+    font-family: FontAwesome;
+}
+table.dataTable thead .sorting_desc:after {
+    content: "\f0dd";
+    color:#337ab7;
+    font-family: FontAwesome;
+}

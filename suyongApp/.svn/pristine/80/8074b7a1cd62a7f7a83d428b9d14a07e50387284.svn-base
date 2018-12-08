@@ -1,0 +1,35 @@
+<!-- Mainly scripts -->
+<script src="/inspinia/js/jquery-2.1.1.js"></script>
+<script src="/inspinia/js/bootstrap.min.js"></script>
+<script src="/inspinia/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+<script src="/inspinia/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+<script src="/inspinia/js/jquery.cookie.js"></script>
+<script src="/ueditor/ueditor.config.js"></script>
+<script src="/ueditor/ueditor.all.js"></script>
+
+<!-- Custom and plugin javascript -->
+<script src="/inspinia/js/inspinia.js"></script>
+<script src="/inspinia/js/plugins/pace/pace.min.js"></script>
+
+<!--Confirm-->
+<script src="/inspinia/js/plugins/confirm/jquery-confirm.min.js"></script>
+<script src="/inspinia/js/plugins/toastr/toastr.min.js"></script>
+
+<!--Loading-->
+<script src="/inspinia/js/plugins/loading/spin.min.js"></script>
+<script src="/inspinia/js/plugins/loading/myloading.js"></script>
+
+
+<!--Controller_custom-->
+{if isset($CONFIG['js'][0])}
+{for start="0" end="count($CONFIG['js'])"}
+<script src="/inspinia/{$CONFIG['js'][$i]}"></script>
+{/for}
+{/if}
+
+<!--Loading js plugin-->
+<script src="/home/plugin.js"></script>
+
+<!--Controller_action-->
+<script src="/home/{$Request.controller}/{$Request.action}.js"></script>
+

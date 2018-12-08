@@ -1,0 +1,48 @@
+<?php
+
+namespace app\index\controller;
+use think\Controller;
+use think\Session;
+use think\Config;
+use app\api\controller\Api;
+use think\Db;
+
+class Index extends controller
+{
+    private $connect = 'mysql://root:suyongkeji@suyongw.cn:3306/credit#utf8';
+
+      //登陆
+   public function login(){
+       if(empty($_POST['appid']) || empty($_POST['appsecret']) || empty($_POST['code'])){
+         return '差参数';
+       }
+       $appid = $_POST['appid'];
+       $appsecret = $_POST['appsecret'];
+       $code = $_POST['code'];
+       $url="https://api.weixin.qq.com/sns/jscode2session?appid=".$appid."&secret=".$appsecret."&js_code=".$code."&grant_type=authorization_code";
+       $arr = $this->curl_get($url);  
+       $res = json_decode($arr,true);
+       return json_encode($res);
+   }
+
+      //curl
+    public function curl_get($url){
+       $info=curl_init();
+       curl_setopt($info,CURLOPT_RETURNTRANSFER,true);
+       curl_setopt($info,CURLOPT_HEADER,0);
+       curl_setopt($info,CURLOPT_NOBODY,0);
+       curl_setopt($info,CURLOPT_SSL_VERIFYPEER, false);
+       curl_setopt($info,CURLOPT_SSL_VERIFYHOST, false);
+       curl_setopt($info,CURLOPT_URL,$url);
+       $output= curl_exec($info);
+       curl_close($info);
+       return $output;
+    }
+
+    public function index(){
+      echo "1";
+    }
+
+    
+   
+}

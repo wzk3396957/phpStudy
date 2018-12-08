@@ -1,0 +1,11 @@
+<?php
+namespace app\index\model;
+use think\Model;
+use think\Db;
+class Index extends Model{
+	private $connect = 'mysql://root:suyongkeji@suyongw.cn:3306/send#utf8';
+	
+	public function finance($re){
+		return Db::connect($this->connect)->table('finance')->save($re);
+	}
+} 

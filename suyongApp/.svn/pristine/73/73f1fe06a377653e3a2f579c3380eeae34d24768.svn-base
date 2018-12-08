@@ -1,0 +1,227 @@
+<?php if (!defined('THINK_PATH')) exit(); /*a:7:{s:101:"F:\phpstudy\PHPTutorial\WWW\WaiBao\YingXiong\public/../application/home\view\classifitable\index.html";i:1522044958;s:79:"F:\phpstudy\PHPTutorial\WWW\WaiBao\YingXiong\application\home\view\_Layout.html";i:1522046547;s:85:"F:\phpstudy\PHPTutorial\WWW\WaiBao\YingXiong\application\home\view\_Layout\_head.html";i:1521861821;s:86:"F:\phpstudy\PHPTutorial\WWW\WaiBao\YingXiong\application\home\view\_Layout\_menus.html";i:1522028529;s:87:"F:\phpstudy\PHPTutorial\WWW\WaiBao\YingXiong\application\home\view\_Layout\_topbar.html";i:1522048775;s:87:"F:\phpstudy\PHPTutorial\WWW\WaiBao\YingXiong\application\home\view\_Layout\_footer.html";i:1521019945;s:85:"F:\phpstudy\PHPTutorial\WWW\WaiBao\YingXiong\application\home\view\_Layout\_foot.html";i:1521807501;}*/ ?>
+<!DOCTYPE html>
+<html>
+
+<?php 
+$_CONTROLLER = \think\Request::instance()->controller();
+ ?>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>专业小程序模板开发一体化开放平台</title>
+
+    <link href="inspinia/css/bootstrap.min.css" rel="stylesheet">
+    <link href="inspinia/font-awesome/css/font-awesome.css" rel="stylesheet">
+
+    <!-- Toastr style -->
+    <link href="inspinia/css/plugins/toastr/toastr.min.css" rel="stylesheet">
+
+    <!-- Gritter -->
+    <link href="inspinia/js/plugins/gritter/jquery.gritter.css" rel="stylesheet">
+
+    <link href="inspinia/css/animate.css" rel="stylesheet">
+    <link href="inspinia/css/style.css" rel="stylesheet">
+
+    <!--Confirm-->
+    <link href="inspinia/js/plugins/confirm/jquery-confirm.min.css" rel="stylesheet">
+    <link href="inspinia/css/plugins/toastr/toastr.min.css" rel="stylesheet">
+    <!--Confirm-->
+
+    <!--Controller_custom-->
+    <?php if(isset($CONFIG['css'][0])): $__FOR_START_14601__=0;$__FOR_END_14601__=count($CONFIG['css']);for($i=$__FOR_START_14601__;$i < $__FOR_END_14601__;$i+=1){ ?>
+    <link rel="stylesheet" href="inspinia/<?php echo $CONFIG['css'][$i]; ?>">
+    <?php } endif; ?>
+
+    <!--Main css-->
+    <link href="home/main.css" rel="stylesheet">
+
+</head>
+
+
+
+<body class="pace-done" data-host="">
+
+<div id="wrapper">
+
+    <nav class="navbar-default navbar-static-side" role="navigation">
+    <div class="sidebar-collapse">
+        <ul class="nav metismenu" id="side-menu">
+            <li class="nav-header">
+                <div class="dropdown profile-element"> <span>
+                            <img alt="image" class="img-circle" src="inspinia/img/profile_small.jpg"/>
+                             </span>
+                    <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                            <span class="clear"> <span class="block m-t-xs"> <strong
+                                    class="font-bold">广州同城社区</strong>
+                             </span></span> </a>
+                </div>
+                <div class="logo-element">
+                    IN+
+                </div>
+            </li>
+            <li>
+            <a href="index.php"><i class="fa fa-bank"></i><span class="nav-label">首页管理</span></a>
+            </li>
+
+            <li<?php echo ($_CONTROLLER=='Index' or $_CONTROLLER=='Classifitable') ? ' class="active"' : '' ?>>
+                <a href="javascript:;"><i class="fa fa-th-large"></i> <span class="nav-label">表格类</span> <span
+                        class="fa arrow"></span></a>
+                <ul class="nav nav-second-level">
+                    <li<?php echo $_CONTROLLER=='Index' ? ' class="active"' : '' ?>><a href="index.html">datatable</a></li>
+                    <li<?php echo $_CONTROLLER=='Classifitable' ? ' class="active"' : ''?>><a href="Classifitable.html">分类table</a></li>
+                    <li><a href="dashboard_3.html">表单页面</a></li>
+                    <li><a href="dashboard_5.html">常用插件<span class="label label-primary pull-right">NEW</span></a>
+                    </li>
+                </ul>
+            </li>
+
+
+
+        </ul>
+
+    </div>
+</nav>
+
+    <div id="page-wrapper" class="gray-bg dashbard-1">
+
+    <div class="row border-bottom">
+    <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0;">
+        <div class="navbar-header">
+            <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars"></i> </a>
+            <form role="search" class="navbar-form-custom" action="search_results.html">
+                <div class="form-group">
+                    <input type="text" placeholder="搜索..." class="form-control" name="top-search" id="top-search">
+                </div>
+            </form>
+        </div>
+        <ul class="nav navbar-top-links navbar-right">
+
+            <li>
+                <a href="login.html">
+                    <i class="fa fa-sign-out"></i> 退出登录
+                </a>
+            </li>
+        </ul>
+
+    </nav>
+</div>
+
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-10">
+        <h2><?php echo $CONFIG['path'][1]; ?></h2>
+        <ol class="breadcrumb">
+            <li>
+                <a href="index.html"><?php echo $CONFIG['path'][0]; ?></a>
+            </li>
+            <li class="active">
+                <strong><?php echo $CONFIG['path'][1]; ?></strong>
+            </li>
+        </ol>
+    </div>
+    <div class="col-lg-2">
+
+    </div>
+</div>
+
+
+
+    <main class="main-container" style="padding-left: 8px; padding-top: 12px">
+
+        <div class="main-content" style="background-color: #F3F3F4">
+
+            <div class="ibox float-e-margins">
+    <div class="ibox-title">
+        <button class="btn btn-primary">添加分类</button> &nbsp
+        <button class="btn btn-danger">删除多个</button>
+    </div>
+    <div class="ibox-content">
+        <table class="table table-hover table-bordered table-center">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>分类名称</th>
+                <th>图片</th>
+                <th>操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>1</td>
+                <td>Mark</td>
+                <td>Otto</td>
+                <td>@mdo</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Jacob</td>
+                <td>Thornton</td>
+                <td>@fat</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>Larry</td>
+                <td>the Bird</td>
+                <td>@twitter</td>
+            </tr>
+            </tbody>
+        </table>
+
+    </div>
+</div>
+
+
+        </div>
+
+        <div class="footer">
+    <div class="pull-right">
+        <small style="">联系我们</small>
+    </div>
+    <div class="pull-left">
+        <small>Copyright 晓云科技  ©2017-2018</small>
+    </div>
+</div>
+
+
+    </main>
+
+    </div>
+
+</div>
+
+</body>
+
+<!-- Mainly scripts -->
+<script src="inspinia/js/jquery-2.1.1.js"></script>
+<script src="inspinia/js/bootstrap.min.js"></script>
+<script src="inspinia/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+<script src="inspinia/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+
+<!-- Custom and plugin javascript -->
+<script src="inspinia/js/inspinia.js"></script>
+<script src="inspinia/js/plugins/pace/pace.min.js"></script>
+
+<!--Confirm-->
+<script src="inspinia/js/plugins/confirm/jquery-confirm.min.js"></script>
+<script src="inspinia/js/plugins/toastr/toastr.min.js"></script>
+
+<!--Loading-->
+<script src="inspinia/js/plugins/loading/spin.min.js"></script>
+<script src="inspinia/js/plugins/loading/myloading.js"></script>
+
+
+<!--Controller_custom-->
+<?php if(isset($CONFIG['js'][0])): $__FOR_START_23293__=0;$__FOR_END_23293__=count($CONFIG['js']);for($i=$__FOR_START_23293__;$i < $__FOR_END_23293__;$i+=1){ ?>
+<script src="inspinia/<?php echo $CONFIG['js'][$i]; ?>"></script>
+<?php } endif; ?>
+
+<!--Loading js plugin-->
+<script src="home/plugin.js"></script>
+
+<!--Controller_action-->
+<script src="home/<?php echo \think\Request::instance()->controller(); ?>/<?php echo \think\Request::instance()->action(); ?>.js"></script>
+
+
+
+</html>

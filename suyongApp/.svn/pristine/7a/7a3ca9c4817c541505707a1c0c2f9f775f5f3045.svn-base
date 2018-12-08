@@ -1,0 +1,59 @@
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:77:"C:\inetpub\wwwroot\suyongPay\public/../application/wxpay\view\index\team.html";i:1536635967;}*/ ?>
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<title>团队管理</title>
+	<link rel="stylesheet" type="text/css" href="/static/css/index.css">
+	<!-- <link href="favicon.ico" type="image/x-icon" rel="icon"> -->
+	<!-- <link href="iTunesArtwork@2x.png" sizes="114x114" rel="apple-touch-icon-precomposed"> -->
+</head>
+<body>
+	<div class="aui-container">
+		<div class="aui-page">
+			<div class="aui-page-my">
+				<div class="aui-my-info">
+					<div class="aui-my-info-back"></div>
+					<a href="javascript:;" class="">
+						<img src="<?php echo $arr['img']; ?>" class="aui-my-avatar">
+					</a>
+					<div class="aui-mt-location aui-l-red"></div>
+				</div>
+				<div class="aui-l-content">
+					<div class="aui-menu-list aui-menu-list-clear">
+						<ul>
+							
+							<li class="b-line">
+								<a href="#">
+									<div class="aui-icon"><img src="/static/images/leve.png"></div>
+									<h3>商户数级别</h3>
+									<div class="aui-time">钻石合伙人</div>
+								</a>
+							</li>
+							<li class="b-line">
+								<a href="javascript:;">
+									<div class="aui-icon"><img src="/static/images/cost.png"></div>
+									<h3>排名 本月流水</h3>
+									<div class="aui-time">No.<?php echo $order; ?></div>
+								</a>
+							</li>
+							<li class="b-line">
+								<a href="#">
+									<div class="aui-icon"><img src="/static/images/team.png"></div>
+									<h3>本月新增商户数</h3>
+									<div class="aui-time"><?php echo $arr['new_shop']; ?></div>
+								</a>
+							</li>
+							
+							
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script></script>
+</body>
+</html>

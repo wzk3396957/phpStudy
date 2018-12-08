@@ -1,0 +1,34 @@
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:78:"C:\inetpub\wwwroot\suyongPay\public/../application/wxpay\view\index\login.html";i:1536908505;}*/ ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>欢迎登陆</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0,viewport-fit=cover">
+    <link rel="stylesheet" type="text/css" href="/static/css/login.css">
+</head>
+<body>
+	<div class="login">
+		<div class="welcome"><img src="/static/images/welcome.png"></div>
+		<div class="login-form">
+			<div class="login-inp"><label>账号</label>
+				<input type="text" placeholder="" id="phone">
+			</div>
+			<div class="login-inp"><label>密码</label>
+				<input type="password" name="password" placeholder="" id="password">
+			</div>
+
+			<div class="login-inp" id="login"><a>立即登录</a>
+			</div>
+		</div>
+
+		<div class="login-txt"><a href="https://pay.suyongw.com/wxpay/index/register">立即注册</a>
+			<!-- |<a href="#">忘记密码？</a> -->
+		</div>
+	</div>
+
+	<script src="/static/js/jquery.min.js"></script>
+	<script src="/static/js/ajax.js"></script>
+	<script type="text/javascript" src="/static/js/login.js"></script>
+</body>
+</html>

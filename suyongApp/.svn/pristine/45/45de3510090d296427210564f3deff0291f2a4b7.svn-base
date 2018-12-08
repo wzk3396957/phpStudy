@@ -1,0 +1,38 @@
+$(document).ready(function () {
+     $("#add_detail").on('click',function () {
+           
+            var username = $("#username").val();
+            var password = $("#password").val();
+            var cmbProvince = $("select[name='cmbProvince']").val();
+            var cmbCity = $("select[name='cmbCity']").val();
+            var cmbArea = $("select[name='cmbArea']").val();
+            var area = cmbProvince+cmbCity+cmbArea;
+            
+            if(!username || !password || cmbProvince=='请选择省份' || cmbCity=='请选择城市' || cmbArea=='请选择区县'){
+                toastr.warning('请填写完整信息');
+            }else{
+                $.ajax({
+                    type: 'POST',
+                    url:'do_set',
+                    data: {
+                        username:username,
+                        password:password,
+                        area:area
+                    },
+                    dataType: 'json',
+                    success: function (data) {
+                        // console.log(data);
+                        if(data == '1'){
+                            
+                            toastr.success('设置成功！');
+                            window.setTimeout("window.location='showList'",1000);
+                        }else{
+                            toastr.success('设置失败');
+                            return false;
+                        }
+                    }
+                });
+            }
+        });
+});
+

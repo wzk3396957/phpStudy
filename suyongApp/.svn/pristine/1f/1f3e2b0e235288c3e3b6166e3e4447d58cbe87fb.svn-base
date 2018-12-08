@@ -1,0 +1,183 @@
+<?php
+
+namespace app\api\controller;
+use think\Controller;
+use think\Session;
+use think\Config;
+use think\Cookie;
+use think\Request;
+use Qiniu\Auth;
+use Qiniu\Storage\BucketManager;
+use Qiniu\Storage\UploadManager;
+
+class Api extends controller
+{
+	/**
+     * curl(get) @TAIHO
+     */
+    public static function _requestGet($url, $ssl = true)
+    {
+        // curl完成
+        $curl = curl_init();
+
+        //设置curl选项
+        curl_setopt($curl, CURLOPT_URL, $url);//URL
+        $user_agent = isset($_SERVER['HTTP_USER_AGENT']) ? $_SERVER['HTTP_USER_AGENT'] : 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36';
+        curl_setopt($curl, CURLOPT_USERAGENT, $user_agent);//user_agent，请求代理信息
+        curl_setopt($curl, CURLOPT_AUTOREFERER, true);//referer头，请求来源
+        //SSL相关
+        if ($ssl) {
+            curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);//禁用后cURL将终止从服务端进行验证
+            curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);//检查服务器SSL证书中是否存在一个公用名(common name)。
+        }
+        curl_setopt($curl, CURLOPT_HEADER, false);//是否处理响应头
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);//curl_exec()是否返回响应结果
+
+        // 发出请求
+        $response = curl_exec($curl);
+        if (false === $response) {
+            return false;
+        }
+        return $response;
+    }
+
+    /**
+     * curl(post) @TAIHO
+     */
+    // +++++++++++++++++++++++++++++++++++++++++++++++++++++
+    // |
+    // |  @TAIHO curl(post)
+    // |
+    // +++++++++++++++++++++++++++++++++++++++++++++++++++++
+    public static function _requestPost($url, $data, $ssl = true)
+    {
+        // curl完成
+        $curl = curl_init();
+
+        //设置curl选项
+        curl_setopt($curl, CURLOPT_URL, $url);//URL
+        $user_agent = isset($_SERVER['HTTP_USER_AGENT']) ? $_SERVER['HTTP_USER_AGENT'] : 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36';
+        curl_setopt($curl, CURLOPT_USERAGENT, $user_agent);//user_agent，请求代理信息
+        curl_setopt($curl, CURLOPT_AUTOREFERER, true);//referer头，请求来源
+        //SSL相关
+        if ($ssl) {
+            curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);//禁用后cURL将终止从服务端进行验证
+            curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);//检查服务器SSL证书中是否存在一个公用名(common name)。
+        }
+        // 处理post相关选项
+        curl_setopt($curl, CURLOPT_POST, true);// 是否为POST请求
+        curl_setopt($curl, CURLOPT_POSTFIELDS, $data);// 处理请求数据
+        // 处理响应结果
+        curl_setopt($curl, CURLOPT_HEADER, false);//是否处理响应头
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);//curl_exec()是否返回响应结果
+
+        // 发出请求
+        $response = curl_exec($curl);
+        if (false === $response) {
+            return false;
+        }
+        return $response;
+    }
+
+
+    // +++++++++++++++++++++++++++++++++++++++++++++++++++++
+    // |   赛邮 · 云通信 发送短信验证码  @TAIHO
+    // |   验证使用 Session:get('sms_code');
+    // |   默认 过期时间 = 600 秒 = 10 分钟
+    // |   最低 1分钟 允许重新发送一次
+    // +++++++++++++++++++++++++++++++++++++++++++++++++++++
+    public function send_valiCode($phone, $validTime = 600)
+    {
+        if (Cookie::has('sms_id') and date('U') - Session::get('sms_time') < 60) {
+            return false;
+        }
+        $code = rand(10000, 99999);
+        $sms_code = json_encode(['code' => $code]);
+        $url = 'https://api.mysubmail.com/message/xsend.json';
+        $data = "appid=14520&to=" . $phone . "&project=f7Br63&signature=fd766e9534c72a7856ab962bf8fc9059&vars=" . $sms_code;
+        $res = $this->_requestPost($url, $data);
+        $result = json_decode($res, true);
+        if ($result['status'] == 'success') {
+            Cookie::set('sms_id', $result['send_id'], $validTime);
+            Session::set('sms_code', $code);
+            Session::set('sms_id', $result['send_id']);
+            Session::set('sms_time', date('U'));
+            return $result['send_id'];
+        }
+        return false;
+    }
+
+    // +++++++++++++++++++++++++++++++++++++++++++++++++++++
+    // |
+    // |  @TAIHO 检测短信验证码
+    // |
+    // +++++++++++++++++++++++++++++++++++++++++++++++++++++
+    public function check_smsCode($code)
+    {
+        if (!isset($code) or empty($code)) {
+            return false;
+        }
+        if (Cookie::has('sms_id') and Cookie::get('sms_id') == Session::get('sms_id')) {
+            if (Session::get('sms_code') == $code) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    // +++++++++++++++++++++++++++++++++++++++++++++++++++++
+    // |
+    // |  @TAIHO 换取下载链接 
+    // |
+    // +++++++++++++++++++++++++++++++++++++++++++++++++++++
+    private static function downloadFile_url($key, $is_ssl = false)
+    {
+
+        return ($is_ssl ? 'https://' : 'http://') . 'res.suyongw.com/' . $key;
+
+    }
+
+
+    // +++++++++++++++++++++++++++++++++++++++++++++++++++++
+    // |
+    // |  @TAIHO 七牛云上传图片  $file 使用 request()->file('img')
+    // |
+    // +++++++++++++++++++++++++++++++++++++++++++++++++++++
+    public static function Upload_Img($file){
+       if(empty($file)){
+            return false;
+       }
+       $accessKey = Config::get('qiniu.appid');
+       $secretKey = Config::get('qiniu.appsecret');
+       $auth = new Auth($accessKey, $secretKey);
+       $bucket = Config::get('qiniu.bucket');
+       $token = $auth->uploadToken($bucket);
+       $filePath = $file->getRealPath();
+       $ext = pathinfo($file->getInfo('name'), PATHINFO_EXTENSION);
+       $key = substr(md5($file->getRealPath()) , 0, 5). date('YmdHis') . rand(0, 9999) . '.' . $ext;
+       $uploadMgr = new UploadManager();
+       $res = $uploadMgr->putFile($token, $key, $filePath);
+       return self::downloadFile_url($res[0]['key'],true);
+    }
+
+    public function getAccessToken($appid, $appsecret,$token_file = './access_token')
+    {
+        // 考虑过期问题，将获取的access_token存储到某个文件中
+        $life_time = 7200;
+        if (file_exists($token_file) && time() - filemtime($token_file) < $life_time) {
+            // 存在有效的access_token
+            return file_get_contents($token_file);
+        }
+        // 目标URL：
+        $url = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=" . $appid . "&secret=" . $appsecret;
+        // 向该URL，发送GET请求
+        $result = $this->_requestGet($url);
+        if (!$result) {
+            return false;
+        }
+        // 存在返回响应结果
+        $result_obj = json_decode($result);
+        return isset($result_obj->access_token) ? $result_obj->access_token : null;
+    }
+
+}
