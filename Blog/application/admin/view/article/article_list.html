@@ -31,12 +31,14 @@
 				<tr class="text-c">
 					<th width="25"><input type="checkbox" name="" value=""></th>
 					<th width="80">ID</th>
-					<th>标题</th>
+					<th width="120">标题</th>
+					<th>描述</th>
 					<th width="80">分类</th>
 					<th width="80">作者</th>
 					<th width="120">更新时间</th>
 					<!-- <th width="75">允许评论</th> -->
 					<th width='50'>文章封面</th>
+					<th width="60">是否推荐</th>
 					<th width="60">发布状态</th>
 					<th width="120">操作</th>
 				</tr>
@@ -47,10 +49,18 @@
 					<td><input type="checkbox" value="" name=""></td>
 					<td>{$vo.id}</td>
 					<td class="text-l"><u style="cursor:pointer" class="text-primary" onClick="showContent({$vo.id},'{$vo.title}')" title="查看">{$vo.title}</u></td>
+					<td>{$vo.presentation}</td>
 					<td>{$vo.art_type}</td>
 					<td>{$vo.author}</td>
 					<td>{$vo.update_time}</td>
 					<td><img src="{$vo.image}" width='50'></td>
+					<td class="td-status">
+						{if $vo.hot =="1"}
+							<span class="label label-success radius is_hot" style="cursor: pointer;" data_id="{$vo.id}">已推荐</span>
+						{else/}
+							<span class="label label-defaunt radius is_hot" style="cursor: pointer;" data_id="{$vo.id}">未推荐</span>
+						{/if}
+					</td>
 					<td class="td-status">
 						{if $vo.status =="1"}
 							<span class="label label-success radius">已发布</span>
@@ -224,6 +234,26 @@ laypage({
             location.href=setParam("page",e.curr);
         }
     }
+});
+$(function(){
+	$('.is_hot').on('click',function (){
+		var hotState = $(this);
+		var id = hotState.attr('data_id');
+		$.ajax({
+                type: "POST",
+                url: "do_hot",
+                data:  {
+                          id:id
+                        },
+                success: function (data) {
+                            if (data == 1) {
+                                location.reload();
+                            } else {
+                                layer.msg(data, {icon:2,time:1000});
+                            }
+                         }
+         });
+	});
 });
 </script> 
 </body>

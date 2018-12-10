@@ -58,6 +58,14 @@
 				<div id="preview"><img src="{$data.image}"></div>
 			</div>
 		</div>
+
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-2">描述：</label>
+			<div class="formControls col-xs-8 col-sm-9">
+				<input type="text" class="input-text" value="{$data.presentation}" placeholder="" id="presentation" name="presentation">
+			</div>
+		</div>
+
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-2">文章内容：</label>
 			<div class="formControls col-xs-8 col-sm-9"> 
@@ -85,57 +93,6 @@
 <script type="text/javascript" src="__H_ui.admin__/lib/ueditor/1.4.3/ueditor.config.js"></script> 
 <script type="text/javascript" src="__H_ui.admin__/lib/ueditor/1.4.3/ueditor.all.min.js"> </script> 
 <script type="text/javascript" src="__H_ui.admin__/lib/ueditor/1.4.3/lang/zh-cn/zh-cn.js"></script>
-<script type="text/javascript">
-$(function(){
-	$('.skin-minimal input').iCheck({
-		checkboxClass: 'icheckbox-blue',
-		radioClass: 'iradio-blue',
-		increaseArea: '20%'
-	});
-	
-	//表单验证
-	
-	
-	
-	var ue = UE.getEditor('editor');
-	
-});
-function preview(file){
-	if (file.files && file.files[0]){
-	var str = file.files[0].name;
-	var index = str .lastIndexOf(".");  
-	str  = str .substring(index + 1, str .length);
-	str = str.toLowerCase();
-	if(str != 'jpg'&&str != 'gif'&&str != 'png'&&str != 'jpeg'){
-		layer.msg('不支持此格式', {icon:5,time:1000});
-		$("#preview").html('');
-		return false;
-	} 
-	var reader = new FileReader(); 
-	reader.onload = function(evt){ 
-	$("#preview").html('<img src="' + evt.target.result + '" width="120px" />'); 
-	} 
-	reader.readAsDataURL(file.files[0]); 
-	}else{
-	$("#preview").html('<div style="filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale,src=\'' + file.value + '\'"></div>'); 
-	} 
-}
-
-function checkImg(){
-	if($('#preview').find("img").length == 0){
-		layer.msg('图片未上传', {icon:5,time:1000});
-		return false;
-	}
-	var articletitle = $('#articletitle').val();
-	var author = $('#author').val();
-	var ue = UE.getEditor('editor');
-	var editor = ue.getContent();
-	if(!articletitle || !author || !editor){
-		layer.msg('请填写完整信息', {icon:5,time:1000});
-		return false;
-	}
-}
-</script>
-<!--/请在上方写此页面业务相关的脚本-->
+<script type="text/javascript" src="__H_ui.admin__/myself/js/article_sub.js"></script>
 </body>
 </html>

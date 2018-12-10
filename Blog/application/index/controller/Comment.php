@@ -15,6 +15,7 @@ class Comment extends Controller
     	$model ->name = $data['name'];
         $model ->content = $data['content'];
         $model ->time = $data['time'];
+        $model ->art_id = $data['art_id'];
         $res = $model ->save();
         $data['id'] = $model ->id;
     	return $res?json_encode($data,JSON_UNESCAPED_UNICODE):0;

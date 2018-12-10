@@ -15,7 +15,6 @@ class Upload extends Common
             $type = strtolower(substr($name,strrpos($name,'.')+1));//得到文件类型，并且都转化成小写
             $image = DS.time().mt_rand(1,100).'.'.$type;
             $str = $dir.$image;
-            
             if (move_uploaded_file($file['tmp_name'],$str)){
             	return $upload.$image;
             }else{

@@ -45,6 +45,7 @@ class Article extends Common
             'art_type'=>input('art_type'),
             'image'=>$str,
             'sort'=>input('sort'),
+            'presentation'=>input('presentation'),
             'author'=>input('author'),
             'content'=>input('editorValue'),
             'time'=>time()
@@ -112,6 +113,9 @@ class Article extends Common
         if(!$file['name']){
             $str = ArticleModel::where('id',$id) ->value('image');
         }else{
+            if($file['error'] == 1){
+                return $this->error("图片异常","article_add",2);
+            }
             $upload = new Upload();
             $str = $upload->upload($file);
             if(!$str){
@@ -122,6 +126,7 @@ class Article extends Common
             'title'=>input('articletitle'),
             'art_type'=>input('art_type'),
             'image'=>$str,
+            'presentation'=>input('presentation'),
             'sort'=>input('sort'),
             'author'=>input('author'),
             'content'=>input('editorValue'),
@@ -138,5 +143,26 @@ class Article extends Common
         }else{
             return $this->error("编辑失败","article_add",2);
         }
+    }
+
+    public function do_hot(){
+        $id = input('id');
+        if(!$id || !is_numeric($id)){
+            return 'id非法';
+        }
+        $hot = ArticleModel::get($id);
+        if(!$hot){
+            return 'id有误';
+        }
+        if($hot->hot == 1){
+            $res = ArticleModel::update(['hot'=>0],['id'=>$id]);
+        }else{
+            $count = ArticleModel::where('hot',1) ->count();
+            if($count >= 4){
+                return '最多最能推荐4条';
+            }
+            $res = ArticleModel::update(['hot'=>1],['id'=>$id]);
+        }
+        return $res?1:'修改错误';
     }
  }
