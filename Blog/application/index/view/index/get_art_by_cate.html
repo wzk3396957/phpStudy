@@ -6,10 +6,10 @@
   <meta name="description" content="">
   <meta name="keywords" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-  <title>BLOG index with sidebar & slider  | Amaze UI Examples</title>
+  <title>BLOG  | Amaze UI Examples</title>
   <meta name="renderer" content="webkit">
   <meta http-equiv="Cache-Control" content="no-siteapp"/>
-  <link rel="icon" type="image/png" href="__INDEX__/assets/i/favicon.png">
+  <link rel="icon" type="image/png" href="assets/i/favicon.png">
   <meta name="mobile-web-app-capable" content="yes">
   <link rel="icon" sizes="192x192" href="__INDEX__/assets/i/app-icon72x72@2x.png">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -33,65 +33,40 @@
 <hr>
  {include file="common/_nav" /}
 
-<!-- banner start -->
-<div class="am-g am-g-fixed blog-fixed am-u-sm-centered blog-article-margin">
-    <div data-am-widget="slider" class="am-slider am-slider-b1" data-am-slider='{&quot;controlNav&quot;:false}' >
-    <ul class="am-slides">
-        {volist name="hot_art" id="hot"}
-          <li>
-                <img src="{$hot.image}">
-                <div class="blog-slider-desc am-slider-desc ">
-                    <div class="blog-text-center blog-slider-con">
-                        <span><a href="" class="blog-color">Article &nbsp;</a></span>               
-                        <h1 class="blog-h-margin"><a href="">{$hot.title}</a></h1>
-                        <p>{$hot.presentation}
-                        </p>
-                        <span class="blog-bor">{$hot.update_time|date="Y/m/d",###}</span>
-                        <br><br><br><br><br><br><br>                
-                    </div>
-                </div>
-          </li>
-        {/volist}
-    </ul>
-    </div>
-</div>
-<!-- banner end -->
+
 
 <!-- content srart -->
 <div class="am-g am-g-fixed blog-fixed">
-    <div class="am-u-md-8 am-u-sm-12">
-        {volist name="list" id="list"}
+    <div class="am-u-md-12 am-u-sm-12">
+        {volist name="list" id="vo"}
         <article class="am-g blog-entry-article">
             <div class="am-u-lg-6 am-u-md-12 am-u-sm-12 blog-entry-img">
-                <img src="{$list.image}" alt="" class="am-u-sm-12">
+                <img src="{$vo.image}" alt="" class="am-u-sm-12">
             </div>
             <div class="am-u-lg-6 am-u-md-12 am-u-sm-12 blog-entry-text">
                 <span><a href="" class="blog-color">article &nbsp;</a></span>
-                <span> @{$list.author} &nbsp;</span>
-                <span>{$list.update_time|date="Y/m/d",###}</span>
-                <h1><a href="/index.php/index/Index/single?id={$list.id}">{$list.title}</a></h1>
-                <p>{$list.presentation}
+                <span> @{$vo.author} &nbsp;</span>
+                <span{$vo.update_time|date="Y/m/d",###}</span>
+                <h1><a href="">{$vo.title}</a></h1>
+                <p>{$vo.presentation}
                 </p>
                 <p><a href="" class="blog-continue">continue reading</a></p>
             </div>
         </article>
         {/volist}
-
-       
+        
         
         <ul class="am-pagination">
-  <li class="am-pagination-prev"><a href="/index.php/index/index/index?page={$totalpage-1}">&laquo; Prev</a></li>
-  <li class="am-pagination-next"><a href="/index.php/index/index/index?page={$totalpage+1}">Next &raquo;</a></li>
+  <li class="am-pagination-prev"><a href="/index.php/index/index/getArtByCate?page={$totalpage-1}&id={$cate}">&laquo; Prev</a></li>
+  <li class="am-pagination-next"><a href="/index.php/index/index/getArtByCate?page={$totalpage+1}&id={$cate}">Next &raquo;</a></li>
 </ul>
     </div>
 
-    {include file="common/_right" /}
 </div>
 <!-- content end -->
 
 
-
-  <footer class="blog-footer">
+ <footer class="blog-footer">
     <div class="am-g am-g-fixed blog-fixed am-u-sm-centered blog-footer-padding">
         <div class="am-u-sm-12 am-u-md-4- am-u-lg-4">
             <h3>模板简介</h3>
@@ -129,8 +104,6 @@
 
 
 
-
-
 <!--[if (gte IE 9)|!(IE)]><!-->
 <script src="__INDEX__/assets/js/jquery.min.js"></script>
 <!--<![endif]-->
@@ -140,5 +113,6 @@
 <script src="assets/js/amazeui.ie8polyfill.min.js"></script>
 <![endif]-->
 <script src="__INDEX__/assets/js/amazeui.min.js"></script>
+<!-- <script src="assets/js/app.js"></script> -->
 </body>
 </html>

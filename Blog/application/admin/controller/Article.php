@@ -17,7 +17,7 @@ class Article extends Common
         $count = 5; //限制个数
         $totalpage=ceil(($model->count())/$count);//这里尽量简写了。
         //下面注意加上 这句 limit(($nowpage-1)*10,10)，就是数据控制每页显示数据的条数，获取页数后乘以设置的条数，获取该页的10条（自己设置）数据
-        $res=$model->limit(($nowpage-1)*$count,$count)->order('id desc')->select();
+        $res = $model->get_art_list($nowpage,$count) ->toArray();
         //最后，就是把数据和最大页数传到前端接受了完成了。（搜索条件的也要的话也要传。）
         $this->assign("totalpage",$totalpage);
         $this->assign("res",$res);
@@ -47,8 +47,7 @@ class Article extends Common
             'sort'=>input('sort'),
             'presentation'=>input('presentation'),
             'author'=>input('author'),
-            'content'=>input('editorValue'),
-            'time'=>time()
+            'content'=>input('editorValue')
         ];
         $validate = new ArticleValidate();
         if(!$validate->check($data)){
@@ -129,8 +128,7 @@ class Article extends Common
             'presentation'=>input('presentation'),
             'sort'=>input('sort'),
             'author'=>input('author'),
-            'content'=>input('editorValue'),
-            'time'=>time()
+            'content'=>input('editorValue')
         ];
         $validate = new ArticleValidate();
         if(!$validate->check($data)){
@@ -138,7 +136,7 @@ class Article extends Common
         }
         $model = new ArticleModel();
         $res = $model ->where('id',$id) ->update($data);
-        if($res){
+        if($res !== false){
             return $this->success("编辑成功","article_list",2);
         }else{
             return $this->error("编辑失败","article_add",2);
@@ -153,6 +151,9 @@ class Article extends Common
         $hot = ArticleModel::get($id);
         if(!$hot){
             return 'id有误';
+        }
+        if($hot ->status == 0){
+            return '发布后才能推荐';
         }
         if($hot->hot == 1){
             $res = ArticleModel::update(['hot'=>0],['id'=>$id]);

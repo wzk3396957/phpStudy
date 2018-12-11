@@ -13,8 +13,19 @@ class Index extends Controller
     public function index()
     {
         $model = new ArticleModel();
+        $nowpage=input('get.page',1);
+        $count = config('config.size'); //限制个数
+        $totalpage = ceil(($model->where('status',1)->count())/$count);
+        if($nowpage <= 0){
+            $nowpage = 1;
+        }
+        if($nowpage > $totalpage){
+            $nowpage = $totalpage;
+        }
+        $list = $model ->limit(($nowpage-1)*$count,$count) ->where('status',1) ->order('update_time desc') ->select();
 
-        $list = $model ->where('status',1) ->select();
+        $this->assign("totalpage",$totalpage);
+        
         $this ->assign('list',$list);
 
         $hot_art = $model ->where('hot',1) ->select();
@@ -45,11 +56,25 @@ class Index extends Controller
             $this->error('id格式错误','/index.php/index/Index/index');
         }
         $model = new ArticleModel();
-        $data = $model ->where('id',$id) ->find();
+        $data = $model ->get_single_art($id);
         $this ->assign('data',$data);
-        //文章推荐
-        $hot_art = $model ->where('hot',1) ->select();
-        $this ->assign('hot',$hot_art);
+        //上下篇
+        $left_art = $model ->where('id','<',$id) ->limit(0,1) ->order('id desc') ->find();
+        if(!$left_art){
+            $left_art = 0;
+        }
+        $this ->assign('left_art',$left_art);
+        $right_art = $model ->where('id','>',$id) ->limit(0,1) ->find();
+        if(!$right_art){
+            $right_art = 0;
+        }
+        $this ->assign('right_art',$right_art);
+        //热门专题
+        $hot_title = $model ->where('hot',1)->field('id,presentation') ->select();
+        $this ->assign('hot_title',$hot_title);
+        //分类
+        $category = CategoryModel::field('id,category') ->select();
+        $this ->assign('category',$category);
         //评论部分
         $model = new CommentModel();
         $list = $model ->getComment($id);
@@ -71,6 +96,26 @@ class Index extends Controller
         $res = ContactModel::insert($data);
         return $res?'1':'留言失败';
     }
+    //得到某个分类文章
+    public function getArtByCate(){
+        $id = input('get.id');
+        if(!$id || !is_numeric($id)){
+            $this->error('id格式错误','/index.php/index/Index/index');
+        }
+        $nowpage=input('get.page',1);
+        $count = config('config.size'); //限制个数
+        $totalpage = ceil((ArticleModel::where('status',1) ->where('art_type = 0 or art_type ='.$id) ->count())/$count);
+        if($nowpage <= 0){
+            $nowpage = 1;
+        }
+        if($nowpage > $totalpage){
+            $nowpage = $totalpage;
+        }
+        $list = ArticleModel::limit(($nowpage-1)*$count,$count) ->where('status',1) ->where('art_type = 0 or art_type ='.$id) ->order('update_time desc') ->select();
 
-    
+        $this->assign("totalpage",$totalpage);
+        $this ->assign('list',$list);
+        $this ->assign('cate',$id);
+        return $this ->fetch();
+    }
 }

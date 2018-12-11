@@ -1,277 +1,234 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html>
 <head>
-    <meta charset="utf-8">
-    <title>Single Post</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width">
-
-    <!-- Bootstrap styles -->
-    <link rel="stylesheet" href="__INDEX__/css/bootstrap.min.css">
-
-    <!-- Font-Awesome -->
-    <link rel="stylesheet" href="__INDEX__/css/font-awesome/css/font-awesome.min.css">
-
-    <!-- Google Webfonts -->
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600|PT+Serif:400,400italic' rel='stylesheet' type='text/css'>
-
-    <!-- Styles -->
-   <link rel="stylesheet" href="__INDEX__/css/style.css" id="theme-styles">
-   <link rel="stylesheet" href="__INDEX__/comment/css/style.css">
-   <link rel="stylesheet" href="__INDEX__/comment/css/comment.css">
-
-    <!--[if lt IE 9]>      
-        <script src="js/vendor/google/html5-3.6-respond-1.1.0.min.js"></script>
-    <![endif]-->
-
-    
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>article with sidebar  | Amaze UI Examples</title>
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-siteapp"/>
+  <link rel="icon" type="image/png" href="__INDEX__/assets/i/favicon.png">
+  <meta name="mobile-web-app-capable" content="yes">
+  <link rel="icon" sizes="192x192" href="__INDEX__/assets/i/app-icon72x72@2x.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="Amaze UI"/>
+  <link rel="apple-touch-icon-precomposed" href="__INDEX__/assets/i/app-icon72x72@2x.png">
+  <meta name="msapplication-TileImage" content="__INDEX__/assets/i/app-icon72x72@2x.png">
+  <meta name="msapplication-TileColor" content="#0e90d2">
+  <link rel="stylesheet" href="__INDEX__/assets/css/amazeui.min.css">
+  <link rel="stylesheet" href="__INDEX__/assets/css/app.css">
+  <link rel="stylesheet" href="__INDEX__/comment/css/style.css">
+  <link rel="stylesheet" href="__INDEX__/comment/css/comment.css">
 </head>
-<body>
-    <header>
-        <div class="widewrapper masthead">
-            <div class="container">
-                <a href="index.html" id="logo">
-                    <img src="__INDEX__/img/logo.png" alt="clean Blog">
-                </a>
 
-                <div id="mobile-nav-toggle" class="pull-right">
-                    <a href="#" data-toggle="collapse" data-target=".clean-nav .navbar-collapse">
-                        <i class="fa fa-bars"></i>
-                    </a>
-                </div>
+<body id="blog-article-sidebar">
+<!-- 显示框 -->
+<div class="am-modal am-modal-no-btn" tabindex="-1" id="your-modal">
+  <div class="am-modal-dialog">
+    <div class="am-modal-hd">Article
+      <a href="javascript: void(0)" class="am-close am-close-spin" data-am-modal-close>&times;</a>
+    </div>
+    <div class="am-modal-bd">
+      留言成功
+    </div>
+  </div>
+</div>
+<!-- header start -->
+<header class="am-g am-g-fixed blog-fixed blog-text-center blog-header">
+    <div class="am-u-sm-8 am-u-sm-centered">
+        <img width="200" src="http://s.amazeui.org/media/i/brand/amazeui-b.png" alt="Amaze UI Logo"/>
+        <h2 class="am-hide-sm-only">中国首个开源 HTML5 跨屏前端框架</h2>
+    </div>
+</header>
+<!-- header end -->
+<hr>
 
-                <nav class="pull-right clean-nav">
-                    <div class="collapse navbar-collapse">
-                        <ul class="nav nav-pills navbar-nav">
-                          
-                             <li>
-                                <a href="index.html">Home</a>
-                            </li>
-                            <li>
-                                <a href="about.html">About</a>
-                            </li>
-                            <li>
-                                <a href="contact.html">Contact</a>
-                            </li>                       
-                        </ul>
-                    </div>
-                </nav>        
-
-            </div>
+{include file="common/_nav" /}
+<hr>
+<!-- content srart -->
+<div class="am-g am-g-fixed blog-fixed blog-content">
+    <div class="am-u-md-8 am-u-sm-12">
+      <article class="am-article blog-article-p">
+        <div class="am-article-hd">
+          <h1 class="am-article-title blog-text-center">{$data.title}</h1>
+          <p class="am-article-meta blog-text-center">
+              <span><a href="#" class="blog-color">article &nbsp;</a></span>-
+              <span><a href="#">@{$data.author} &nbsp;</a></span>-
+              <span><a href="#">{$data.update_time|date="Y/m/d",###}</a></span>
+          </p>
+        </div>        
+        {$data.content}
+      </article>
+        
+        <div class="am-g blog-article-widget blog-article-margin">
+          <div class="am-u-lg-4 am-u-md-5 am-u-sm-7 am-u-sm-centered blog-text-center">
+            <span class="am-icon-tags"> &nbsp;</span>
+            <a href="#">
+                {if $data.art_type == 0}
+                  <td>全部栏目</td>
+                {else/}
+                  {volist name="$data.category" id="cate"}
+                  <td>{$cate.category}</td>
+                  {/volist}
+                {/if}
+            </a>
+            <hr>
+            <a href=""><span class="am-icon-qq am-icon-fw am-primary blog-icon"></span></a>
+            <a href=""><span class="am-icon-wechat am-icon-fw blog-icon"></span></a>
+            <a href=""><span class="am-icon-weibo am-icon-fw blog-icon"></span></a>
+          </div>
         </div>
 
-        <div class="widewrapper subheader">
-            <div class="container">
-                <div class="clean-breadcrumb">
-                    <a href="#">Blog</a>
-                    <span class="separator">&#x2F;</span>
-                    <a href="#">Bootstrap</a>
-                    <span class="separator">&#x2F;</span>
-                    <a href="#">HTML Template</a>
-                </div>
+        <!-- <hr>
+        <div class="am-g blog-author blog-article-margin">
+          <div class="am-u-sm-3 am-u-md-3 am-u-lg-2">
+            <img src="__INDEX__/assets/i/f15.jpg" alt="" class="blog-author-img am-circle">
+          </div>
+          <div class="am-u-sm-9 am-u-md-9 am-u-lg-10">
+          <h3><span>作者 &nbsp;: &nbsp;</span><span class="blog-color">amazeui</span></h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+          </div>
+        </div> -->
+        <hr>
+        <ul class="am-pagination blog-article-margin">
+          <li class="am-pagination-prev">
+          {if $left_art == '0'}
+            <a href="javascript:void(0)" class="">&laquo; 上一篇没有了</a>
+          {else/}
+            <a href="/index.php/index/Index/single?id={$left_art.id}">&laquo; {$left_art.title}</a>
+          {/if}
+          </li>
+          <li class="am-pagination-next">
+          {if $right_art == '0'}
+            <a href="javascript:void(0)" class="">&laquo; 下一篇没有了</a>
+          {else/}
+            <a href="/index.php/index/Index/single?id={$right_art.id}">{$right_art.title} &raquo;</a>
+          {/if}
+          </li>
+        </ul>
+        
+        <hr>
 
-              
-                <div class="clean-searchbox">
-                    <form action="#" method="get" accept-charset="utf-8">
-                       
-                        <input class="searchfield" id="searchbox" type="text" placeholder="Search">
-                         <button class="searchbutton" type="submit">
-                            <i class="fa fa-search"></i>
-                        </button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </header>
-
-    <div class="widewrapper main">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-8 blog-main">
-                    <article class="blog-post">
-                        <header>
-                           
-                           <!--  <div class="lead-image">
-                                <img src="{$data.image}" alt="" class="img-responsive">
-                                
-                            </div> -->
-                        </header>
-                        <div class="body">
-                            <h1>{$data.title}</h1>
-                            <div class="meta">
-                                <i class="fa fa-user"></i> {$data.author} <i class="fa fa-calendar"></i>23 Agustus 2017<i class="fa fa-comments"></i><span class="data"><a href="#comments">3 Comments</a></span>
-                            </div>
-                            {$data.content}
-
-                        </div>
-                    </article>
-
-                    <aside class="social-icons clearfix">
-                        <h3>Share on </h3> 
-                        <a href="#"><i class="fa fa-facebook"></i></a> <a href="#"><i class="fa fa-twitter"></i></a> <a href="#"><i class="fa fa-google"></i></a>
-                    </aside>
-
-                    <div class="commentAll">
+              <form class="am-form am-g">
+              <h3 class="blog-comment">评论</h3>
+            <fieldset>
+                  <div class="commentAll">
                     <!--评论区域 begin-->
                     <div class="reviewArea clearfix">
-                        <textarea class="content comment-input" placeholder="Please enter a comment&hellip;" onkeyup="keyUP(this)"></textarea>
-                        <a href="javascript:;" class="plBtn">评论</a>
+                        <textarea class="content comment-input" placeholder="Please enter a comment&hellip;" onkeyup="keyUP(this)" style="line-height: 2;"></textarea>
+                        <a href="javascript:;" class="plBtn" data_id="{$data.id}">评论</a>
                     </div>
                     <!--评论区域 end-->
                     <!--回复区域 begin-->
                     
                     <div class="comment-show">
-                        {volist name='list' id='vo'}
-                        <div class="comment-show-con clearfix">
-                            <div class="comment-show-con-img pull-left"><img src="__INDEX__/comment/images/header-img-comment_03.png" alt=""></div>
-                            <div class="comment-show-con-list pull-left clearfix" data_pid="{$vo.id}">
-                                <div class="pl-text clearfix">
-                                    <a href="#" class="comment-size-name">{$vo.name} : </a>
-                                    <span class="my-pl-con">&nbsp;{$vo.content}</span>
-                                </div>
-                                <div class="date-dz">
-                                    <span class="date-dz-left pull-left comment-time">{$vo.time}</span>
-                                    <div class="date-dz-right pull-right comment-pl-block">
-                                        <a href="javascript:;" class="removeBlock">删除</a>
-                                        <a href="javascript:;" class="date-dz-pl pl-hf hf-con-block pull-left">回复</a>
-                                        <span class="pull-left date-dz-line">|</span>
-                                        <a href="javascript:;" class="date-dz-z pull-left"><i class="date-dz-z-click-red"></i>赞 (<i class="z-num">666</i>)</a>
-                                    </div>
-                                </div>
-                                <div class="hf-list-con" style="display: block;">
-                                    {volist name='vo.comment_son' id='vol'}
-                                        <div class="all-pl-con" data_pid="{$vol.pid}"><div class="pl-text hfpl-text clearfix"><a href="#" class="comment-size-name">{$vol.name} : </a><span class="my-pl-con">{$vol.content}</span></div><div class="date-dz"> <span class="date-dz-left pull-left comment-time">{$vol.time}</span> <div class="date-dz-right pull-right comment-pl-block"> <a href="javascript:;" class="removeBlock">删除</a> <a href="javascript:;" class="date-dz-pl pl-hf hf-con-block pull-left">回复</a> <span class="pull-left date-dz-line">|</span> <a href="javascript:;" class="date-dz-z pull-left" onclick="comment_like({$vol.id})"><i class="date-dz-z-click-red"></i>赞 (<i class="z-num">666</i>)</a> </div> </div></div>
-                                    {/volist}
-                                </div>
-                            </div>
-                        </div>
-                        {/volist}
+                          {volist name='list' id='vo'}
+                          <div class="comment-show-con clearfix">
+                              <div class="comment-show-con-img pull-left"><img src="__INDEX__/comment/images/header-img-comment_03.png" alt=""></div>
+                              <div class="comment-show-con-list pull-left clearfix" data_pid="{$vo.id}">
+                                  <div class="pl-text clearfix">
+                                      <a href="#" class="comment-size-name">{$vo.name} : </a>
+                                      <span class="my-pl-con">&nbsp;{$vo.content}</span>
+                                  </div>
+                                  <div class="date-dz">
+                                      <span class="date-dz-left pull-left comment-time">{$vo.time|date="Y-m-d H:i:s",###}</span>
+                                      <div class="date-dz-right pull-right comment-pl-block">
+                                          <a href="javascript:;" class="removeBlock">删除</a>
+                                          <a href="javascript:;" class="date-dz-pl pl-hf hf-con-block pull-left">回复</a>
+                                          <span class="pull-left date-dz-line">|</span>
+                                          <a href="javascript:;" class="date-dz-z pull-left"><i class="date-dz-z-click-red"></i>赞 (<i class="z-num">666</i>)</a>
+                                      </div>
+                                  </div>
+                                  <div class="hf-list-con" style="display: block;">
+                                      {volist name='vo.comment_son' id='vol'}
+                                          <div class="all-pl-con" data_pid="{$vol.pid}"><div class="pl-text hfpl-text clearfix"><a href="#" class="comment-size-name">{$vol.name} : </a><span class="my-pl-con">{$vol.content}</span></div><div class="date-dz"> <span class="date-dz-left pull-left comment-time">{$vol.time|date="Y-m-d H:i:s",###}</span> <div class="date-dz-right pull-right comment-pl-block"> <a href="javascript:;" class="removeBlock">删除</a> <a href="javascript:;" class="date-dz-pl pl-hf hf-con-block pull-left">回复</a> <span class="pull-left date-dz-line">|</span> <a href="javascript:;" class="date-dz-z pull-left" onclick="comment_like({$vol.id})"><i class="date-dz-z-click-red"></i>赞 (<i class="z-num">666</i>)</a> </div> </div></div>
+                                      {/volist}
+                                  </div>
+                              </div>
+                          </div>
+                          {/volist}
                     </div>
                     
                     <!--回复区域 end-->
-                    </div>
                 </div>
-                <aside class="col-md-4 blog-aside">
-                    
-                    <div class="aside-widget">
-                        <header>
-                            <h3>Featured Post</h3>
-                        </header>
-                        <div class="body">
-                            <ul class="clean-list">
-                                <li><a href="">Clean - Responsive HTML5 Template</a></li>
-                                <li><a href="">Responsive Pricing Table</a></li>
-                                <li><a href="">Yellow HTML5 Template</a></li>
-                                <li><a href="">Blackor Responsive Theme</a></li>
-                                <li><a href="">Portfolio Bootstrap Template</a></li>
-                                <li><a href="">Clean Slider Template</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                
-                    <div class="aside-widget">
-                        <header>
-                            <h3>Related Post</h3>
-                        </header>
-                        <div class="body">
-                            <ul class="clean-list">
-                                <li><a href="">Blackor Responsive Theme</a></li>
-                                <li><a href="">Portfolio Bootstrap Template</a></li>
-                                <li><a href="">Clean Slider Template</a></li>
-                                <li><a href="">Clean - Responsive HTML5 Template</a></li>
-                                <li><a href="">Responsive Pricing Table</a></li>
-                                <li><a href="">Yellow HTML5 Template</a></li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="aside-widget">
-                        <header>
-                            <h3>Tags</h3>
-                        </header>
-                        <div class="body clearfix">
-                            <ul class="tags">
-                                <li><a href="#">HTML5</a></li>
-                                <li><a href="#">CSS3</a></li>
-                                <li><a href="#">COMPONENTS</a></li>
-                                <li><a href="#">TEMPLATE</a></li>
-                                <li><a href="#">PLUGIN</a></li>
-                                <li><a href="#">BOOTSTRAP</a></li>
-                                <li><a href="#">TUTORIAL</a></li>
-                                <li><a href="#">UI/UX</a></li>                            
-                            </ul>
-                        </div>
-                    </div>
-                </aside>
-            </div>
-        </div>
+            </fieldset>
+          </form>
     </div>
 
-    <footer>
-        <div class="widewrapper footer">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-4 footer-widget">
-                        <h3> <i class="fa fa-user"></i>About</h3>
+    {include file="common/_right" /}
+</div>
+<!-- content end -->
 
-                       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab animi laboriosam nostrum consequatur fugiat at, labore praesentium modi, quasi dolorum debitis reiciendis facilis, dolor saepe sint nemo, earum molestias quas.</p>
-                       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum, error aspernatur assumenda quae eveniet.</p>
-                    </div>
 
-                    <div class="col-md-4 footer-widget">
-                        <h3> <i class="fa fa-pencil"></i> Recent Post</h3>
-                        <ul class="clean-list">
-                            <li><a href="">Clean - Responsive HTML5 Template</a></li>
-                            <li><a href="">Responsive Pricing Table</a></li>
-                            <li><a href="">Yellow HTML5 Template</a></li>
-                            
-                        </ul>
-                    </div>
-
-                    <div class="col-md-4 footer-widget">
-                        <h3> <i class="fa fa-envelope"></i>Contact Me</h3>
-
-                        <p>Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet.</p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil fugiat, cupiditate veritatis excepturi tempore explicabo.</p>
-                         <div class="footer-widget-icon">
-                            <i class="fa fa-facebook"></i><i class="fa fa-twitter"></i><i class="fa fa-google"></i>
-                        </div>
-                    </div>
-                   
-                </div>
-            </div>
+ <footer class="blog-footer">
+    <div class="am-g am-g-fixed blog-fixed am-u-sm-centered blog-footer-padding">
+        <div class="am-u-sm-12 am-u-md-4- am-u-lg-4">
+            <h3>模板简介</h3>
+            <p class="am-text-sm">这是一个使用amazeUI做的简单的前端模板。<br> 博客/ 资讯类 前端模板 <br> 支持响应式，多种布局，包括主页、文章页、媒体页、分类页等<br>嗯嗯嗯，不知道说啥了。外面的世界真精彩<br><br>
+            Amaze UI 使用 MIT 许可证发布，用户可以自由使用、复制、修改、合并、出版发行、散布、再授权及贩售 Amaze UI 及其副本。</p>
         </div>
-        <div class="widewrapper copyright">
-                Copyright &copy; 2017.Company name All rights reserved.<a target="_blank" href="http://www.htmlsucai.com/">&#72;&#84;&#77;&#76;&#32032;&#26448;&#32593;</a>
+        <div class="am-u-sm-12 am-u-md-4- am-u-lg-4">
+            <h3>社交账号</h3>
+            <p>
+                <a href=""><span class="am-icon-qq am-icon-fw am-primary blog-icon blog-icon"></span></a>
+                <a href=""><span class="am-icon-github am-icon-fw blog-icon blog-icon"></span></a>
+                <a href=""><span class="am-icon-weibo am-icon-fw blog-icon blog-icon"></span></a>
+                <a href=""><span class="am-icon-reddit am-icon-fw blog-icon blog-icon"></span></a>
+                <a href=""><span class="am-icon-weixin am-icon-fw blog-icon blog-icon"></span></a>
+            </p>
+            <h3>Credits</h3>
+            <p>我们追求卓越，然时间、经验、能力有限。Amaze UI 有很多不足的地方，希望大家包容、不吝赐教，给我们提意见、建议。感谢你们！</p>          
         </div>
-    </footer>
+        <div class="am-u-sm-12 am-u-md-4- am-u-lg-4">
+              <h1>我们站在巨人的肩膀上</h1>
+             <h3>Heroes</h3>
+            <p>
+                <ul>
+                    <li>jQuery</li>
+                    <li>Zepto.js</li>
+                    <li>Seajs</li>
+                    <li>LESS</li>
+                    <li>...</li>
+                </ul>
+            </p>
+        </div>
+    </div>    
+    <div class="blog-text-center">© 2015 AllMobilize, Inc. Licensed under MIT license. Made with love By LWXYFER</div>    
+  </footer>
 
-    <script src="__INDEX__/comment/js/jquery-1.12.0.min.js"></script>
-    <script src="__INDEX__/js/bootstrap.min.js"></script>
-    <script src="__INDEX__/js/modernizr.js"></script>
-    <script type="text/javascript" src="__INDEX__/comment/js/jquery.flexText.js"></script>
-    <script type="text/javascript" src="__INDEX__/comment/js/comment.js"></script>
-    <!--textarea高度自适应-->
-    <script type="text/javascript">
-        $(function () {
-            $('.content').flexText();
-        });
-    </script>
-    <!--textarea限制字数-->
-    <script type="text/javascript">
-        function keyUP(t){
-            var len = $(t).val().length;
-            if(len > 139){
-                $(t).val($(t).val().substring(0,140));
-            }
+<!--[if (gte IE 9)|!(IE)]><!-->
+<script src="__INDEX__/assets/js/jquery.min.js"></script>
+<!--<![endif]-->
+<!--[if lte IE 8 ]>
+<script src="http://libs.baidu.com/jquery/1.11.3/jquery.min.js"></script>
+<script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+<script src="assets/js/amazeui.ie8polyfill.min.js"></script>
+<![endif]-->
+<script src="__INDEX__/assets/js/amazeui.min.js"></script>
+<script type="text/javascript" src="__INDEX__/comment/js/jquery.flexText.js"></script>
+<script type="text/javascript" src="__INDEX__/comment/js/comment.js"></script>
+<!-- <script src="assets/js/app.js"></script> -->
+<!--textarea高度自适应-->
+<script type="text/javascript">
+    $(function () {
+        $('.content').flexText();
+    });
+</script>
+<!--textarea限制字数-->
+<script type="text/javascript">
+    function keyUP(t){
+        var len = $(t).val().length;
+        if(len > 139){
+            $(t).val($(t).val().substring(0,140));
         }
+    }
 
-        function comment_like(comment_id){
+    function comment_like(comment_id){
 
-        }
-    </script>
-    <script type="text/javascript">
-             
-    </script>
+    }
+</script>
 </body>
 </html>

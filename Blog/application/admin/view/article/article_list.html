@@ -50,11 +50,17 @@
 					<td>{$vo.id}</td>
 					<td class="text-l"><u style="cursor:pointer" class="text-primary" onClick="showContent({$vo.id},'{$vo.title}')" title="查看">{$vo.title}</u></td>
 					<td>{$vo.presentation}</td>
-					<td>{$vo.art_type}</td>
+					{if $vo.art_type == 0}
+						<td>全部栏目</td>
+					{else/}
+						{volist name="$vo.category" id="cate"}
+						<td>{$cate.category}</td>
+						{/volist}
+					{/if}
 					<td>{$vo.author}</td>
-					<td>{$vo.update_time}</td>
+					<td>{$vo.update_time|date="Y-m-d h:i:s",###}</td>
 					<td><img src="{$vo.image}" width='50'></td>
-					<td class="td-status">
+					<td>
 						{if $vo.hot =="1"}
 							<span class="label label-success radius is_hot" style="cursor: pointer;" data_id="{$vo.id}">已推荐</span>
 						{else/}
