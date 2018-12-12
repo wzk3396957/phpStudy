@@ -1,5 +1,5 @@
 {include file="common/_meta" /}
-
+<link rel="stylesheet" type="text/css" href="__UPLOAD__/webuploader.css">
 <title>新增文章 - 资讯管理 - H-ui.admin v3.1</title>
 <meta name="keywords" content="H-ui.admin v3.1,H-ui网站后台模版,后台模版下载,后台管理系统模版,HTML后台模版下载">
 <meta name="description" content="H-ui.admin v3.1，是一款由国人开发的轻量级扁平化网站后台模板，完全免费开源的网站后台管理系统模版，适合中小型CMS后台系统。">
@@ -54,8 +54,12 @@
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-2">缩略图：</label>
 			<div class="formControls col-xs-8 col-sm-9">
-				<input  type="file" onchange="preview(this)" name="art_image" ></span>
-				<div id="preview"></div>
+				<div id="uploader-demo">
+				    <!--用来存放item-->
+				    <div id="fileList" class="uploader-list"></div>
+				    <div id="filePicker">选择图片</div>
+				    <input id="file_upload_image" name="image" type="hidden" multiple="true" value="">
+				</div>
 			</div>
 		</div>
 
@@ -92,6 +96,7 @@
 <script type="text/javascript" src="__H_ui.admin__/lib/ueditor/1.4.3/ueditor.all.min.js"> </script> 
 <script type="text/javascript" src="__H_ui.admin__/lib/ueditor/1.4.3/lang/zh-cn/zh-cn.js"></script>
 <script type="text/javascript" src="__H_ui.admin__/myself/js/article_sub.js"></script>
+<script type="text/javascript" src="__UPLOAD__/webuploader.js"></script>
 <!--/请在上方写此页面业务相关的脚本-->
 </body>
 </html>

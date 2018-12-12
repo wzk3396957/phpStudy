@@ -144,6 +144,7 @@ return [
     'view_replace_str'       => [
                                     '__INDEX__'=>'/../static/index',
                                     '__H_ui.admin__'=>'/../static/admin',
+                                    '__UPLOAD__'=>'/../static/webuploader'
                                 ],
     // 默认跳转页面对应的模板文件
     'dispatch_success_tmpl'  => THINK_PATH . 'tpl' . DS . 'dispatch_jump.tpl',
@@ -241,4 +242,5 @@ return [
         'var_page'  => 'page',
         'list_rows' => 15,
     ],
+    
 ];
