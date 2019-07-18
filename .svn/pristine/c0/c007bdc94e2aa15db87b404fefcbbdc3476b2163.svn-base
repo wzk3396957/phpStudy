@@ -1,9 +1,0 @@
-function request(url,params,Callback,method){
-    $.ajax({
-        type: "get",
-        data: params,
-        url: url,
-        dataType: 'json',
-        success: Callback
-    })
-}
